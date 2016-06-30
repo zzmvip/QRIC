@@ -1,0 +1,69 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>会员设置</h3>
+        <h5>会员设置</h5>
+      </div>
+    </div>
+  </div>
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span> </div>
+    <ul>
+      <li>会员配置</li>
+    </ul>
+  </div>
+  <form method="post" name="settingForm" id="settingForm">
+    <div class="ncap-form-default">
+	  <dl class="row">
+        <dt class="tit">是否开启会员注册</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="is_member_reg1" <if condition="C('IS_MEMBER_REG') eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>开启</label>
+            <label for="is_member_reg0" <if condition="C('IS_MEMBER_REG') eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>关闭</label>
+            <input id="is_member_reg1" name="config[IS_MEMBER_REG]" <if condition="C('IS_MEMBER_REG') eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="is_member_reg0" name="config[IS_MEMBER_REG]" <if condition="C('IS_MEMBER_REG') eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic">关闭后前台用户无法注册</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit"><label for="icp_number">最大会员注册数</label></dt>
+        <dd class="opt">
+          <input id="member_reg_num" name="config[MEMBER_REG_NUM]" value="{:C('MEMBER_REG_NUM')}" class="input-txt" type="text">
+		  <p class="notic">相同IP同一天内（24小时）最多注册会员数 0为无限制</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">默认会员注册模型</dt>
+        <dd class="opt">
+		  <select id="member_reg_default_module" name="config[MEMBER_REG_DEFAULT_MODULE]">
+		  <volist name="member_module_list" id="vo">
+			<option value="{$vo.id}">{$vo.name}</option>
+		  </volist>
+		  </select>
+		  <p class="notic">会员注册成功时系统默认分配的会员模型</p>
+        </dd>
+      </dl>
+      <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+    </div>
+  </form>
+</div>
+
+</block>
+<block name="script">
+<script>
+$('#member_reg_default_module').attr('value',"{:C('MEMBER_REG_DEFAULT_MODULE')}");
+$(function(){
+    $("#submitBtn").click(function(){
+        if($("#settingForm").valid()){
+            $("#settingForm").submit();
+        }
+    });
+});
+</script>
+</block>

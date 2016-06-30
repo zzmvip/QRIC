@@ -1,0 +1,197 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href='{:U("MemberField/lists")}' title="返回公共字段列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>会员公共字段管理 - 新增</h3>
+        <h5>此处新增的是会员的公共字段，如需指定会员模型添加字段，请至会员模型，对应模型，添加扩展字段</h5>
+      </div>
+    </div>
+  </div>
+  <form id="article_field_form" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>字段名</label>
+        </dt>
+        <dd class="opt">
+			<if condition="$info.type eq 0 ">
+			<input type="text" value="{$info.field|default=''}" name="field" id="field" maxlength="20" class="input-txt">
+			<input type="hidden" value="{$info.field|default=''}" name="field_old" id="field_old" maxlength="20" class="input-txt">
+			<else />
+			{$info.field|default=''}
+			</if>
+          <span class="err"></span>
+          <p class="notic">（字段名称，英文）</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="name"><em>*</em>别名</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.name|default=''}" name="name" id="name" maxlength="40" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">（字段备注）</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="description">字段描述</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.description|default=''}" name="description" id="description" maxlength="40" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">字段说明</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="formtype"><em>*</em>字段类型</label>
+        </dt>
+        <dd class="opt">
+          <select name="formtype" id="formtype">
+			<option value="">请选择</option>
+			<option value="text">单行文本</option>
+			<option value="password">密码框</option>
+			<option value="textarea">多行文本</option>
+			<option value="editor">编辑器</option>
+			<!--<option value="box">选项</option>
+			<option value="image">图片</option>
+			<option value="images">多图片</option>-->
+			<option value="number">数字</option>
+			<!--<option value="open">开关选项</option>-->
+			<!--<option value="datetime">日期和时间</option>-->
+			<!--<option value="downfile">单文件上传</option>
+			<option value="downfiles">多文件上传</option>-->
+			<option value="map">地图</option>
+          </select>
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">是否必填</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="must1" <if condition="$info.must eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>是</label>
+            <label for="must0" <if condition="$info.must eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>否</label>
+            <input id="must1" name="must" <if condition="$info.must eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="must0" name="must" <if condition="$info.must eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">是否启用</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="hide1" <if condition="$info.hide eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>启用</label>
+            <label for="hide0" <if condition="$info.hide eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>禁用</label>
+            <input id="hide1" name="hide" <if condition="$info.hide eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="hide0" name="hide" <if condition="$info.hide eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+
+
+	  <dl class="row">
+        <dt class="tit">是否允许会员修改</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="status1" <if condition="$info.status eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>允许</label>
+            <label for="status0" <if condition="$info.status eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>不允许</label>
+            <input id="status1" name="status" <if condition="$info.status eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="status0" name="status" <if condition="$info.status eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic">开启后前台会员提交后不允许修改</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="sort">排序</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.sort|default=0}" name="sort" id="sort" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">数字范围为0~255，数字越小越靠前</p>
+        </dd>
+      </dl>
+      <div class="bot">
+	  <input type="hidden" name="id" value="{$info.id|default=''}">
+	  <input type="hidden" name="type" value="{$info.type|default='0'}">
+	  <if condition="$id neq '' ">
+	  <input type="hidden" name="tablename" value='{$info.tablename|default="member_module_$id"}'>
+	  <else />
+	  <input type="hidden" name="tablename" value='{$info.tablename|default="member_common"}'>
+	  </if>
+	  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+	  </div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+$('#formtype').attr('value','{$info.formtype|default=""}');
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#article_field_form").valid()){
+		$("#article_field_form").submit();
+	}
+});
+
+$(function(){
+	//表单验证	
+	$('#article_field_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        },
+        rules : {
+            field : {
+                required : true,
+                remote   : {                
+                url :'{:U("ArticleField/ajax")}',
+                type:'get',
+                data:{
+					where : '1',
+					branch : 'check_field',
+                    field : function(){
+                        return $('#field').val();
+                    },
+                    id : '{$info.id|default=''}',
+                  }
+                }
+            },
+            name : {
+            	required :true
+            },
+			formtype : {
+            	required :true
+            },
+            sort : {
+                number   : true
+            }
+        },
+        messages : {
+            field : {
+                required : '<i class="fa fa-exclamation-circle"></i>字段名称不能为空',
+				remote   : '<i class="fa fa-exclamation-circle"></i>该字段名已存在'
+            },
+            name : {
+            	required : '<i class="fa fa-exclamation-circle"></i>字段别名不能为空',
+            },
+			formtype : {
+            	required : '<i class="fa fa-exclamation-circle"></i>字段类型必须选择',
+            },
+            sort  : {
+                number   : '<i class="fa fa-exclamation-circle"></i>排序仅能为数字'
+            }
+        }
+    });
+});
+</script>
+</block>

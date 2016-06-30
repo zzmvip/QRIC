@@ -1,0 +1,249 @@
+@charset "utf-8";
+body {
+    font-family: "Microsoft YaHei","SimSun";
+    font-size: 12px;
+    line-height: 18px;
+}
+.success_stories {
+	width:1200px;
+	margin:0 auto;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+
+.success_stories_title {
+    border-bottom: 1px solid #ff3300;
+    color: #ff3201;
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    position: relative;
+}
+.success_stories_title span {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ff3300 #ff3300 #fff;
+    border-image: none;
+    border-style: solid;
+    border-width: 2px 1px 1px;
+    left: 0;
+    padding: 0 18px;
+    position: absolute;
+    top: -2px;
+}
+.stories_category {
+    background-color: #f2f3f8;
+    color: #3299fe;
+    font-size: 18px;
+    height: 38px;
+    line-height: 38px;
+    margin-top: 27px;
+    padding-left: 18px;
+    position: relative;
+}
+.stories_category span.link_toView {
+    height: 36px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    width: 118px;
+}
+.link_toView {
+    background-color: #f2f3f8;
+    text-align: center;
+}
+
+.link_toView a {
+    display: inline-block;
+    vertical-align: middle;
+}
+.view_more {
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    text-decoration: underline;
+}
+a {
+    color: #3299fe;
+    outline: medium none;
+    text-decoration: none;
+}
+.icon_jump {
+    height: 18px;
+    line-height: 18px;
+    text-decoration: none;
+    width: 18px;
+}
+img {
+    border: 0 none;
+}
+.success_stories_list {
+    border: 1px solid #dbdfea;
+    clear: both;
+    margin-bottom: 28px;
+    overflow: hidden;
+    padding-top: 16px;
+}
+.success_stories_img{
+    width:180px;
+	height:310px;
+}
+.success_stories_img img{
+    width:180px;
+	height:310px;
+	
+}
+.success_stories_img {
+    float: left;
+}
+.success_stories_info {
+    float: left;
+    width: 338px;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.success_stories_info table thead td {
+    color: #3299fe;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 18px 0;
+    text-align: center;
+}
+.success_stories_info table tbody {
+    font-size: 12px;
+}
+
+.success_stories_info table tbody tr td, .success_stories_info table tbody tr th {
+    border-top: 1px solid #edf1f4;
+    padding: 5px 0;
+}
+
+.success_stories_info table tbody th img {
+    margin: 3px 3px 0 26px;
+}
+.success_stories_info table tbody td {
+    color: #9aaab7;
+    line-height: 22px;
+}
+.success_stories_info table tbody td b {
+    color: #5d707e;
+}
+.success_stories_content {
+    display: inline;
+    float: left;
+    margin: 0 14px;
+    overflow: hidden;
+    width: 520px;
+}
+.success_stories_info {
+    float: left;
+    width: 338px;
+}
+
+
+
+
+
+
+
+
+
+
+.accountCotent_left_content {
+    display: none;
+    overflow: hidden;
+}
+
+
+
+.accountCotent_famous_left .btn_viewPrice, .accountCotent_media_left .btn_viewPrice {
+    bottom: -18px;
+    position: absolute;
+}
+.account_head a {
+    display: block;
+}
+.btn_viewPrice {
+    background: rgba(0, 0, 0, 0) url("images/bg_btn_account01.gif") repeat-x scroll 0 0;
+    border: 1px solid #dbdfea;
+    font-size: 14px;
+    font-weight: bold;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    width: 118px;
+}
+.accountCotent_box dd span {
+    display: block;
+}
+.accountName {
+    color: #4c687e;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.accountName a {
+    color: #5d707e;
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+
+.accountInfo {
+    border-bottom: 1px solid #edf1f4;
+    border-top: 1px solid #edf1f4;
+    color: #4c687e;
+    height: 36px;
+    line-height: 18px;
+    margin: 2px 0 13px;
+    padding: 3px 0;
+}
+
+.account_fansNum {
+    color: #9aacba;
+    margin-bottom: 10px;
+}
+
+.accountCotent_media_left .middle_padding {
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+.middle_padding {
+    padding: 0 6px;
+}
+.accountCotent_famous_left .account_head, .accountCotent_media_left .account_head {
+    position: relative;
+}
+.account_head {
+    float: left;
+}
+
+.accountCotent_box dd {
+    float: right;
+    font-size: 12px;
+    width: 132px;
+}
+.accountCotent_left_content .accountCotent_box {
+    float: left;
+}
+.accountCotent_box {
+    overflow: hidden;
+    padding-bottom: 23px;
+    padding-top: 23px;
+    width: 258px;
+}
+
+
+

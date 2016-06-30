@@ -1,0 +1,88 @@
+﻿<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href='{:U("Links/lists")}' title="返回内容列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>链接管理 - 新增/更新</h3>
+        <h5>链接管理</h5>
+      </div>
+    </div>
+  </div>
+  <form id="article_form" enctype="multipart/form-data" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="name" id="name" name="name" value="{$info['name']}">
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	    <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>图像描述</label>
+        </dt>
+        <dd class="opt">
+          <input type="file" name="picture" class="picture" id="picture"   />
+          
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	     
+	    <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>排序</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="sort" id="sort" name="sort" value="{$info.sort}">
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	    <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>web地址</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="link" id="link" name="link" value="{$info.link}">
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+      <div class="bot">
+	  <input type="hidden" name="id" value="{$info.id|default=''}">
+	  <input type="hidden" name="catid" value="{$info.catid}">
+	  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+	  </div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/js/jquery.nyroModal.js"></script> 
+<script type="text/javascript">
+
+
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#article_form").valid()){
+		$("#article_form").submit();
+	}
+});
+
+$(function(){
+
+	//表单验证	
+	$('#article_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        }
+    });
+});
+</script>
+</block>

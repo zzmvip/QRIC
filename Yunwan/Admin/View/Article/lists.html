@@ -1,0 +1,202 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>内容管理</h3>
+        <h5>内容添加修改等操作</h5>
+      </div>
+    </div>
+  </div>
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span>
+    </div>
+    <ul>
+      <li><a>管理内容</a></li>
+    </ul>
+  </div>
+  <form method='post'>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="150" class="handle" align="center">操作</th>
+          <th width="40" align="center">排序</th>
+		  <th width="200" align="left">标题</th>
+          <th width="40" align="left">图片</th>
+          <th width="40" align="left">浏览量</th>
+          <th width="80" align="left">推荐</th>
+          <th width="40" align="left">状态</th>
+          <th width="80" align="left">作者</th>
+		  <th width="80" align="left">所属栏目</th>
+          <th width="120" align="left">时间</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="list" id="vo">
+         <tr data-id="{$vo.id}">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td class="handle">
+		  <if condition="$vo.type == '1' ">
+		  <span>--</span>
+		  <else/>
+			  <a onclick="fg_del({$vo.id})" href="javascript:void(0);" class="btn red"><i class="fa fa-trash-o"></i>删除</a>
+			  <a href='{:U("Article/edit/id/$vo[id]")}' class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+		  </if>
+          </td>
+          <td class="sort"><span title="可编辑" column_id="{$vo.id}" fieldname="sort" nc_type="inline_edit" class="editable ">{$vo.sort}</span></td>
+          <td>{$vo.title}</td>
+		  <td>
+		  <if condition="$vo.thumb == '' ">
+			<a href="javascript:;" class="pic-thumb-tip" onmouseout="toolTip()" onmouseover="toolTip('<img src=\'{:C('ARTICLE_UPLOAD.rootPath')}no_cover.png\'>')">
+			<i class="fa fa-picture-o"></i>
+			</a>
+		 <else/>
+			<a href="javascript:;" class="pic-thumb-tip" onmouseout="toolTip()" onmouseover="toolTip('<img src=\'{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}\'>')">
+			<i class="fa fa-picture-o"></i>
+			</a>
+		 </if>
+		  </td>
+		  <td class="sort"><span title="可编辑" column_id="{$vo.id}" fieldname="click" nc_type="inline_edit" class="editable ">{$vo.click}</span></td>
+          <td><if condition="$vo.posid neq '' "><span class="yes"><i class="fa fa-thumbs-o-up"></i>推荐</span><else/><span class="no"><i class="fa fa-thumbs-o-down"></i>未推荐</span></if></td>
+          <td>{$vo.status_text}</td>
+          <td>{:article_add_user($vo['uid'],$vo['addtype'])}</td>
+          <td>{:article_add_class($vo['catid'])}</td>
+          <td>{$vo.updatetime|date="Y-m-d H:i:s",###}</td>
+		  <td></td>
+         </tr>
+	  </volist>
+      </tbody>
+	  <tfoot>
+	      <tr>
+		      <td colspan="12">{$page}</td>
+		  </tr>
+	  </tfoot>
+    </table>
+  </form>
+
+  <div class="ncap-search-ban-s" id="searchBarOpen"><i class="fa fa-search-plus"></i>高级搜索</div>
+  <div class="ncap-search-bar">
+    <div class="handle-btn" id="searchBarClose"><i class="fa fa-search-minus"></i>收起边栏</div>
+    <div class="title">
+      <h3>高级搜索</h3>
+    </div>
+    <form method="post" action="{:U('Article/lists')}" name="formSearch" id="formSearch">
+      <div id="searchCon" class="content">
+        <div class="layout-box">
+          <dl>
+            <dt>发布人</dt>
+            <dd>
+              <label>
+                <input type="text" value="" name="username" id="username" class="s-input-txt" placeholder="输入发布人用户名">
+              </label>
+            </dd>
+          </dl>
+          <dl>
+            <dt>选择分类</dt>
+            <dd>
+              <label>
+                <select name="classid" id="classid">
+					<volist name="classdata" id="aclass">
+						<option value="{$aclass.id}">{$aclass.title_show}</option>
+					</volist>
+				</select>
+              </label>
+            </dd>
+          </dl>
+		  <dl>
+            <dt>标题</dt>
+            <dd>
+              <label>
+                <input type="text" value="" name="title" id="title" class="s-input-txt" placeholder="输入内容标题">
+              </label>
+            </dd>
+          </dl>
+          <dl>
+            <dt>时期筛选</dt>
+            <dd>
+              <label>
+                <input type="text" name="add_time_from" id="add_time_from" class="s-input-txt" placeholder="请选择开始时间" value="" />
+              </label>
+              <label>
+                <input type="text" name="add_time_to" id="add_time_to" class="s-input-txt" placeholder="请选择结束时间" value="" />
+              </label>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="bottom"><a href="javascript:void(0);" id="ncsubmit" class="ncap-btn ncap-btn-green mr5">提交查询</a><a href="javascript:void(0);" id="ncreset" class="ncap-btn ncap-btn-orange" title="撤销查询结果，还原列表项所有内容"><i class="fa fa-retweet"></i>撤销</a></div>
+    </form>
+  </div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<script type="text/javascript">
+$('#searchBarOpen').click();
+$('#add_time_from').datepicker({minDate: '2015-02-22'});
+$('#add_time_to').datepicker({maxDate: '2025-05-23'});
+// 高级搜索提交
+$('#ncsubmit').click(function(){
+	$("#formSearch").submit();
+});
+
+// 高级搜索重置
+$('#ncreset').click(function(){
+	$("#flexigrid").flexOptions({url: 'index.php?act=chat_log&op=get_xml'}).flexReload();
+	$("#formSearch")[0].reset();
+});
+$(function(){
+    $('.flex-table').flexigrid({
+        height:'auto',// 高度自动
+        usepager: false,// 不翻页
+        striped:false,// 不使用斑马线
+        resizable: false,// 不调节大小
+        title: '内容公共字段',// 表格标题
+        reload: false,// 不使用刷新
+        columnControl: false,// 不使用列控制
+        buttons : [
+                   {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add', onpress : fg_operation },
+                   {display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation }
+               ]
+    });
+
+    $('span[nc_type="inline_edit"]').inline_edit({a: 'Article',c: 'ajax'});
+});
+
+function fg_operation(name, bDiv) {
+    if (name == 'add') {
+		ajax_form('modifypw', '选择栏目', '/admin.php?s=/Article/class_select.html');
+       // window.location.href = '{:U("Article/add")}';
+    } else if (name == 'del') {
+        if ($('.trSelected', bDiv).length == 0) {
+            showError('请选择要操作的数据项！');
+        }
+        var itemids = new Array();
+        $('.trSelected', bDiv).each(function(i){
+            itemids[i] = $(this).attr('data-id');
+        });
+        fg_del(itemids);
+    }
+}
+function fg_del(ids) {
+    if (typeof ids == 'number') {
+        var ids = new Array(ids.toString());
+    };
+    id = ids.join(',');
+    if(confirm('删除后将不能恢复，确认删除这项吗？')){
+        $.getJSON('{:U("Article/del")}', {id:id}, function(data){
+            if (data.state) {
+                location.reload();
+            } else {
+                showError(data.msg)
+            }
+        });
+    }
+}
+</script>
+</block>

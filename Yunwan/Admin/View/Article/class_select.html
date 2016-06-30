@@ -1,0 +1,24 @@
+<div class="ncap-form-default">
+    <dl class="row">
+      <dt class="tit"><label for="old_pw"><em>*</em>选择分类</label></dt>
+      <dd class="opt" id="class"><select name="id" id="id">
+							<volist name="data" id="aclass">
+								<option <if condition="$aclass['ultimate'] eq 0">disabled="disabled"</if> value="{$aclass.id}">{$aclass.title}</option>
+								<foreach name="aclass.child" item="class" key="k2">
+								<option value="{$class.id}" <if condition="$class['ultimate'] eq 0">disabled="disabled"</if>>---{$class.title}</option>
+								</foreach>
+							</volist>
+						</select>
+          <span class="err"></span></dd>
+    </dl>
+    <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green"  id="submitBtn"><span>确认提交</span></a></div>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){
+    $("#submitBtn").click(function(){
+		var id = $('#id').val();
+         window.location.href='{:U("Article/add/id/'+id+'")}';
+	});
+});
+</script> 

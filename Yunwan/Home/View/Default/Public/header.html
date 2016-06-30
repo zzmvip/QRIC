@@ -1,0 +1,144 @@
+<!-- 网站顶部 STR -->
+<link href="__CSS__/city.css" type="text/css" rel="stylesheet" />
+<div class="ad_top w">
+    <div class="wrapper">
+	    <ul class="fl">
+			<if condition="is_login()">
+			<li><a href="{:U('Member/index')}">{:get_username()}</a></li>
+			<li class="dline dline-v6"></li>
+			<li><a href="{:U('Member/logout')}">退出</a></li>
+			<else/>
+		    <li><a href="{:U('Member/login')}" class="">登录</a></li>
+			<li class="dline dline-v6"></li>
+			<li><a href="{:U('Member/register')}">注册</a></li>
+			</if>
+		</ul>
+		<ul class="fr">
+			<li><a href="#">帮助中心</a></li>
+			<li class="dline dline-v6"></li>
+			<li><a href="#" class="font-yellow">客服电话：400-888-5188</a></li>
+		</ul>
+		
+		<ul class="fr" style="margin-right: 12px;">
+			 
+			<li class="i1">{$infos.name} </li>
+			<li class="dline dline-v6"></li>
+			<li class="i2" id="changeCity">切换城市</li>
+		</ul>
+	</div>
+</div>
+<div class="selcity" id="allCity" style="display:none;">
+	<table>
+		<tbody>
+			<tr><volist name="city" id="vo">
+				<td>
+				<a  href='{:U("Index/city/cityen/$vo[english]")}'>{$vo.name}</a></td>
+				</volist>
+			</tr>
+			
+			
+			
+		</tbody>
+	</table>
+	<div class="none"><a id="foldin" href="javascript:;">收起</a></div>
+</div>
+<div class="header wrapper">
+    <h1 class="logo fl"><a href="{:C('WEB_PATH')}"><img src="__IMG__/logo.png"></a></h1>
+	<div class="search fl">
+	    <form action="{:U('Article/search')}" method="post">
+		    <input type="text" class="search-text" name='search-text'  placeholder="请输入搜索关键字" x-webkit-speech="" value="{$text}" autocomplete="off" >
+			<input type="submit" class="search-submit" value="搜索">
+		</form>
+	</div>
+	<a class="fabu pa openlogin" href="#"><i class="iconfont mr5"></i>发布需求</a>
+</div>
+<!-- 网站顶部 END -->
+
+<!-- 导航 STR -->
+<div class="nav w">
+    <div class="wrapper">
+		<!-- 广告分类 STR -->
+		<div class="category fl pr">
+			<h3><a href="#"><i class="iconfont mr10">&#xea1a;</i>广告分类</a><i class="iconfont fr mr20">&#xe6f8;</i></h3>
+			<div class="all-cate pa">
+				<volist name="articleclass" id="vo">
+				<if condition="$vo.pid eq 0 ">
+				<div class="cate">
+					<h2><i class="iconfont">{$vo.icon}</i><a target="_blank" href='{:U("Article/lists/name/$vo[enname]")}'>{$vo.title}</a><i class="r-gt">&gt;</i></h2>
+					<div class="hsub-title">
+						<volist name="articleclass" id="vo2">
+						<if condition="$vo2.pid eq $vo.id ">
+						<a target="_blank" href='{:U("Article/lists/name/$vo2[enname]")}'>{$vo2.title}</a>
+						</if>
+						</volist>
+					</div>
+					<div class="cate2">
+						<ul>
+							<volist name="articleclass" id="vo2">
+							<if condition="$vo2.pid eq $vo.id ">
+							<li><a target="_blank" href='{:U("Article/lists/name/$vo2[enname]")}'>{$vo2.title}</a></li>
+							</if>
+							</volist>
+						</ul>
+					</div>
+				</div>
+				</if>
+				</volist>
+			</div>
+		</div>
+<script type="text/javascript">
+$(function(){
+	
+	$("#changeCity").click(function(a){
+		$("#allCity").slideDown(300);
+		a.stopPropagation();
+		$(this).blur()
+	});
+	
+	$("#allCity").click(function(a){
+		a.stopPropagation()
+	});
+	
+	$(document).click(function(a){
+		a.button!=2&&$("#allCity").slideUp(300)
+	});
+	
+	$("#foldin").click(function(){
+		$("#allCity").slideUp(300)
+	});
+	
+});
+</script>
+
+		<script>
+		$(function () {
+			$('.category').hover(
+			  function () {
+				$(this).addClass("hover");
+			  },
+			  function () {
+				$(this).removeClass("hover");
+			  }
+			);
+			$('.cate').hover(
+			  function () {
+				$(this).addClass("hover");
+			  },
+			  function () {
+				$(this).removeClass("hover");
+			  }
+			);
+		});
+		</script>
+		<!-- 广告分类 END -->
+		<ul class="nav-ul fl">
+		<volist name="nav_list" id="vo">
+			<li><a href="{$vo.url}">{$vo.name}</a></li>
+			<li class="dline dline-v5"></li>
+		</volist>
+			
+		</ul>
+		<!--<div class="banner-right pa"></div>-->
+	</div>
+</div>
+<!-- 导航 END -->

@@ -1,0 +1,153 @@
+<extend name="Public/base" />
+<block name="header">
+<link href="__CSS__/wzmh.css" rel="stylesheet" media="screen" type="text/css" />
+</block>
+<block name="body">
+
+<div class="success_stories">
+    <h2 class="success_stories_title"><span>门户网站</span></h2>   
+    <div class="success_stories_list">
+	<article catid="38" num='2' order="id ASC"   subcat='1' return="data">
+		<volist name="data" id="vo">
+
+        <div class="success_stories_content">
+            <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="success_stories_img">
+                <img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+            </a>
+            <div class="success_stories_info">
+                <table>
+                    <thead>
+                    <tr><td colspan="2">{$vo.description}</td>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_light.jpg"></th>
+                        <td><b>摘要：</b><br>{$vo.description}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_suit.jpg"></th>
+                        <td><b>关键词：</b><br>{$vo.keywords}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_eg.jpg"></th>
+                        <td><b>内容：</b><br>@{$vo.content|strip_tags|msubstr=###,0,30}……</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		</volist>
+		 </article>
+        
+    </div>
+	
+	<h2 class="success_stories_title"><span>行业网站</span></h2>
+   <div class="success_stories_list">
+	<article catid="39" num='2' order="id ASC"   subcat='1' return="data">
+		<volist name="data" id="vo">
+
+        <div class="success_stories_content">
+            <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="success_stories_img">
+                <img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+            </a>
+            <div class="success_stories_info">
+                <table>
+                    <thead>
+                    <tr><td colspan="2">{$vo.description}</td>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_light.jpg"></th>
+                        <td><b>摘要：</b><br>{$vo.description}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_suit.jpg"></th>
+                        <td><b>关键词：</b><br>{$vo.keywords}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_eg.jpg"></th>
+                        <td><b>内容：</b><br>@{$vo.content|strip_tags|msubstr=###,0,30}……</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		</volist>
+		 </article>
+        
+    </div>
+	<h2 class="success_stories_title"><span>综合网站</span></h2>
+      <div class="success_stories_list">
+	<article catid="40" num='2' order="id ASC"   subcat='1' return="data">
+		<volist name="data" id="vo">
+
+        <div class="success_stories_content">
+            <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="success_stories_img">
+                <img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+            </a>
+            <div class="success_stories_info">
+                <table>
+                    <thead>
+                    <tr><td colspan="2">{$vo.description}</td>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_light.jpg"></th>
+                        <td><b>摘要：</b><br>{$vo.description}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_suit.jpg"></th>
+                        <td><b>关键词：</b><br>{$vo.keywords}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_eg.jpg"></th>
+                        <td><b>内容：</b><br>@{$vo.content|strip_tags|msubstr=###,0,30}……</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		</volist>
+		 </article>
+        
+    </div>
+	<h2 class="success_stories_title"><span>其他</span></h2>
+   <div class="success_stories_list">
+	<article catid="41" num='2' order="id ASC"   subcat='1' return="data">
+		<volist name="data" id="vo">
+
+        <div class="success_stories_content">
+            <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="success_stories_img">
+                <img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+            </a>
+            <div class="success_stories_info">
+                <table>
+                    <thead>
+                    <tr><td colspan="2">{$vo.description}</td>
+                    </tr></thead>
+                    <tbody>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_light.jpg"></th>
+                        <td><b>摘要：</b><br>{$vo.description}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_suit.jpg"></th>
+                        <td><b>关键词：</b><br>{$vo.keywords}</td>
+                    </tr>
+                    <tr>
+                        <th valign="top"><img src="__IMG__/demo/icon_eg.jpg"></th>
+                        <td><b>内容：</b><br>@{$vo.content|strip_tags|msubstr=###,0,30}……</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		</volist>
+		 </article>
+        
+    </div>
+</div>
+
+
+
+</block>

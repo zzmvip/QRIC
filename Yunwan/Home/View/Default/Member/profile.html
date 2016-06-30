@@ -1,0 +1,63 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<div class="wrapper mt10 curr-nav">
+    <a href="{:C('WEB_PATH')}">首页</a> &gt; <a href="{:U('Member/index')}">用户中心</a> &gt; 修改密码
+</div>
+<div class="wrapper member-center mt10 mb10">
+<include file="Public/memberleft"/>
+</block>
+<block name="body">
+<script type="text/javascript" src="__STATIC__/js/jquery.Validform.min.js"></script>
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".registerform").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20
+			}
+		}		
+	});
+})
+</script>
+<div class="right-layout fr">
+	<div class="tabmenu">
+		<ul class="tab">
+			<li class="normal"><a href="{:U('Member/modify')}">个人资料</a></li>
+			<li class="active"><a href="{:U('Member/profile')}">修改密码</a></li>
+			<li class="normal"><a href="{:U('Member/userphoto')}">修改头像</a></li>
+		</ul>
+	</div>
+	<form class="registerform" method="post" action="">
+	<table class="lcm-default-table">
+		<tbody>
+			<tr>
+				<td align="right"><label>原密码：</label></td>
+				<td class="tl"><input name="old" sucmsg=" " datatype="*6-20" nullmsg="密码不能为空！" errormsg="密码范围在6~20位之间！"  type="password" class="pwd" maxlength="20"></td>
+				<td class="tl"><div class="Validform_checktip">请输入原密码</div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>新密码：</label></td>
+				<td class="tl"><input name="password" plugin="passwordStrength" datatype="*6-20" nullmsg="密码不能为空！" errormsg="密码范围在6~20位之间！"  type="password" class="pwd" maxlength="20"></td>
+				<td class="tl"><div class="Validform_checktip">密码由6-20位字符</div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>再次输入新密码：</label></td>
+				<td class="tl"><input name="repassword" recheck="password" sucmsg=" " datatype="*6-20" nullmsg="请再输入一次密码！" errormsg="您两次输入的账号密码不一致！" id="NewPassAgain" type="password" class="pwd" maxlength="20"></td>
+				<td class="tl"><div class="Validform_checktip">请再输入一次密码！</div></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input id="btnSubmitSave" type="submit" class="bluebut" value="保存" ></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+
+<div class="cb"></div>
+</div>
+
+</block>

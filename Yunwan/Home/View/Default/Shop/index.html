@@ -1,0 +1,562 @@
+<extend name="Public/base" />
+<block name="body">
+<link rel="stylesheet" href="__CSS__/shop.css" />
+<script type="text/javascript" src="__JS__/jquery-1.6.4.js"></script>
+ <script type="text/javascript" src="__JS__/base.js"></script>
+
+<div id="floorContent" class="wrapper">
+<script type="text/javascript">
+var timer = {};
+var timerContainer = {};
+var timerTool = {};
+var restTime = function(t) {
+        if (t &lt;= 0)
+                return [0, 0, 0];
+        var h = Math.floor(t / 3600000);
+        var mt = t % 3600000;
+        var m = Math.floor(mt / 60000);
+        var st = t % 60000;
+        var s = Math.floor(st / 1000);
+        return [h, m, s];
+};
+var changeShow = function(id) {
+        timer[id] = timer[id] - 1000;
+        var t = restTime(timer[id]);
+
+        if (t[0] == 0 &amp;&amp; t[1] == 0 &amp;&amp; t[2] == 0) {
+                //timerContainer["t" + id].html("抢购结束!&lt;a href='#none' onclick='contentInit()'&gt;刷新&lt;/a&gt;");
+				$("#countdownshour").html('0'+t[0]);
+				$("#countdownsminutes").html('0'+t[1]);
+				$("#countdownsseconds").html('0'+t[2]);
+                clearInterval(timerTool[id]);
+        } else {
+
+				if(t[0]&lt;10 &amp;&amp; t[0]&gt;=0) {
+				 $("#countdownshour").html('0'+t[0]);
+				}else{
+				 $("#countdownshour").html(t[0]);
+				}
+				if(t[1]&lt;10 &amp;&amp; t[1]&gt;=0) {
+				  $("#countdownsminutes").html('0'+t[1]);
+				}else{
+				  $("#countdownsminutes").html(t[1]);
+				}
+
+				if(t[2]&lt;10 &amp;&amp; t[2]&gt;=0) {
+				  $("#countdownsseconds").html('0'+t[2]);
+				}else{
+				  $("#countdownsseconds").html(t[2]);
+				}
+        }
+};
+var freshTime = function(tb, te, tn, id) {
+        //tn = Date.parse(tn.replace(/-/g, "/"));
+        //te = Date.parse(te.replace(/-/g, "/"));
+		tn = Math.round(new Date().getTime());
+		var date = new Date();
+        date.setHours(23);
+        date.setMinutes(59);
+        date.setSeconds(59);
+		te = Math.round(date.getTime());
+        timer[id] = te - tn;
+        changeShow(id);
+        timerTool[id]=setInterval("changeShow('" + id + "')", 1000);
+};
+var limitBuyRfid=1000919;
+var contentInit = function() {
+   jQuery.ajax({
+        url: "http://qiang.jd.com/HomePageNewLimitBuy.ashx?callback=?",
+		timeout:5000,
+                data: { ids: limitBuyRfid },
+                dataType: "jsonp",
+                success: function(r,status,jqXHR) {
+					  //console.log(jqXHR.status);
+		              if (r &amp;&amp; r.data &amp;&amp; (r.data.length &gt; 0)) {
+                                var data = r.data[0];
+                                var content = [];
+                                var product = null;
+								//获取的商品池数据
+								var phpGoods = '[{"skuId":"1951706447","saleAttr":"jfs\/t1834\/309\/1163355702\/13443\/f9830644\/55e1196eN1f83e683.jpg"},{"skuId":"1950226016","saleAttr":"jfs\/t1780\/239\/1103302830\/35760\/94f45808\/55e11950N54a0c8aa.jpg"},{"skuId":"1950253464","saleAttr":"jfs\/t1288\/91\/763360028\/23616\/aaf8f30e\/55e11905N02ac480e.jpg"},{"skuId":"1950780011","saleAttr":"jfs\/t1327\/304\/775948404\/12636\/f9b05571\/55e11816Nb0ae711d.jpg"},{"skuId":"1951017167","saleAttr":"jfs\/t1789\/253\/865329980\/17192\/3021e785\/55dd1770N48d3647e.jpg"}]';
+								var phpObj = eval('(' + phpGoods + ')');
+								num = phpObj.length;
+
+                                for (var i = 0, j = data.pros.length; i &lt; j; i++) {
+									   product = data.pros[i];
+									   for(var p=0;p&lt;num;p++) {
+									     pnum = phpObj[p];
+										 if((pnum['skuId']==product.id)&amp;&amp;(pnum['saleAttr']!='')) {
+										   //console.log("111");
+										   product.tp = pnum['saleAttr'];
+										   var s=product.tp.indexOf('/');
+										   product.tp = product.tp.substring(s);
+
+										   product.tp = 'http://img11.360buyimg.com/jdcms/s200x255_jfs'+product.tp;
+
+										 }else{
+										   //console.log("222");
+										   product.tp = product.tp;
+										   t1=product.tp.indexOf('/n3/jfs/');
+										   if(t1!=-1) {
+                                             t1 = t1+8;
+                                             nsr = product.tp.substring(t1);
+										     product.tp = 'http://img11.360buyimg.com/jdcms/s200x255_jfs/'+nsr;
+										     product.tp = product.tp;
+										   }
+
+										 }
+									   }//for end
+
+
+										if((num==undefined)||(num=='undefined')) {
+										   //console.log("333");
+										   t1=product.tp.indexOf('/n3/jfs/');
+										   if(t1!=-1) {
+                                             t1 = t1+8;
+                                             nsr = product.tp.substring(t1);
+										     product.tp = 'http://img11.360buyimg.com/jdcms/s200x255_jfs/'+nsr;
+										     product.tp = product.tp;
+										   }
+
+										}
+
+									   if((product.tb&lt;=product.st)&amp;&amp;(product.te&gt;=product.st)) {
+									     content.push('&lt;li class="item fore'+(i+1)+'"&gt;&lt;a href="http://item.jd.com/' + product.id + '.html" target="_blank" title="'+unescape(product.mc)+'"&gt;&lt;img src="'+product.tp+'" class="p-img" data-lazy-img="done" alt="'+unescape(product.mc)+'" height="255" width="200"&gt;&lt;span class="p-name"&gt;'+unescape(product.mc)+'&lt;/span&gt;&lt;/a&gt;&lt;div class="p-price"&gt;&lt;em&gt;'+"&amp;yen;"+'&lt;/em&gt;'+product.qg+'&lt;/div&gt;&lt;/li&gt;');
+									   }
+
+								}//for end
+
+								jQuery("#limitbuy ul").html(content.join(""));
+								for (var i = 0, j = data.pros.length; i &lt; j; i++) {
+                                        product = data.pros[i];
+										if((product.tb&lt;=product.st)&amp;&amp;(product.te&gt;=product.st)) {
+                                          timerContainer["t" + product.id] = $("#t" + product.id);
+                                          freshTime(product.tb, product.te, product.st, product.id);
+										}
+                                }
+					  }else{
+					      $("#floor1").hide();
+				          $('.ui-elevator a:first-child').hide();
+					  }
+				},//success end
+				error:function() {
+				  $("#floor1").hide();
+				  $('.ui-elevator a:first-child').hide();
+				}
+
+   });
+}
+contentInit();
+</script>
+
+<div id="recommend" class="m m-floor" data-idx="2">
+	<div class="mt floor-hd">
+		<h2><img width="245" height="27" alt="精选推荐" data-lazy-img="done" src="__IMG__/floor-title-02.jpg" class=""></h2>
+		<div class="extra">
+			
+		</div>
+	</div>
+		<div class="mc floor-bd">
+		<div clstag="firsttype|keycount|jdworldwide|jptj1-1" class="ui-switchable-panel fore1 ui-switchable-panel-selected" style="display: block;">
+			<ul>
+			<volist name="list" id="vo" offset="0" length='4'>
+			   				<li class="item fore1">
+					<a title="" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">
+						<img width="200" height="200" alt="" data-lazy-img="done" class="p-img" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}">
+						<span class="p-name">【广告搜搜自营】{$vo.name}</span>
+					</a>
+					<div class="p-price"><strong class="price">￥<em class="J-p-1951774906">{$vo.price}</em></strong></div>
+				</li>
+				</volist>
+							</ul>
+		</div>
+		
+	</div>
+</div>
+	
+	
+	<div id="maternity-baby" class="m m-floor" data-idx="3">
+    	<div class="mt floor-hd">
+		<h2>实物商品</h2>
+	</div>
+	<div class="mc floor-bd">
+		<div class="goods">
+			<div class="sm m-floor-slider">
+				<script>
+					(function(cfg, doc) {
+					    var data = [
+
+					        {
+					            width: 495,
+					            height: 241,
+					            href: "http://mall.jd.hk/index-143084.html",
+					            alt: "自营母婴",
+					            src: "http://img12.360buyimg.com/jdcms/s495x241_jfs/t1360/228/1252280471/102613/eba2fbf7/55c30cc0N71f1eeff.jpg",
+					            index: "0"
+					        }
+					        ,
+					        {
+					            width: 495,
+					            height: 241,
+					            href: "http://sale.jd.com/mall/kCvJqtGADe2bl.html ",
+					            alt: "母婴",
+					            src: "http://img10.360buyimg.com/jdcms/s495x241_jfs/t1585/73/513094378/74281/952007d1/55d5a228N4fc70727.jpg",
+					            index: "1"
+					        }
+					        ,
+					        {
+					            width: 495,
+					            height: 241,
+					            href: "http://sale.jd.com/mall/VpINgSuCv4fwQO1.html",
+					            alt: "奶粉",
+					            src: "http://img14.360buyimg.com/jdcms/s495x241_jfs/t1705/232/507165228/61698/850d57de/55d5a25fNd2755518.jpg",
+					            index: "2"
+					        }
+					    ];
+
+					    var currentItem;
+					    var result = [];
+					    var panelHTML = [];
+					    var triggerHTML = [];
+
+					    result.push('&lt;div class="smc floor-slider"&gt;');
+
+					    panelHTML.push('&lt;ul class="floor-slider-container"&gt;');
+					    triggerHTML.push('&lt;ul class="floor-slider-controls"&gt;');
+
+
+					    for( var i = 0; i &lt; data.length; i++ ) {
+					        currentItem = data[i];
+					        var htmlPanel = '\
+					            &lt;li class="ui-switchable-subpanel '+ (currentItem.index=='0'?'ui-switchable-panel-selected':'') +'" clstag="firsttype|keycount|jdworldwide|myyp1"&gt;\
+					                &lt;a target="_blank" href="'+ currentItem.href +'"&gt;\
+					                    &lt;img class="err-product" '+ (currentItem.index=='0'?'src':'data-lazy-img') +'="'+ currentItem.src +'" width="'+ currentItem.width +'" height="241"/&gt;\
+					                &lt;/a&gt;\
+					            &lt;/li&gt;';
+					        var htmlTrigger='&lt;li class="ui-switchable-subitem '+ (currentItem.index=='0'?'ui-switchable-selected':'') +'"&gt;&amp;nbsp;&lt;/li&gt;';
+
+
+					        panelHTML.push(htmlPanel);
+					        triggerHTML.push(htmlTrigger);
+					    }
+
+					    triggerHTML.push('&lt;/ul&gt;');
+					    panelHTML.push('&lt;/ul&gt;');
+
+					    result.push( panelHTML.join('')+triggerHTML.join('') );
+
+					    result.push('&lt;/div&gt;');
+
+					    doc.write(result.join(''));
+
+					})(pageConfig, document);
+				</script><div class="smc floor-slider" style="position: relative;"><ul class="floor-slider-container" style="width: 1449px; left: 0px; position: absolute;">					      <volist name="lists" id="vo" offset="0" length='1' key="k" >      <li clstag="firsttype|keycount|jdworldwide|myyp1" class="ui-switchable-subpanel ui-switchable-panel-selected" style="float: left; display: list-item;">					                <a href="{:U("Shop/show/id/$vo[id]")}" target="_blank">					                    <img width="495" height="241" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" class="err-product">					                </a>					            </li></volist>					            					            </ul></div>
+				<div class="slider-page" style="display: none;">
+			        <a class="ui-switchable-prev slider-prev" href="javascript:void(0)">&lt;</a>
+			        <a class="ui-switchable-next slider-next" href="javascript:void(0)">&gt;</a>
+			    </div>
+			</div>
+			<ul>
+                      <volist name="lists" id="vo" offset="0" length='6' key="k" >
+			   				
+					<li clstag="firsttype|keycount|jdworldwide|myyp3" class="item fore{$k}">
+					<a title="【广告购】 {$vo.name}" target="_blank" class="p-img" href="{:U("Shop/show/id/$vo[id]")}">
+						<img width="247" height="241" alt="【广告购】 {$vo.name}" data-lazy-img="done" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" class="">
+						<span class="p-price"><strong class="price">￥<em class="J-p-1950240510">{$vo.price}</em></strong></span>
+
+					</a>
+				</li>
+				</volist>
+							
+					
+						
+					
+				
+
+
+			</ul>
+		</div>
+		<div class="recom">
+			<h2>热门推荐</h2>
+			<ul clstag="firsttype|keycount|jdworldwide|myyp5">
+			<volist name="pro" id="vo" offset="0" length='1' key="k" >
+			    			    <li class="item fore1 curr">
+					<div class="p-name">
+						<i>1</i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">{$vo.name}</a>
+					</div>
+					<div class="p-img">
+						<i></i>
+						<a title="{$vo.name}" target="_blank" href="#">
+							<img width="140" height="140" alt="{$vo.name}" data-lazy-img="done" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" class="">
+						</a>
+						<span class="p-price"><strong class="price">￥<em class="J-p-1950282323">{$vo.price}</em></strong></span>
+					</div>
+				</li>
+				</volist>
+				<volist name="pro" id="vo" offset="1" length='4' key="k" >
+			    				<li class="item fore{$k+1}">
+					<div class="p-name">
+						<i>2</i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">{$vo.name}</a>
+					</div>
+					<div class="p-img">
+						<i></i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">
+							<img width="140" height="140" alt="{$vo.name}" data-lazy-img="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}">
+						</a>
+						<span class="p-price"><strong class="price">￥<em class="J-p-1950223709">{$vo.price}</em></strong></span>
+					</div>
+				</li>
+				</volist>
+								
+							
+							
+							</ul>
+		</div>
+	</div>
+	<div class="mb floor-ft">
+		<ul clstag="firsttype|keycount|jdworldwide|myyp6">
+		  			<li class="item fore1">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55307593N847b9810.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore2">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/554721a9Nd9bf66df.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore3">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/553454f8Ndd428775.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore4">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55312caeNf2391427.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore5">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55312cfcNf52f4dc2.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore6">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55312d7cN8493dc0a.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore7">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/553462c5N2f720266.jpg" class="">
+				</a>
+			</li>
+
+
+		</ul>
+	</div>
+</div>
+
+
+<div id="maternity-baby" class="m m-floor" data-idx="3">
+    	<div class="mt floor-hd">
+		<h2>虚拟商品</h2>
+	</div>
+	<div class="mc floor-bd">
+		<div class="goods">
+			<div class="sm m-floor-slider">
+				<script>
+					(function(cfg, doc) {
+					    var data = [
+
+					        {
+					            width: 495,
+					            height: 241,
+					            href: "http://mall.jd.hk/index-143084.html",
+					            alt: "自营母婴",
+					            src: "http://img12.360buyimg.com/jdcms/s495x241_jfs/t1360/228/1252280471/102613/eba2fbf7/55c30cc0N71f1eeff.jpg",
+					            index: "0"
+					        }
+					        ,
+					        {
+					            width: 495,
+					            height: 241,
+					            href: "http://sale.jd.com/mall/kCvJqtGADe2bl.html ",
+					            alt: "母婴",
+					            src: "http://img10.360buyimg.com/jdcms/s495x241_jfs/t1585/73/513094378/74281/952007d1/55d5a228N4fc70727.jpg",
+					            index: "1"
+					        }
+					        ,
+					        {
+					            width: 495,
+					            height: 241,
+					            href: "http://sale.jd.com/mall/VpINgSuCv4fwQO1.html",
+					            alt: "奶粉",
+					            src: "http://img14.360buyimg.com/jdcms/s495x241_jfs/t1705/232/507165228/61698/850d57de/55d5a25fNd2755518.jpg",
+					            index: "2"
+					        }
+					    ];
+
+					    var currentItem;
+					    var result = [];
+					    var panelHTML = [];
+					    var triggerHTML = [];
+
+					    result.push('&lt;div class="smc floor-slider"&gt;');
+
+					    panelHTML.push('&lt;ul class="floor-slider-container"&gt;');
+					    triggerHTML.push('&lt;ul class="floor-slider-controls"&gt;');
+
+
+					    for( var i = 0; i &lt; data.length; i++ ) {
+					        currentItem = data[i];
+					        var htmlPanel = '\
+					            &lt;li class="ui-switchable-subpanel '+ (currentItem.index=='0'?'ui-switchable-panel-selected':'') +'" clstag="firsttype|keycount|jdworldwide|myyp1"&gt;\
+					                &lt;a target="_blank" href="'+ currentItem.href +'"&gt;\
+					                    &lt;img class="err-product" '+ (currentItem.index=='0'?'src':'data-lazy-img') +'="'+ currentItem.src +'" width="'+ currentItem.width +'" height="241"/&gt;\
+					                &lt;/a&gt;\
+					            &lt;/li&gt;';
+					        var htmlTrigger='&lt;li class="ui-switchable-subitem '+ (currentItem.index=='0'?'ui-switchable-selected':'') +'"&gt;&amp;nbsp;&lt;/li&gt;';
+
+
+					        panelHTML.push(htmlPanel);
+					        triggerHTML.push(htmlTrigger);
+					    }
+
+					    triggerHTML.push('&lt;/ul&gt;');
+					    panelHTML.push('&lt;/ul&gt;');
+
+					    result.push( panelHTML.join('')+triggerHTML.join('') );
+
+					    result.push('&lt;/div&gt;');
+
+					    doc.write(result.join(''));
+
+					})(pageConfig, document);
+				</script><div class="smc floor-slider" style="position: relative;"><ul class="floor-slider-container" style="width: 1449px; left: 0px; position: absolute;">					            <volist name="lists" id="vo" offset="0" length='1' key="k" >      <li clstag="firsttype|keycount|jdworldwide|myyp1" class="ui-switchable-subpanel ui-switchable-panel-selected" style="float: left; display: list-item;">					                <a href="#" target="_blank">					                    <img width="495" height="241" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" class="err-product">					                </a>					            </li></volist>					            					            </ul></div>
+				<div class="slider-page" style="display: none;">
+			        <a class="ui-switchable-prev slider-prev" href="javascript:void(0)">&lt;</a>
+			        <a class="ui-switchable-next slider-next" href="javascript:void(0)">&gt;</a>
+			    </div>
+			</div>
+			<ul>
+                      <volist name="lists" id="vo" offset="0" length='6' key="k" >
+			   				
+					<li clstag="firsttype|keycount|jdworldwide|myyp3" class="item fore{$k}">
+					<a title="【广告购】 {$vo.name}" target="_blank" class="p-img" href="{:U("Shop/show/id/$vo[id]")}">
+						<img width="247" height="241" alt="【广告购】 {$vo.name}" data-lazy-img="done" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" class="">
+						<span class="p-price"><strong class="price">￥<em class="J-p-1950240510">{$vo.price}</em></strong></span>
+
+					</a>
+				</li>
+				</volist>
+							
+					
+						
+					
+				
+
+
+			</ul>
+		</div>
+		<div class="recom">
+			<h2>热门推荐</h2>
+			<ul clstag="firsttype|keycount|jdworldwide|myyp5">
+			<volist name="pro" id="vo" offset="0" length='1' key="k" >
+			    			    <li class="item fore1 curr">
+					<div class="p-name">
+						<i>1</i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">{$vo.name}</a>
+					</div>
+					<div class="p-img">
+						<i></i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">
+							<img width="140" height="140" alt="{$vo.name}" data-lazy-img="done" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" class="">
+						</a>
+						<span class="p-price"><strong class="price">￥<em class="J-p-1950282323">{$vo.price}</em></strong></span>
+					</div>
+				</li>
+				</volist>
+				<volist name="pro" id="vo" offset="1" length='4' key="k" >
+			    				<li class="item fore{$k+1}">
+					<div class="p-name">
+						<i>2</i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">{$vo.name}</a>
+					</div>
+					<div class="p-img">
+						<i></i>
+						<a title="{$vo.name}" target="_blank" href="{:U("Shop/show/id/$vo[id]")}">
+							<img width="140" height="140" alt="{$vo.name}" data-lazy-img="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}">
+						</a>
+						<span class="p-price"><strong class="price">￥<em class="J-p-1950223709">{$vo.price}</em></strong></span>
+					</div>
+				</li>
+				</volist>
+								
+							
+							
+							</ul>
+		</div>
+	</div>
+	<div class="mb floor-ft">
+		<ul clstag="firsttype|keycount|jdworldwide|myyp6">
+		  			<li class="item fore1">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55307593N847b9810.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore2">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/554721a9Nd9bf66df.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore3">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/553454f8Ndd428775.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore4">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55312caeNf2391427.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore5">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55312cfcNf52f4dc2.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore6">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/55312d7cN8493dc0a.jpg" class="">
+				</a>
+			</li>
+						<li class="item fore7">
+				<a target="_blank" href="#">
+					<i></i>
+					<img width="140" height="60" data-lazy-img="done" style="" src="__IMG__/553462c5N2f720266.jpg" class="">
+				</a>
+			</li>
+
+
+		</ul>
+	</div>
+</div>
+
+
+
+	
+</div>
+</block>

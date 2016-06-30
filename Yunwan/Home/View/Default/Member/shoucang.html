@@ -1,0 +1,60 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<div class="wrapper mt10 curr-nav">
+     <a href="{:C('WEB_PATH')}">首页</a> &gt; <a href="{:U('Member/index')}">用户关注</a> &gt; 关注列表
+</div>
+<div class="wrapper member-center mt10 mb10">
+<include file="Public/memberleft"/>
+</block>
+<block name="body">
+<script type="text/javascript">
+/*$(function(){		
+	var demo=$(".registerform").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20
+			}
+		}		
+	});
+})*/
+</script>
+<div class="right-layout fr">
+	<div class="tabmenu">
+		<ul class="tab">
+			<li class="active"><a href='{:U("Member/articlelist/id/$catid")}'>关注列表</a></li>
+			
+		</ul>
+	</div>
+		<table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th width="500">名称</th>
+					<th width="200">发布时间</th>
+					<th  width="200" class="">操作</th>
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+                <volist name="list" id="data">
+                    <tr>
+                        <td>{$data.title}</td>
+                        <td>{$data.updatetime|date="y-m-d",###}</td>
+					<td><a href="javascript:void(0);" article_id="{$data.id}" title="取消关注" class="a-like" style='color: rgb(222, 36, 36);'><i class="iconfont">&#xe666;</i></a>
+					</td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+
+	
+</div>
+
+<div class="cb"></div>
+</div>
+
+</block>

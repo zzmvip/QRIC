@@ -1,0 +1,104 @@
+﻿<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href='{:U("Links/lists")}' title="返回内容列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>会员 - 新增/更新</h3>
+        <h5>会员管理</h5>
+      </div>
+    </div>
+  </div>
+  <form id="article_form" enctype="multipart/form-data" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="title" id="title" name="title" value="{$info['title']}">
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	    <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>类型</label>
+        </dt>
+        <dd class="opt">
+              <select class="type" id="type" name="type">  
+      <option value ="0">单图</option>  
+       <option value ="1">多图随机显示</option> 
+	   <option value ="2">幻灯片切换</option>
+       
+    </select> 
+          
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	    <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>宽</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="width" id="width" name="width" value="{$info['width']}">
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	    <dl class="row">
+        <dt class="tit">
+          <label for="field"><em>*</em>高</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="height" id="height" name="height" value="{$info['height']}">
+          <span class="err"></span>
+         
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">状态</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="status1" <if condition="C('status') eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>开启</label>
+            <label for="status0" <if condition="C('status') eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>关闭</label>
+            <input id="status1" name="status" <if condition="C('status') eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="status0" name="status" <if condition="C('status') eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic">可暂时将站点关闭，其他人无法访问，但不影响管理员访问后台</p>
+        </dd>
+      </dl>
+      <div class="bot">
+	  <input type="hidden" name="id" value="{$info.id|default=''}">
+	  <input type="hidden" name="catid" value="{$info.catid}">
+	  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+	  </div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/js/jquery.nyroModal.js"></script> 
+<script type="text/javascript">
+
+
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#article_form").valid()){
+		$("#article_form").submit();
+	}
+});
+
+$(function(){
+
+	//表单验证	
+	$('#article_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        }
+    });
+});
+</script>
+</block>

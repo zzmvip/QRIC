@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>登录{:C('WEB_SITE_TITLE')} - {$Think.YUNWAN_APPNAME}.</title>
+<link href="__CSS__/login.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/font-awesome/font-awesome.min.css" rel="stylesheet">
+<script src="__STATIC__/js/jquery-v1.8.3.min.js" type="text/javascript"></script>
+<script src="__JS__/common.js" type="text/javascript"></script>
+<script src="__STATIC__/js/jquery.validation.min.js"></script>
+<script src="__JS__/jquery.supersized.min.js" ></script>
+<script src="__JS__/jquery.progressBar.js" type="text/javascript"></script>
+<script src="__JS__/three.min.js" type="text/javascript"></script>
+</head>
+<body id="login">
+<div id="webgl-canvas"></div>
+<div class="login-layout">
+  <div class="top">
+    <h5>{$Think.YUNWAN_APPNAME}<em>{$Think.YUNWAN_VERSION}</em></h5>
+    <h2>{:C('WEB_SITE_TITLE')}</h2>
+    <h6>商城系统后台</h6>
+  </div>
+  <form method="post" id="form_login">
+    <div class="lock-holder">
+      <div class="form-group pull-left input-username">
+          <label>账号</label>
+          <input name="username" id="user_name" autocomplete="off" type="text" class="input-text" value="" required>
+      </div>
+      <i class="fa fa-ellipsis-h dot-left"></i> <i class="fa fa-ellipsis-h dot-right"></i>
+      <div class="form-group pull-right input-password-box">
+          <label>密码</label>
+          <input name="password" id="password" class="input-text" autocomplete="off" type="password" required pattern="[\S]{6}[\S]*" title="密码不少于6个字符">
+      </div>
+    </div>
+    <div class="avatar"><img src="__IMG__/login/admin.png" alt=""></div>
+    <div class="submit"> <span>
+      <div class="code">
+        <div class="arrow"></div>
+        <div class="code-img"><img src="{:U('Public/verify')}" name="codeimage" id="codeimage" border="0"/></div>
+        <a href="JavaScript:void(0);" id="hide" class="close" title="关闭"><i></i></a><a href="JavaScript:void(0);" onclick="javascript:document.getElementById('codeimage').src='{:U('Public/verify')}&t=' + Math.random();" class="change" title="看不清,点击更换验证码"><i></i></a> </div>
+      <input name="verify" type="text" required class="input-code" id="captcha" placeholder="输入验证" pattern="[A-z0-9]{4}" title="验证码为4个字符" autocomplete="off" value="" >
+      </span> <span>
+      <input name="" class="input-button btn-submit" type="button" value="登录">
+      </span> </div>
+      <div class="submit2"></div>
+  </form>
+  <div class="bottom">
+    <h6 title="武汉行友广告有限责任公司">© 2014-2016 <a href="http://www.yunwanxinke.com/" target="_blank">武汉行友广告有限责任公司</a></h6>
+  </div>
+</div>
+<script>
+$(function(){
+    $.supersized({
+
+        // 功能
+        slide_interval     : 4000,    
+        transition         : 1,    
+        transition_speed   : 1000,    
+        performance        : 1,    
+
+        // 大小和位置
+        min_width          : 0,    
+        min_height         : 0,    
+        vertical_center    : 1,    
+        horizontal_center  : 1,    
+        fit_always         : 0,    
+        fit_portrait       : 1,    
+        fit_landscape      : 0,    
+
+        // 组件
+        slide_links        : 'blank',    
+        slides             : [    
+                                 {image : '__IMG__/login/1.jpg'},
+                                 {image : '__IMG__/login/2.jpg'},
+                                 {image : '__IMG__/login/3.jpg'},
+								 {image : '__IMG__/login/4.jpg'},
+								 {image : '__IMG__/login/5.jpg'}
+                       ]
+
+    });
+	//显示隐藏验证码
+    $("#hide").click(function(){
+        $(".code").fadeOut("slow");
+    });
+    $("#captcha").focus(function(){
+        $(".code").fadeIn("fast");
+    });
+    //跳出框架在主窗口登录
+   if(top.location!=this.location)	top.location=this.location;
+    $('#user_name').focus();
+    if ($.browser.msie && ($.browser.version=="6.0" || $.browser.version=="7.0")){
+        window.location.href='/index.php?s=/Admin/Public/ie6update.html';
+    }
+    $("#captcha").nc_placeholder();
+	//动画登录
+    $('.btn-submit').click(function(e){
+            $('.input-username,dot-left').addClass('animated fadeOutRight')
+            $('.input-password-box,dot-right').addClass('animated fadeOutLeft')
+            $('.btn-submit').addClass('animated fadeOutUp')
+            setTimeout(function () {
+                      $('.avatar').addClass('avatar-top');
+                      $('.submit').hide();
+                      $('.submit2').html('<div class="progress"><div class="progress-bar progress-bar-success" aria-valuetransitiongoal="100"></div></div>');
+                      $('.progress .progress-bar').progressbar({
+                          done : function() {$('#form_login').submit();}
+                      }); 
+              },
+          300);
+
+          });
+
+    // 回车提交表单
+    $('#form_login').keydown(function(event){
+        if (event.keyCode == 13) {
+            $('.btn-submit').click();
+        }
+    });
+});
+
+
+
+var SEPARATION = 125, AMOUNTX = 35, AMOUNTY = 35;
+var container;
+var camera, scene, renderer;
+var particles, particle, count = 0;
+var mouseX = 0, mouseY = 0;
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+init();
+animate();
+function init() {
+	container = document.createElement( 'div' );
+	document.getElementById("webgl-canvas").appendChild( container );
+	camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
+    camera.position.z = 1e3;
+    camera.position.y = 100;
+    camera.position.y = 1e3;
+	scene = new THREE.Scene();
+	particles = new Array();
+	var PI2 = Math.PI * 2;
+	var material = new THREE.ParticleCanvasMaterial( {
+		color: 0xffffff,
+		program: function ( context ) {
+			context.beginPath();
+			context.arc( 0, 0, 1, 0, PI2, true );
+			context.fill();
+		}
+	} );
+	var i = 0;
+	for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+		for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+			particle = particles[ i ++ ] = new THREE.Particle( material );
+			particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
+			particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
+			scene.add( particle );
+			particle.material.opacity = .8
+
+		}
+	}
+	renderer = new THREE.CanvasRenderer({
+        alpha: !0
+    });
+    renderer.setClearColor(0, 0);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+}
+
+function animate() {
+	requestAnimationFrame( animate );
+	render();
+}
+function render() {
+	camera.position.x += ( mouseX - camera.position.x ) * .05;
+	camera.position.y += ( - mouseY - camera.position.y ) * .05;
+	camera.lookAt( scene.position );
+	var i = 0;
+	for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+		for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+			particle = particles[ i++ ];
+			particle.position.y = ( Math.sin( ( ix + count ) * 0.3 ) * 200 ) + ( Math.sin( ( iy + count ) * 0.5 ) * 50 );
+			particle.scale.x = particle.scale.y = ( Math.sin( ( ix + count ) * 0.3 ) + 1 ) * 1 + ( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 1;
+		}
+	}
+	renderer.render( scene, camera );
+	count += 0.1;
+}
+</script>
+</body>
+</html>

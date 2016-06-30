@@ -1,0 +1,86 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>积分管理</h3>
+        <h5>会员积分管理及获取日志</h5>
+      </div>
+      <ul class="tab-base nc-row">
+        <li><a href="{:U('Member/points')}" class="current">积分明细</a></li>
+        <li><a href="{:U('Member/points_setting')}">规则设置</a></li>
+        <li><a href="{:U('Member/addpoints')}">积分增减</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- 操作说明 -->
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span> </div>
+    <ul>
+      <li>积分明细，展示了被操作人员（会员）、操作人员（管理员）、操作积分数（积分值，“-”表示减少，无符号表示增加）、操作时间（添加时间）等信息</li>
+    </ul>
+  </div>
+  <form method='post'>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="60" align="center">操作</th>
+          <th width="60" align="center">日志ID</th>
+		  <th width="60" align="center">会员ID</th>
+          <th width="80" align="left">会员名称</th>
+          <th width="40" align="left">积分</th>
+		  <th width="80" align="left">操作阶段</th>
+          <th width="80" align="left">操作时间</th>
+          <th width="150" align="left">操作描述</th>
+          <th width="80" align="left">管理员名称</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="list" id="vo">
+         <tr data-id="{$vo.id}">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td>
+		  <span>--</span>
+          </td>
+          <td>{$vo.pl_id}</td>
+          <td>{$vo.pl_memberid}</td>
+		  <td>{:article_add_user($vo['pl_memberid'],2)}</td>
+          <td>{$vo.pl_points}</td>
+          <td>{$vo.pl_stage_text}</td>
+          <td>{$vo.pl_addtime|date="y-m-d",###}</td>
+		  <td>{$vo.pl_desc}</td>
+		  <td>{:article_add_user($vo['pl_adminid'],1)}</td>
+          <td></td>
+         </tr>
+	  </volist>
+      </tbody>
+    </table>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+    $('.flex-table').flexigrid({
+        height:'auto',// 高度自动
+        usepager: false,// 不翻页
+        striped:false,// 不使用斑马线
+        resizable: false,// 不调节大小
+        title: '积分明细日志列表',// 表格标题
+        reload: false,// 不使用刷新
+        columnControl: false,// 不使用列控制
+        buttons : [
+               ]
+    });
+
+    $('span[nc_type="inline_edit"]').inline_edit({a: 'Article',c: 'ajax'});
+});
+
+</script>
+</block>

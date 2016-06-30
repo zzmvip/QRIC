@@ -1,0 +1,25 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" href="__CSS__/public.css"/>
+</block>
+<block name="body">
+<div class="warp">
+<div class="warp-left">
+<div class="neirong">
+<div class="dh"><i class="iconfont">&#xe6cc;</i>&nbsp;首页 / 行业资讯 </div>
+<div class="xuline2"></div>
+<h2><a href="{:U("Article/show/id/$vo[id]")}">{$info.title}</a></h2>
+<span>发布者：{:article_add_user($info['uid'],$info['addtype'])}</span> &nbsp;&nbsp;&nbsp;<span>发布时间：{$info.updatetime|date="Y-m-d",###}</span>
+<div class="xuline"></div>
+
+<p>{$info.content}</p>
+
+</div>
+</div>
+<div class="warp-right">
+<include file="Article/sidebar"/>
+</div>
+<div class="clear"></div>
+</div>
+
+</block>

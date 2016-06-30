@@ -1,0 +1,202 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>会员列表</h3>
+        <h5>会员列表</h5>
+      </div>
+    </div>
+  </div>
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span>
+    </div>
+    <ul>
+      <li><a>会员列表</a></li>
+    </ul>
+  </div>
+  <form method='post'>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="150" class="handle" align="center">操作</th>
+          <th width="60" align="center">会员ID</th>
+		  <th width="150" align="left">用户名</th>
+          <th width="80" align="left">邮箱</th>
+		  <th width="80" align="left">手机</th>
+          <th width="60" align="left">积分</th>
+          <th width="80" align="center">用户模型</th>
+          <th width="80" align="center">登录次数</th>
+          <th width="120" align="center">最后登录IP</th>
+          <th width="120" align="center">最后登录时间</th>
+		  <th width="120" align="center">注册时间</th>
+          <th width="120" align="center">注册IP</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="list" id="vo">
+         <tr data-id="{$vo.uid}">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td class="handle">
+
+			  <a onclick="fg_del({$vo.uid})" href="javascript:void(0);" class="btn red"><i class="fa fa-trash-o"></i>删除</a>
+			
+          </td>
+          <td><span>{$vo.uid}</span></td>
+		  <td>
+				<img src="{:C('MEMBER_UPLOAD.rootPath')}default_user_portrait.gif" class="user-avatar" onmouseout="toolTip()" onmouseover="toolTip('<img src={:C('MEMBER_UPLOAD.rootPath')}default_user_portrait.gif>')">{$vo.username}
+		  </td>
+		  <td><span>{$vo.email}</span></td>
+		  <td><span>{$vo.mobile}</span></td>
+		  <td><span>{$vo.points}</span></td>
+		  <td><span>{$vo.moduleid}</span></td>
+		  <td><span>{$vo.login}</span></td>
+		  <td><span>{$vo.last_login_ip}</span></td>
+		  <td><span>{$vo.last_login_time|date="Y-m-d H:i:s",###}</span></td>
+		  <td><span>{$vo.regtimes|date="Y-m-d H:i:s",###}</span></td>
+		  <td><span>{$vo.regip}</span></td>
+          <td></td>
+         </tr>
+	  </volist>
+      </tbody>
+    </table>
+  </form>
+
+  <div class="ncap-search-ban-s" id="searchBarOpen"><i class="fa fa-search-plus"></i>高级搜索</div>
+  <div class="ncap-search-bar">
+    <div class="handle-btn" id="searchBarClose"><i class="fa fa-search-minus"></i>收起边栏</div>
+    <div class="title">
+      <h3>高级搜索</h3>
+    </div>
+    <form method="get" name="formSearch" id="formSearch">
+      <div id="searchCon" class="content">
+        <div class="layout-box">
+          <dl>
+            <dt>登录名</dt>
+            <dd>
+              <label>
+                <input type="text" value="" name="f_name" id="f_name" class="s-input-txt" placeholder="用户名/手机号/邮箱/UID">
+              </label>
+            </dd>
+          </dl>
+		  <dl>
+              <dt>会员所属模型</dt>
+              <dd>
+                <select name="article_commend_flag" class="s-select">
+                    <option value="">-请选择-</option>
+                    <option value="1">个人会员</option>
+                    <option value="0">企业会员</option>
+                </select>
+              </dd>
+           </dl>
+		   <dl>
+              <dt>会员状态</dt>
+              <dd>
+                <select name="article_commend_flag" class="s-select">
+                    <option value="">-请选择-</option>
+                    <option value="1">正常</option>
+                    <option value="0">禁用</option>
+                </select>
+              </dd>
+           </dl>
+          <dl>
+            <dt>注册时间筛选</dt>
+            <dd>
+              <label>
+                <input type="text" name="add_time_from" id="add_time_from" class="s-input-txt" placeholder="请选择开始时间" value="2015-05-16" />
+              </label>
+              <label>
+                <input type="text" name="add_time_to" id="add_time_to" class="s-input-txt" placeholder="请选择结束时间" value="2015-05-23" />
+              </label>
+            </dd>
+          </dl>
+		  <dl>
+            <dt>最后登录时间</dt>
+            <dd>
+              <label>
+                <input type="text" name="login_time_from" id="login_time_from" class="s-input-txt" placeholder="请选择开始时间" value="2015-05-16" />
+              </label>
+              <label>
+                <input type="text" name="login_time_to" id="login_time_to" class="s-input-txt" placeholder="请选择结束时间" value="2015-05-23" />
+              </label>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div class="bottom"><a href="javascript:void(0);" id="ncsubmit" class="ncap-btn ncap-btn-green mr5">提交查询</a><a href="javascript:void(0);" id="ncreset" class="ncap-btn ncap-btn-orange" title="撤销查询结果，还原列表项所有内容"><i class="fa fa-retweet"></i>撤销</a></div>
+    </form>
+  </div>
+
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<script type="text/javascript">
+$('#searchBarOpen').click();
+$('#add_time_from').datepicker({minDate: '2015-02-22'});
+$('#add_time_to').datepicker({maxDate: '2015-05-23'});
+$('#login_time_from').datepicker({minDate: '2015-02-22'});
+$('#login_time_to').datepicker({maxDate: '2015-05-23'});
+// 高级搜索提交
+$('#ncsubmit').click(function(){
+	$("#flexigrid").flexOptions({url: 'index.php?act=chat_log&op=get_xml&'+$("#formSearch").serialize(),query:'',qtype:''}).flexReload();
+});
+
+// 高级搜索重置
+$('#ncreset').click(function(){
+	$("#flexigrid").flexOptions({url: 'index.php?act=chat_log&op=get_xml'}).flexReload();
+	$("#formSearch")[0].reset();
+});
+$(function(){
+    $('.flex-table').flexigrid({
+        height:'auto',// 高度自动
+        usepager: false,// 不翻页
+        striped:false,// 不使用斑马线
+        resizable: false,// 不调节大小
+        title: '会员列表',// 表格标题
+        reload: false,// 不使用刷新
+        columnControl: false,// 不使用列控制
+        buttons : [
+                   
+                   {display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation }
+               ]
+    });
+
+});
+
+function fg_operation(name, bDiv) {
+    if (name == 'add') {
+        window.location.href = '{:U("Member/add")}';
+    } else if (name == 'del') {
+        if ($('.trSelected', bDiv).length == 0) {
+            showError('请选择要操作的数据项！');
+        }
+        var itemids = new Array();
+        $('.trSelected', bDiv).each(function(i){
+            itemids[i] = $(this).attr('data-id');
+        });
+        fg_del(itemids);
+    }
+}
+function fg_del(ids) {
+    if (typeof ids == 'number') {
+        var ids = new Array(ids.toString());
+    };
+    id = ids.join(',');
+    if(confirm('子菜单将同时删除，删除后将不能恢复，确认删除这项吗？')){
+        $.getJSON('{:U("Member/del")}', {id:id}, function(data){
+            if (data.state) {
+                location.reload();
+            } else {
+                showError(data.msg)
+            }
+        });
+    }
+}
+</script>
+</block>

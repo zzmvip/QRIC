@@ -1,0 +1,90 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>邮件设置</h3>
+        <h5>商城对邮件服务器及消息模板设定</h5>
+      </div>
+    </div>
+  </div>
+  <!-- 操作说明 -->
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span> </div>
+    <ul>
+      <li>填写邮件服务器相关参数，保存后生效，点击“测试”按钮可进行效验，。</li>
+      <li>如使用第三方提供的邮件服务器，请认真阅读服务商提供的相关帮助文档。</li>
+    </ul>
+  </div>
+  <form method="post" action="{:U('Config/save')}" id="form_email" name="settingForm">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">SMTP 服务器</dt>
+        <dd class="opt">
+          <input type="text" value="{:C('EMAIL_HOST')}" name="config[EMAIL_HOST]" id="email_host" class="input-txt">
+          <p class="notic">设置 SMTP 服务器的地址，如 smtp.163.com</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">SMTP 端口</dt>
+        <dd class="opt">
+          <input type="text" value="{:C('EMAIL_PORT')}" name="config[EMAIL_PORT]" id="email_port" class="input-txt">
+          <p class="notic">设置 SMTP 服务器的端口，默认为 25</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">发信人邮件地址</dt>
+        <dd class="opt">
+          <input type="text" value="{:C('EMAIL_ADDR')}" name="config[EMAIL_ADDR]" id="email_addr" class="input-txt">
+          <p class="notic">使用SMTP协议发送的邮件地址，如 yunwanxinke@163.com</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">SMTP 身份验证用户名</dt>
+        <dd class="opt">
+          <input type="text" value="{:C('EMAIL_ID')}" name="config[EMAIL_ID]" id="email_id" class="input-txt">
+          <p class="notic">如 yunwanxinke@163.com</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">SMTP 身份验证密码</dt>
+        <dd class="opt">
+          <input type="password" value="{:C('EMAIL_PASS')}" name="config[EMAIL_PASS]" id="email_pass" class="input-txt">
+          <p class="notic">yunwanxinke@163.com邮件的密码，如 123456</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">测试接收的邮件地址</dt>
+        <dd class="opt">
+          <input type="text" value="" name="email_test" id="email_test" class="input-txt">
+          <input type="button" value="测试" name="send_test_email" class="input-btn" id="send_test_email">
+        </dd>
+      </dl>
+      <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onclick="document.settingForm.submit()">确认提交</a></div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script>
+$(document).ready(function(){
+	$('#send_test_email').click(function(){
+		$.ajax({
+			type:'GET',
+			url:'admin.php',
+			data:'s=/Config/email/email_test/'+$('#email_test').val(),
+			error:function(){
+				showError('测试邮件发送失败，请重新配置邮件服务器');
+			},
+			success:function(html){
+				showSucc(html.info);
+			},
+			dataType:'json'
+		});
+	});
+});
+</script>
+</block>

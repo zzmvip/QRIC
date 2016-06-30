@@ -1,0 +1,52 @@
+.warp {
+	background: #fff none repeat scroll 0 0;
+    box-shadow: 2px 0 5px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);
+    clear: both;
+    margin: 10px auto 0;
+    overflow: hidden;
+	width:1200px;
+}
+.warp-left{
+	width:850px;
+	float:left;
+	margin:0 30px 50px 20px;
+}
+.plist li{
+line-height:30px;
+}
+.plist p{
+line-height:30px;
+}
+.list{
+padding:10px;
+}
+.li01{
+border-bottom:1px dashed #d1d1d1;
+float:left;
+font-family:"Î¢ÈíÑÅºÚ";
+height:150px;
+width:620px;
+}
+.list h3{
+font-size:20px;
+height:25px;
+overflow:hidden;
+width:590px;
+}
+.blk_01.img_box{
+float:left;
+height:102px;
+margin-right:12px;
+width:150px;
+}
+.blk_01{
+padding-bottom:20px;
+}
+.blk_01 div{
+display:block;
+overflow:hidden;
+}
+
+.in-right span{
+line-height:30px;
+}

@@ -1,0 +1,76 @@
+<div class="left-layout mr10">
+    <div class="lcm-l-top">
+      <h2><a href="#" title="用户中心">用户中心</a></h2>
+    </div>
+	<div class="lcm-user-info">
+      <div class="avatar">
+	      <img src="{:get_userphoto('',3030)}">
+      </div>
+      <div class="handle">
+	      <a href="{:U('Member/userphoto')}" title="修改头像"> 修改头像</a>
+		  <a href="{:U('Member/modify')}" title="修改资料"> 修改资料</a>
+		  <a href="{:U('Member/logout')}" title="安全退出"> 安全退出</a>
+	  </div>
+      <div class="name">{:get_username()}</div>
+      <div>普通会员</div>
+    </div>
+
+	<ul id="sidebarMenu" class="lcm-sidebar">
+		<li class="side-menu">
+		    <a href="javascript:void(0)" key="jifen" class="<if condition="$_COOKIE['ad_Mmenu_jifen']==1">shrink</if>"><h3> 我的积分</h3></a>
+			<ul <if condition="$_COOKIE['ad_Mmenu_jifen']==0">style="display:none"</if>>
+				<li><a href="{:U("Member/integral")}"> 我的积分</a></li>
+			</ul>
+        </li>
+		<li class="side-menu">
+		    <a href="javascript:void(0)" key="dd" class="<if condition="$_COOKIE['ad_Mmenu_dd']==1">shrink</if>"><h3> 我的订单</h3></a>
+			<ul <if condition="$_COOKIE['ad_Mmenu_dd']==0">style="display:none"</if>>
+				<li><a href="{:U("Member/dd")}"> 我的订单</a></li>
+			</ul>
+        </li>
+		<li class="side-menu">
+		    <a href="javascript:void(0)" key="guanzhu" class="<if condition="$_COOKIE['ad_Mmenu_guanzhu']==1">shrink</if>"><h3> 我的收藏</h3></a>
+			<ul <if condition="$_COOKIE['ad_Mmenu_guanzhu']==0">style="display:none"</if>>
+				<li><a href='{:U("Member/shoucang")}'> 我的收藏</a></li>
+			</ul>
+        </li>
+		<volist name="articleclass" id="vo">
+		<if condition="$vo.pid eq 0 ">
+		<li class="side-menu">
+			
+			<a href="javascript:void(0)" key="article{$vo.id}" class="<if condition="$_COOKIE['ad_Mmenu_article$vo[id]']==1">shrink</if>"><h3> {$vo.title}</h3></a>
+			
+			<ul <if condition="$_COOKIE['ad_Mmenu_article$vo[id]']==0">style="display:none"</if>>
+			<volist name="articleclass" id="vo2">
+			<if condition="$vo2.pid eq $vo.id ">
+			<li><a href='{:U("Member/articlelist/id/$vo2[id]")}'>{$vo2.title}</a></li>
+			</if>
+			</volist>
+			</ul>
+			
+		</li>
+		</if>
+		</volist>
+	</ul>
+</div>
+<script>
+$(document).ready(function() {
+    $.each($(".side-menu > a"), function() {
+        $(this).click(function() {
+            var ulNode = $(this).next("ul");
+            if (ulNode.css('display') == 'block') {
+            	$.cookie(COOKIE_PRE+'Mmenu_'+$(this).attr('key'),0);
+            } else {
+            	$.cookie(COOKIE_PRE+'Mmenu_'+$(this).attr('key'),1);
+            }
+			ulNode.slideToggle();
+			if ($(this).hasClass('shrink')) {
+				$(this).removeClass('shrink');
+			} else {
+				$(this).addClass('shrink');
+			}
+        });
+    });
+});
+
+</script>

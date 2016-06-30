@@ -1,0 +1,219 @@
+<extend name="Public/base" />
+<block name="body">
+<link href="__CSS__/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Custom Theme files -->
+
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+			<script src="__JS__/jquery.etalage.min.js"></script>
+			<!-- Include the Etalage files -->
+						<script>
+			$(function($) {
+				$('#buyNumbers .g-number-btn-plus').click(function(){
+					var number = parseInt($('#buyNumbers .g-number-input').val());
+					$('#buyNumbers .g-number-input').val(number+1);
+				});
+				$('#buyNumbers .g-number-btn-minus').click(function(){
+					var number = parseInt($('#buyNumbers .g-number-input').val());
+					if(number>1){
+						$('#buyNumbers .g-number-input').val(number-1);
+					}
+				});
+				$('#buyNumbers .g-number-input').mouseover(function(){
+					$(this).focus().select();
+				});
+			});
+			</script>
+			<script type="text/javascript">
+				 $(window).load(function() {
+					$("#flexiselDemo3").flexisel({
+						visibleItems: 3,
+						animationSpeed: 1000,
+						autoPlay: true,
+						autoPlaySpeed: 3000,    		
+						pauseOnHover: true,
+						enableResponsiveBreakpoints: true,
+				    	responsiveBreakpoints: { 
+				    		portrait: { 
+				    			changePoint:480,
+				    			visibleItems: 1
+				    		}, 
+				    		landscape: { 
+				    			changePoint:640,
+				    			visibleItems: 2
+				    		},
+				    		tablet: { 
+				    			changePoint:768,
+				    			visibleItems: 3
+				    		}
+				    	}
+				    });
+				    
+				});
+			   </script>
+<script>
+		jQuery(document).ready(function($){
+
+			$('#etalage').etalage({
+				thumb_image_width: 400,
+				thumb_image_height: 250,
+				
+				show_hint: true,
+				click_callback: function(image_anchor, instance_id){
+					alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+				}
+			});
+			// This is for the dropdown list example:
+			$('.dropdownlist').change(function(){
+				etalage_show( $(this).find('option:selected').attr('class') );
+			});
+
+	});
+</script>
+<!----//details-product-slider--->
+
+<!-- Header Starts Here -->
+
+	 <div class="container">
+		
+		<div class="about">
+			
+			<div class="new-product">
+				<div class="new-product-top">
+					<ul class="product-top-list">
+					    <i class="iconfont" style='font-size:16px'>&#xe6cc;</i>
+
+						<li><a href="index.html" style='font: 12px/20px "Microsoft Yahei"; font-size: 14px;
+    padding-bottom: 10px;color: #666;'>首页 /</a><span></span></li>
+						<li><a href="best.html" style='font: 12px/20px "Microsoft Yahei"; font-size: 14px;
+    padding-bottom: 10px;color: #666;'>积分商城</a><span></span></li>
+						
+						<li><span class="act"style='font-size:20px'></span>&nbsp;</li>
+					</ul>
+					
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="singel_right">
+			     <div class="labout span_1_of_a1">
+				<!-- start product_slider -->
+				
+				     <ul id="etalage">
+					 <volist name='info[pic]' id='vo'>
+							<li>
+								<a href="optionallink.html">
+									<img class="etalage_thumb_image" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo}" class="img-responsive" />
+									<img class="etalage_source_image" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo}" class="img-responsive" />
+								</a>
+							</li>  
+							</volist>
+							 
+							
+					</ul>
+					
+				</div>
+				<div class="cont1 span_2_of_al">
+					<h3>{$info.name}</h3>
+					<ul class="ratings">
+						
+						<li>
+							<a href="">
+								<i class="ratings rating-ed"></i>
+							</a>
+						</li>
+					</ul>
+					<div class="price_single">
+					市场价
+					<i class="iconfont">&#xeb4c;</i>
+	
+					  <em  id="commodityCurrentPrice"  promoteType="" sale="" defaultVal="{$info.price}">{$info.price}</em>
+					</div>
+					<div class="price_single">
+					积分
+					<i class="iconfont">&#xe6fc;</i>
+	
+					  <em  id="commodityCurrentPrice1"  promoteType="" sale="" defaultVal="{$info.integral}">{$info.integral}</em>
+					</div>
+					<div class='cpjs' style='min-height:100px'>
+					<h2 class="quick">产品描述</h2>
+					<p class="quick_desc">{$info.keywords}</p>
+					</div>
+					<table><tr>
+					
+					<td><form>
+					<ul class="product-qty">
+					   <span class="fl">数量:<div id="buyNumbers" class="g-detail-main-count-number">
+						<div class="g-number" id="pro-vieg-4">
+							<input class="g-number-input" value="1">
+							<a class="g-number-btn g-number-btn-plus" href="javascript:void(0);">+</a>
+							<a class="g-number-btn g-number-btn-minus" href="javascript:void(0);">-</a>
+						</div></span>
+					 </ul></form></td>
+					 <td>
+					   <div class="btn_form1 fr ml10">
+					
+						 <input type="submit" value="加入购物车" title="">
+					  
+					</div></td>
+					 <td>
+					   <div class="btn_form1 fr ml10 gm">
+					  
+						 <input type="submit" value="立即购买" title="">
+					
+					</div></td>
+					
+					 
+					 </form>
+					</tr></table>
+				      <div class="gwc" style='margin-top:20px'>
+					   <form>
+						 <a href='{:U("Shop/cart/id/$vo[id]")}'> <i class="iconfont" style='font-size:35px;color:red'>&#xe897;</i></a>
+					  </form>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+					<div>
+			<h3 class="new-models">商品详情</h3>
+				<div class="best">
+				<div class="biseller-column">
+							{$info.introduce}
+							</div>
+				</div>
+			</div>
+			
+		
+			
+			<div>
+			<h3 class="new-models">推荐</h3>
+				<div class="best-seller">
+					<div class="biseller-info">
+					<ul id="flexiselDemo3">
+					 <volist name='list' id='vo'>
+						<li>
+							<div class="biseller-column">
+							<a href='{:U("Shop/show/id/$vo[id]")}'><img src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}" alt=""></a>
+							</div>
+						</li>
+						</volist>
+						
+			     	</ul>
+					</div>
+			</div>
+
+			
+			   <script type="text/javascript" src="__JS__/jquery.flexisel.js"></script>
+			</div>
+	
+		<!--- fOOTER Starts Here --->
+		
+		
+	</div>
+	</div>
+	</div>
+	<!--- fOOTER Starts Here --->
+</block>

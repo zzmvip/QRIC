@@ -1,0 +1,274 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href="{$Think.cookie.__forward__}" title="返回栏目列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>栏目管理 - 新增</h3>
+        <h5>栏目管理</h5>
+      </div>
+    </div>
+  </div>
+  <form id="article_class_form" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="title"><em>*</em>栏目名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.title|default=''}" name="title" id="title" maxlength="20" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">（用于显示的栏目名称）</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="url"><em>*</em>栏目英文名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.enname|default=''}" name="enname" id="enname" maxlength="40" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">（英文或拼音）</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="pid">上级栏目</label>
+        </dt>
+        <dd class="opt">
+          <select name="pid" id="pid">
+            <volist name="aclass" id="class">
+				<option value="{$class.id}">{$class.title_show}</option>
+			</volist>
+          </select>
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">是否终极栏目</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="ultimate1" <if condition="$info.ultimate eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>是</label>
+            <label for="ultimate0" <if condition="$info.ultimate eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>否</label>
+            <input id="ultimate1" name="ultimate" <if condition="$info.ultimate eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="ultimate0" name="ultimate" <if condition="$info.ultimate eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic">（只有终极栏目才可以添加/编辑内容，终极栏目无法继续添加子栏目）</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">栏目类型</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="type1" <if condition="$info.type eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>单页</label>
+            <label for="type0" <if condition="$info.type eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>文章</label>
+            <input id="type1" name="type" <if condition="$info.type eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="type0" name="type" <if condition="$info.type eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <dl class="row a" <if condition="$info.ultimate eq '1' || $info.type eq '1' ">style="display:none"</if>>
+        <dt class="tit">
+          <label for="pid">栏目首页模版</label>
+        </dt>
+        <dd class="opt">
+          <select name="category_template" id="category_template">
+			  <option value='article{:C("TMPL_TEMPLATE_SUFFIX")}' selected>默认栏目首页：article{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+			  <volist name="tp_category" id="vo">
+				<option value="{$vo}">{$vo}</option>
+			  </volist>
+			</select>
+          <span class="err"></span>
+          <p class="notic">新增模板以category_x{:C("TMPL_TEMPLATE_SUFFIX")}形式</p>
+        </dd>
+      </dl>
+	  <dl class="row b" <if condition="$info.ultimate eq 0 || $info.type eq 1">style="display:none;"</if>>
+        <dt class="tit">
+          <label for="pid">栏目列表模版</label>
+        </dt>
+        <dd class="opt">
+          <select name="list_template" id="list_template">
+			  <option value="list{:C("TMPL_TEMPLATE_SUFFIX")}" selected>默认列表页：list{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+			  <volist name="tp_list" id="vo">
+				<option value="{$vo}">{$vo}</option>
+			  </volist>
+		  </select>
+          <span class="err"></span>
+          <p class="notic">新增模板以list_x{:C("TMPL_TEMPLATE_SUFFIX")}形式</p>
+        </dd>
+      </dl>
+	  <dl class="row b" <if condition="$info.ultimate eq 0 || $info.type eq 1">style="display:none;"</if>>
+        <dt class="tit">
+          <label for="pid">栏目内容模版</label>
+        </dt>
+        <dd class="opt">
+          <select name="show_template" id="show_template">
+			  <option value="show{:C("TMPL_TEMPLATE_SUFFIX")}" selected>默认内容页：show{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+			  <volist name="tp_show" id="vo">
+				<option value="{$vo}">{$vo}</option>
+			  </volist>
+		  </select>
+          <span class="err"></span>
+          <p class="notic">新增模板以show_x{:C("TMPL_TEMPLATE_SUFFIX")}形式</p>
+        </dd>
+      </dl>
+	  <dl class="row c"  <if condition="$info.type eq '0' || $info.type eq ''">style="display:none;"</if>>
+        <dt class="tit">
+          <label for="pid">单页模版</label>
+        </dt>
+        <dd class="opt">
+          <select name="page_template" id="page_template">
+			  <option value="page{:C("TMPL_TEMPLATE_SUFFIX")}" selected>page{:C("TMPL_TEMPLATE_SUFFIX")}</option>
+			  <volist name="tp_page" id="vo">
+				<option value="{$vo}">{$vo}</option>
+			  </volist>
+		  </select>
+          <span class="err"></span>
+          <p class="notic">新增模板以page_x{:C("TMPL_TEMPLATE_SUFFIX")}形式</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">是否启用</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="hide1" <if condition="$info.hide eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>启用</label>
+            <label for="hide0" <if condition="$info.hide eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>禁用</label>
+            <input id="hide1" name="hide" <if condition="$info.hide eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="hide0" name="hide" <if condition="$info.hide eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	   <dl class="row">
+        <dt class="tit">是否显示</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="display1" <if condition="$info.display eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>显示</label>
+            <label for="display0" <if condition="$info.display eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>不显示</label>
+            <input id="display1" name="display" <if condition="$info.display eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="display0" name="display" <if condition="$info.display eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <dl class="row b" <if condition="$info.ultimate eq 0 || $info.type eq 1">style="display:none;"</if>>
+        <dt class="tit">会员投稿审核</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="status1" <if condition="$info.status eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>需审核</label>
+            <label for="status0" <if condition="$info.status eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>不审核</label>
+            <input id="status1" name="status" <if condition="$info.status eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="status0" name="status" <if condition="$info.status eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic">开启后会员发布的内容需要审核后才可通过</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="sort">排序</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.sort|default=0}" name="sort" id="sort" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">数字范围为0~255，数字越小越靠前</p>
+        </dd>
+      </dl>
+	     <dl class="row">
+        <dt class="tit">
+          <label for="sort">图标</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.icon}" name="icon" id="icon" class="input-txt">
+          <span class="err"></span>
+          <p class="notic"> </p>
+        </dd>
+      </dl>
+      <div class="bot">
+	  <input type="hidden" name="id" value="{$info.id|default=''}">
+	  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+	  </div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+$('#list_template').attr('value','{$info.list_template|default=""}');
+$('#show_template').attr('value','{$info.show_template|default=""}');
+$('#page_template').attr('value','{$info.page_template|default=""}');
+$('#category_template').attr('value','{$info.category_template|default=""}');
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#article_class_form").valid()){
+		$("#article_class_form").submit();
+	}
+});
+
+$(function(){
+	$('input[type="radio"][name="ultimate"]').click(function(){
+		if($(this).val() == '0' || $('input[type="radio"][name="type"]:checked').val() == '1'){
+			$('.b').hide();
+			$('.a').show();
+		}else{
+			$('.a').hide();
+			$('.b').show();
+		}
+	});
+	$('input[type="radio"][name="type"]').click(function(){
+		if($(this).val() == '0'){
+			$('.c').hide();
+			$('.a').show();
+			$('.b').show();
+		}else{
+			$('.a').hide();
+			$('.b').hide();
+			$('.c').show();
+		}
+	});
+	//表单验证	
+	$('#article_class_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        },
+        rules : {
+            title : {
+                required : true
+            },
+            enname : {
+            	required : true,
+                remote   : {                
+                url :'{:U("ArticleClass/ajax")}',
+                type:'get',
+                data:{
+					where : '1',
+					branch : 'check_enname',
+                    enname : function(){
+                        return $('#enname').val();
+                    },
+                    id : '{$info.id|default=''}',
+                  }
+                }
+            },
+            sort : {
+                number   : true
+            }
+        },
+        messages : {
+            title : {
+                required : '<i class="fa fa-exclamation-circle"></i>栏目名称不能为空',
+            },
+            enname : {
+            	required : '<i class="fa fa-exclamation-circle"></i>栏目英文名称不能为空',
+				remote   : '<i class="fa fa-exclamation-circle"></i>栏目英文名称已存在'
+            },
+            sort  : {
+                number   : '<i class="fa fa-exclamation-circle"></i>分类排序仅能为数字'
+            }
+        }
+    });
+});
+</script>
+</block>

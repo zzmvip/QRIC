@@ -1,0 +1,150 @@
+<div class="footer w  pt20 pb20">
+    <div class="wrapper">
+	    <dl class="footer-nav">
+			<dt>新手上路</dt>
+			<dd><a target="_blank" href="#">会员注册</a></dd>
+			<dd><a target="_blank" href="#">会员登录</a></dd>
+			<dd><a target="_blank" href="#">如何成为企业会员</a></dd>
+			<dd><a target="_blank" href="#">如何发布需求</a></dd>		
+		</dl>
+		<dl class="footer-nav">
+			<dt>帮助信息</dt>
+			<dd><a target="_blank" href="#">操作方法</a></dd>
+			<dd><a target="_blank" href="#">关于我们</a></dd>
+			<dd><a target="_blank" href="#">联系我们</a></dd>
+			<dd><a target="_blank" href="#">加入我们</a></dd>
+		</dl>
+		<dl class="footer-nav">
+			<dt>服务项目</dt>
+			<dd><a target="_blank" href="#">平面广告</a></dd>
+			<dd><a target="_blank" href="#">视频广告</a></dd>
+			<dd><a target="_blank" href="#">漫画制作</a></dd>
+			<dd><a target="_blank" href="#">电视广播</a></dd>
+		</dl>
+		<dl class="item-app">
+			<dt>广告搜搜</dt>
+			<dd>
+				<!--<a href="#" target="_blank" title="广告搜搜">
+					<img src="__IMG__/logo.png" alt="广告搜搜">
+				</a>-->
+				<p>广告搜搜致力于打造全国最大<br>的广告商和服务商在线沟通平台</p>
+			</dd>
+		</dl>
+		<dl class="item-contact">
+			<dt>400-888-5188</dt>
+			<dd class="item-time">周一至周日9:00 - 23:00</dd>
+			<dd class="item-chat">
+				<a target="_blank" href="#">
+					<i class="ui-ico-cs-h">联系在线客服</i>
+				</a>
+			</dd>
+		</dl>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="footer-copyright wrapper">
+    <div class="footer-sitelink">
+		<a href="#" target="_blank">关于我们</a>
+		<span class="dline dline-v6"></span>
+		<a href="#" target="_blank">联系方式</a>
+		<span class="dline dline-v6"></span>
+		<a href="#" target="_blank">广告服务</a>
+		<span class="dline dline-v6"></span>
+		<a href="#" target="_blank">新闻中心</a>
+		<span class="dline dline-v6"></span>
+		<a href="#" target="_blank">网站地图</a>
+		<span class="dline dline-v6"></span>
+		<a href="#" target="_blank">公司资质</a>
+		<span class="dline dline-v6"></span>
+		<a href="#" target="_blank">加入我们</a>
+	</div>
+	<div class="footer-exlink">
+		<span class="item-label">友情链接：</span>
+		<volist name="links_list" id="vo">
+		<a target="_blank" href="{$vo.link}">{$vo.name}</a>
+		</volist>
+		
+	</div>
+	<p class="font-gray copyright mt10">
+		Copyright 2005-2015  武汉行友广告有限责任公司  版权所有  <a class="font-gray" href="http://www.miitbeian.gov.cn">鄂ICP备14011854-1号</a>  技术支持：<a class="font-gray" href="http://www.yunwanxinke.com">云湾信科</a>
+	</p>
+	<div class="footer-gov mt10">
+		<a href="http://www.whhd.gov.cn/" target="_blank"><img  src="__IMG__/jyxbaxx.gif" alt="经营性网站备案中心"></a>
+		<a href="http://www.knet.cn/" target="_blank"><img src="__IMG__/kxwz.gif" alt="可信网站"></a>
+		<a href="http://www.szfw.org/" target="_blank"><img src="__IMG__/cxwz.png"></a>
+		<a target="_blank" href="http://webscan.360.cn/index/checkwebsite/url/www.adsousou.com"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/0b7ca014d14892d6686ab59c8f59c583"></a>
+		<a href="http://jubao.china.cn:13225/reportform.do" target="_blank"><img src="__IMG__/bkjb.png"></a>
+	</div>
+
+</div>
+
+<div class="ui-tools-bottom">
+	<!--<div class="ui-tools-app">
+		<a class="item-tools" href="#" target="_blank">
+			<span class="item-ico"><i class="ui-ico ui-ico-mobile"></i></span>
+			<span class="item-txt">官方微信</span>
+			<div class="ui-poptipnoc ui-poptipnoc-left">
+				<div class="ui-poptipnoc-arrow">
+					<i></i>
+				</div>
+				<div class="ui-poptipnoc-bd">
+					<div>
+						<div class="item-weixin"></div>
+						<p>官方微信<br>轻松找人做事</p>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="ui-tools-feed">
+		<a href="#" class="item-tools " id="j-feedback-btn">
+			<span class="item-ico"><i class="ui-ico iconfont">&#xe6d7;</i></span>
+			<span class="item-txt">意见反馈</span>
+		</a>
+	</div>-->
+	<div class="ui-tools-gotop">
+		<a class="item-tools" href="javascript:;" title="返回顶部" id="j-goTop"><i class="iconfont">&#xea67;</i></a>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	showScroll();
+	function showScroll(){
+		$(window).scroll( function() { 
+			var scrollValue=$(window).scrollTop();
+			scrollValue > 100 ? $('.ui-tools-gotop').fadeIn():$('.ui-tools-gotop').fadeOut();
+		} );	
+		$('#j-goTop').click(function(){
+			$("html,body").animate({scrollTop:0},200);	
+		});	
+	}
+})
+</script>
+	<script>
+		$(function(){
+			$(".a-like").click(function(){
+				var aid = $(this).attr('article_id');
+				var like = $(this);
+				 $.ajax({ type: "POST",
+						  dataType: "json",
+						  url: "{:U('Article/attention')}",
+						  data: "aid="+aid,
+						  success: function(data){
+							if(data.status==1){
+								var gz = like.parent().next().find('em.gz').html();
+								like.parent().next().find('em.gz').html(parseInt(gz)+1);
+								like.attr('title','取消关注');
+							}else if(data.status==0){
+								var gz = like.parent().next().find('em.gz').html();
+								like.parent().next().find('em.gz').html(parseInt(gz)-1);
+								like.attr('title','加入关注');
+							}
+							alert(data.info);
+						  }
+						});
+			
+			
+			});
+		});
+		
+		</script>

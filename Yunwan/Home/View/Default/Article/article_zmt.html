@@ -1,0 +1,438 @@
+<extend name="Public/base" />
+<block name="header">
+<link href="__CSS__/zmt.css" rel="stylesheet" media="screen" type="text/css" />
+</block>
+<block name="body">
+
+<div class="success_stories">
+    <!--<h1 class="success_stories_title"><span>成功案例</span></h1>-->
+    <h2 class="stories_category">
+        微博
+            
+    </h2>
+    <div class="accountCotent_left_content" style="display: block">
+	<article catid="33" limit="0,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box">
+            <dt class="account_head">
+                <img width="120px" height="140px" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+		
+       
+      <article catid="34" limit="2,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+    	<article catid="33" limit="4,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box">
+            <dt class="account_head">
+                <img width="120px" height="140px" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+		
+       
+      <article catid="34" limit="6,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   
+
+ 
+   
+    </div>
+	
+	
+
+	<h2 class="stories_category">
+        微信           
+    </h2>
+       <div class="accountCotent_left_content" style="display: block">
+   <article catid="35" limit="0,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="35" limit="2,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="35" limit="6,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="35" limit="8,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   
+ 
+      
+    </div>
+	<h2 class="stories_category">
+        社交平台
+            
+    </h2>
+      <div class="accountCotent_left_content" style="display: block">
+	  
+	   <article catid="36" limit="0,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="36" limit="2,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="36" limit="6,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="36" limit="8,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+        
+    </div>
+	<h2 class="stories_category">
+        社区贴吧
+            
+    </h2>
+        <div class="accountCotent_left_content" style="display: block">
+        <article catid="37" limit="0,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="37" limit="2,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="37" limit="6,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="37" limit="8,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+    </div>
+	<h2 class="stories_category">
+        社团组织
+            
+    </h2>
+       <div class="accountCotent_left_content" style="display: block">
+        <article catid="38" limit="0,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="38" limit="2,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/wechat01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="38" limit="6,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+   <article catid="38" limit="8,2" order="id ASC"  subcat='1' return="data">
+		<volist name="data" id="vo">
+        <dl class="accountCotent_box middle_padding">
+            <dt class="account_head">
+                <img width="120px" height="140px"  src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+                <a href="{:U("Article/show/id/$vo[id]")}" target="_blank" class="btn_viewPrice">查看报价</a>
+            </dt>
+            <dd>
+                <span class="accountName" title="{$vo.title|strip_tags|msubstr=###,0,4
+}">{$vo.title|strip_tags|msubstr=###,0,4
+}<a href="#" target="_blank">查看详情&gt;&gt;</a></span>
+                <span class="accountInfo" title="{$vo.title|strip_tags|msubstr=###,0,4
+}"> {$vo.keywords|strip_tags|msubstr=###,0,4
+}</span>
+                <span class="account_fansNum">浏览量：<b>{$vo.click} </b></span>
+                <img src="__IMG__/demo/sina01.jpg" class="account_platform">
+            </dd>
+        </dl>
+		</volist>   </article>
+    </div>
+</div>
+
+
+
+</block>

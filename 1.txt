@@ -1,0 +1,31 @@
+调用文章说明
+标签：<article></article>
+参数：
+	catid  栏目ID，多个ID以逗号“,”分隔，如：catid="1,2,3,4"，自动调用当前栏目数据则为：catid="catid"
+	num    调用条数
+	limit  指定行数开始调用指定条数，num与limit不可共存，如从第五行开始调用两条limit="5,2"
+	order  排序规则
+	where  查询条件 如：catid="status=1 && thumb!=''"
+	subcat 是否调用所有子栏目数据,1：是，默认为0
+	posid  推荐位ID 如:posid="1"
+	return 返回值名称 默认为 $data
+如需分页调用“{$pages}”即可
+desc 倒序
+asc 顺序
+用法示例：<article catid="12" num='1' order="id ASC" posid="1" where="status=1" subcat='1' return="data">
+		<volist name="data" id="vo">
+			文章ID：{$vo.id}
+			文章栏目ID：{$vo.catid}
+			发布人ID：{$vo.uid}
+			发布人名称：{:article_add_user($vo['uid'],$vo['addtype'])}
+			标题：{$vo.title}
+			关键词：{$vo.keywords}
+			摘要：{$vo.description}
+			内容：{$vo.content}
+			文章缩略图：{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}
+			浏览量：{$vo.click}
+			发布时间：{$vo.updatetime|date="Y-m-d",###}
+			链接：{:U("Article/show/id/$vo[id]")}
+		</volist>
+		分页：{$pages}
+          </article>

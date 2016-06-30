@@ -1,0 +1,105 @@
+<extend name="Public/base" />
+<block name="header">
+<link href="__CSS__/spgg.css" rel="stylesheet" media="screen" type="text/css" />
+</block>
+<block name="body">
+<div class=" clr mt3">
+<div class="zpgg"><a href="#">{:Advs(93);}</a></div><!--{:Advs(93);}-->
+	<div class="floor">
+    <div class="floor1">
+		<div class="dtbg">地铁视频</div>
+		<ul>
+				<article catid="28" num='3' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+                <li>
+					<a href='{:U("Article/show/id/$vo[id]")}'>
+						<img width="250" border="0" height="175" alt="{$vo.title}" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+						<div class="i_case_name2">{$vo.title}</div>
+					</a>
+				</li>
+				</volist>
+				</article>				
+            </ul>
+	</div>
+	<div class="floor1">
+		<div class="dtbg">地铁灯箱</div>
+		<ul>
+				<article catid="29" num='3' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+                <li>
+					<a href='{:U("Article/show/id/$vo[id]")}'>
+						<img width="250" border="0" height="175" alt="{$vo.title}" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+						<div class="i_case_name2">{$vo.title}</div>
+					</a>
+				</li>
+				</volist>
+				</article>				
+            </ul>
+	</div>
+	<div class="floor1">
+		<div class="dtbg">地铁平面</div>
+		<ul>
+				<article catid="30" num='3' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+                <li>
+					<a href='{:U("Article/show/id/$vo[id]")}'>
+						<img width="250" border="0" height="175" alt="{$vo.title}" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+						<div class="i_case_name2">{$vo.title}</div>
+					</a>
+				</li>
+				</volist>
+				</article>				
+            </ul>
+	</div>
+	<div class="floor1">
+		<div class="dtbg">地铁展示</div>
+		<ul>
+				<article catid="31" num='3' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+                <li>
+					<a href='{:U("Article/show/id/$vo[id]")}'>
+						<img width="250" border="0" height="175" alt="{$vo.title}" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+						<div class="i_case_name2">{$vo.title}</div>
+					</a>
+				</li>
+				</volist>
+				</article>				
+            </ul>
+	</div>
+	<div class="floor1">
+		<div class="dtbg">车内广告</div>
+		<ul>
+				<article catid="32" num='3' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+                <li>
+					<a href='{:U("Article/show/id/$vo[id]")}'>
+						<img width="250" border="0" height="175" alt="{$vo.title}" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+						<div class="i_case_name2">{$vo.title}</div>
+					</a>
+				</li>
+				</volist>
+				</article>				
+            </ul>
+	</div>
+	</div>
+    <div class="part2_r2">
+            <!-- /最新上线 -->
+            <div class="part_top"><a href="/case/" class="i_more">更多&gt;&gt;</a>重点推荐</div>
+            <div class="new_case  clr mt2"><ul>			
+				<article catid="3" num='3' posid="1" subcat='1' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+                <li><a href='{:U("Article/show/id/$vo[id]")}'><img width="299" border="0" height="199" alt="{$vo.title}" src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}"></a>
+                <p class="new_case_t"><a href="#">{$vo.title}</a></p>
+                <p> {$vo.description}</p>
+                </li>
+				</volist>
+				</article>					
+            </ul>
+			</div>
+			
+            <!-- /最新上线 -->
+    </div>
+	<div class="clear"></div>
+</div>
+
+</block>

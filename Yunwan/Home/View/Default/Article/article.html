@@ -1,0 +1,82 @@
+<extend name="Public/base" />
+<block name="body">
+<div class="main">
+	<div class="main_left">
+		<div id="g-posts">
+			<div class="g-posts-main g-main">
+				<div style="background:#666;height:100px;font-size:22px;line-height:100px;text-align:center;">
+					<a href="#" target="_blank" style="color:#fff;">广告位招租</a>
+				</div>	
+			</div>
+		</div>
+		<div class="clear2"></div>
+		<i class="icon-th-large" style="color:#2D7EAA;">&nbsp;&nbsp;</i>
+		<a href="{:C('WEB_PATH')}" title="首页" rel="category tag">首页</a> / <a href="http://im.huzhujie.com/./spgg/ymgg" title="查看新媒体视频中的全部文章" rel="category tag">新媒体视频</a>
+		<div class="xuline"></div>
+		<volist name="list" id="vo">
+		<div class="c_a">
+			<div class="c_left">
+				<a href="{:U("Article/show/id/$vo[id]")}" target="_blank"><img src="{:articlepic($vo['thumb'])}"></a>
+			</div>
+			<div class="c_right">
+				<h2><a href="{:U("Article/show/id/$vo[id]")}" target="_blank">{$vo.title}</a></h2>
+				<p>{$vo.description}</p>
+				<div class="pull-right" style="margin:10px;color:green;">
+					<i class="icon-star" style="color:green;font-size:16px;"></i> <span class="wpfp-span"><a class="wpfp-link" href="?wpfpaction=add&amp;postid=917" title="收藏" rel="nofollow">收藏</a></span>
+				</div>
+			</div>
+		</div>
+		</volist>
+
+		<div class="page_navi">{$page}</div>
+	</div>
+	<div class="main_right">
+		<h3 class="side-h2">最新资讯<a href="{:U('Article/zx')}" class="more" style="font-size:12px;">更多…</a></h3>
+		<volist name="newlist" id="vo">
+		<div class="side">
+			<i class="icon-caret-right">&nbsp;</i><a href="{:U("Article/show/id/$vo[id]")}">{$vo.title}</a>
+			<span style=" font-size:12px; color:#999; font-weight:100;float:right;margin-right:5px;">&nbsp; &nbsp;{$vo.updatetime|date="Y-m-d",###}</span>
+		</div>
+		<div class="sideline"></div>
+		</volist>
+
+		<!--侧边1号广告位-->
+		<div id="g-sidebar1">
+			<div class="g-single-main g-main">
+				<div style="background:#B40003;height:100px;font-size:22px;line-height:100px;text-align:center;"><a href="#" target="_blank" style="color:#fff;">广告位招租</a></div>	
+			</div>
+		</div><!--侧边1号广告位-->
+		<h3 class="side-h3">热门标签</h3>
+		<div class="tags">
+			<ul class="wp-tag-cloud">
+				<li><a href="http://im.huzhujie.com/tag/%e4%bc%9a%e8%ae%ae%e4%bc%9a%e5%b1%95%e6%9c%8d%e5%8a%a1" class="tag-link-17" title="20个话题" style="color:#7e022b;font-size: 14px;;">会议会展服务</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e6%b4%bb%e5%8a%a8%e7%ad%96%e5%88%92" class="tag-link-131" title="8个话题" style="color:#e609c1;font-size: 14px;;">活动策划</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e9%ab%98%e7%82%ae" class="tag-link-139" title="4个话题" style="color:#4a65b2;font-size: 14px;;">高炮</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e6%8a%a5%e7%ba%b8" class="tag-link-10" title="4个话题" style="color:#f76eb4;font-size: 14px;;">报纸</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e6%a5%9a%e5%a4%a9%e9%83%bd%e5%b8%82%e6%8a%a5" class="tag-link-11" title="3个话题" style="color:#3a9005;font-size: 14px;;">楚天都市报</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e8%bd%a6%e8%ba%ab%e5%b9%bf%e5%91%8a" class="tag-link-13" title="3个话题" style="color:#62cbc3;font-size: 14px;;">车身广告</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e5%88%b6%e4%bd%9c%e5%8f%91%e5%b8%83" class="tag-link-16" title="2个话题" style="color:#f3fa49;font-size: 14px;;">制作发布</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e5%95%86%e5%8a%a1%e4%bf%a1%e6%81%af%e5%92%a8%e8%af%a2" class="tag-link-19" title="2个话题" style="color:#5f6bdc;font-size: 14px;;">商务信息咨询</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e7%bd%91%e7%bb%9c%e6%8e%a8%e5%b9%bf%ef%bc%8c%e5%b9%bf%e7%82%b9%e9%80%9a" class="tag-link-98" title="2个话题" style="color:#4cca1b;font-size: 14px;;">网络推广，广点通</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e5%9c%b0%e6%96%b9%e7%bd%91%e7%ab%99" class="tag-link-115" title="2个话题" style="color:#691496;font-size: 14px;;">地方网站</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e6%b5%81%e5%8a%a8%e8%bd%a6%e8%ba%ab" class="tag-link-129" title="2个话题" style="color:#445b44;font-size: 14px;;">流动车身</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e5%88%86%e7%b1%bb%e7%bd%91%e7%ab%99" class="tag-link-114" title="2个话题" style="color:#c444c9;font-size: 14px;;">分类网站</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e9%97%a8%e6%88%b7%e7%bd%91" class="tag-link-109" title="2个话题" style="color:#739c56;font-size: 14px;;">门户网</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e5%be%ae%e5%8d%9a" class="tag-link-99" title="2个话题" style="color:#f715b4;font-size: 14px;;">微博</a></li>
+				<li><a href="http://im.huzhujie.com/tag/%e6%ad%a6%e6%b1%89" class="tag-link-103" title="2个话题" style="color:#d30a26;font-size: 14px;;">武汉</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<!--侧边2号广告位-->
+		<div id="g-single">
+			<div class="g-single-main g-main">
+				<a href="#" target="_blank"><img src="http://show.union.jd.com/source/home/300x250.gif " style="width:295px;"></a>
+				<div class="clear"></div>
+				<a href="#" target="_blank"><img src="http://union.vancl.com/adpics.aspx?source=peter07&amp;sourcesuninfo=ad-0-1-149-0-1" width="295" border="0"></a>	
+			</div>
+		</div><!--侧边2号广告位-->
+	</div>
+	<div class="clear"></div>
+</div>
+
+</block>

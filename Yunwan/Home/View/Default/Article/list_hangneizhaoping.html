@@ -1,0 +1,87 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" href="__CSS__/style1.css"/>
+<link rel="stylesheet" href="__CSS__/index1.css"/>
+<link rel="stylesheet" href="__CSS__/public.css"/>
+<link rel="stylesheet"  href="__CSS__/hyzp.css" />
+</block>
+<block name="body">
+<body>
+<div class="wrapper ad" >
+	   <div class="w mt10 mb10">
+			{:Advs('68')}
+		</div>
+				
+		<div class="w mb10">  <a href="">
+                    {:Advs('69')}</a></div>
+	   <div class="w mb10">
+	       <div class="w50 fl m0"><a href="">
+                    {:Advs('70')}</a></div>
+		   <div class="w50 fl"><a href="">
+                    {:Advs('72')}</a></div>
+			<div class="clear"></div>		
+	   </div>
+	   <div class="w mb10">
+	       <div class="w50 fl m0"><a href="">
+                    {:Advs('73')}</a></div>
+		   <div class="w50 fl" ><a href="">
+                    {:Advs('74')}</a></div>
+			<div class="clear"></div>		
+	   </div>
+	   <div class="w mb10">
+	       <div class="w33 fl m0"><a href="">
+                   {:Advs('75')}</a></div>
+		   <div class="w33 fl"><a href="">
+                    {:Advs('76')}</a></div>
+		   <div class="w33 fl"><a href="">
+                    {:Advs('77')}</a></div>
+					<div class="clear"></div>
+	   </div>
+	      <div class="w">
+	       <div class="w33 fl m0"><a href="">
+                    {:Advs('78')}</a></div>
+		   <div class="w33 fl"><a href="">
+                    {:Advs('79')}</a></div>
+		   <div class="w33 fl"><a href="">
+                    {:Advs('80')}</a></div>
+					<div class="clear"></div>
+	   </div>
+	</div>
+    <!--头部-->
+	
+    <div class="CpList">
+            
+        <a name="aRec"></a>
+            <div class="CpList_Rec" name="divRec" id="divRec">
+                    <div class="Title_Fixed">
+                        <div style="background: url(__IMG__/img_index_ico.png) -1px -180px;
+                            width: 89px; height: 20px; margin-left: 10px;">
+                        </div>
+                    </div>
+                <div class="CpList_Rec_Top">
+                    <ul>
+					<article catid="89" num='20' order="id ASC"   return="data">
+					<volist name="data" id="vo">
+                            <li ><a href="{:U("Article/show/id/$vo[id]")}">
+{$vo.company}                           </a><span>
+                                    <a href="{:U("Article/show/id/$vo[id]")}">
+{$vo.job}                                  </a>
+                            </span>
+                            </li></volist>
+							
+							</article></ul>
+                    <p class="pMore">
+                        <a href="">{$pages}</a></p>
+                </div>
+                    
+                <div class="cle">
+                </div>
+            </div>
+           <div class="xh"></div> 
+    </div>
+        
+  
+  
+    
+
+</block>

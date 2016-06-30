@@ -1,0 +1,80 @@
+<div class="ncap-about">
+  <div class="left-pic"></div>
+  <div class="version">
+    <h2>{$Think.YUNWAN_APPNAME}</h2>
+	<h4>版本：{$Think.YUNWAN_VERSION}</h4>
+    <hr>
+    <h5>开发流水号：{$Think.YUNWAN_BUILD}</h5>
+  </div>
+  <div class="content">
+    <div class="scroll switchbox" >
+      <ul class="tema">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+		<li>
+          <h4>程序开发</h4>
+          <p>刘阳阳（劉尐备丶）</p>
+        </li>
+
+		
+      </ul>
+    </div>
+    <!-- 代码结束 -->
+	<div class="scrollbar switchbox" style="display: none;">
+      <div class="law-notice">
+        <p>版权所有 (c) 2015-2016，武汉行友广告有限责任公司（广告搜搜 开发团队）保留所有权利。
+          感谢您选择{$Think.YUNWAN_APPNAME}。希望我们的努力能为您提供一个高效快速和强大的企业级平台整体解决方案。</p>
+        <p>安徽云湾信息科技有限公司为{$Think.YUNWAN_APPNAME}的开发者，依法独立拥有{$Think.YUNWAN_APPNAME}著作权。云湾信科官方网站网址为 <a href="http://www.yunwanxinke.com" target="_blank">http://www.yunwanxinke.com</a>。</p>
+        <p>使用者：无论个人或组织、盈利与否、用途如何（包括以学习和研究为目的），均需仔细阅读本协议，在理解、同意、并遵守本协议的全部条款后，方可开始使用{$Think.YUNWAN_APPNAME}。</p>
+      </div>
+    </div>
+    <div class="switchbox" style="display:none;" >
+      <ul>
+        <li>
+          <h4>致产品用户</h4>
+          <p>非常感谢您们对{$Think.YUNWAN_APPNAME}的大力支持和信任，我们将一如既往地站在用户立场去开发产品，为用户的利益尽职尽责。{$Think.YUNWAN_APPNAME}用户的完全满意就是我们奋斗的目标；您们所提出的任何有价值产意见和建议都是本公司的宝贵财富，并将激励我们更加努力地工作，不断改进提高，最终为贵方提供更优质的的产品与服务。</p>
+        </li>
+        <li>
+          <h4>关注我们</h4>
+          <p>官方网站 <a href="http://www.yunwanxinke.com" target="_blank">http://www.yunwanxinke.com</a></p>
+          <p>获知{$Think.YUNWAN_APPNAME}的最新版本动态，获得个性化的服务或获取我们的具体联系方式</p>
+        </li>
+        <li>
+          <h4>相关声明</h4>
+          <p>本项目引用了以下开源项目&nbsp;:&nbsp;&nbsp;ThinkPHP,jQuery,kindeditor等.&nbsp;原作者拥有其所有版权 </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="btns">
+	<a href="javascript:void(0);" onClick="about_change(0)" class="ncap-btn ncap-btn-green">开发团队</a>
+	<a href="javascript:void(0);" onClick="about_change(1)" class="ncap-btn">法律声明</a>
+	<a href="javascript:void(0);" onClick="about_change(2)" class="ncap-btn">致用户</a>
+  </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.scroll.js"></script> 
+<script type="text/javascript" src="__STATIC__/js/perfect-scrollbar.min.js"></script> 
+<script type="text/javascript" src="__STATIC__/js/jquery.mousewheel.js"></script>
+<link href="__STATIC__/js/perfect-scrollbar.min.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+$(function(){
+	$("div.scroll").myScroll({
+		speed:30, 
+		rowHeight:60 
+	});
+	$("div.scrollbar").perfectScrollbar();
+});
+
+function about_change(i) {
+    $(".switchbox").hide().eq(i).show();
+    $(".btns > a").removeClass("ncap-btn-green").eq(i).addClass("ncap-btn-green");
+    if (i == 0) {
+        $("div.scroll").myScroll({
+            speed:30, 
+            rowHeight:60
+        });
+    }
+}
+</script>

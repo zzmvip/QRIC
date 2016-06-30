@@ -1,0 +1,63 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" href="__CSS__/bzzz.css"/>
+</block>
+<block name="body">
+<body>
+<div class="container fixed" style="margin-top:20px;">
+<div class="magalist">
+<div class="item fixed">
+
+                 <h2>&nbsp;传统报纸</h2>
+
+                 <ul class="mlist fixed">											
+	<article catid="68" num='10'  return="data">
+		<volist name="data" id="vo">
+		<li>
+	                    <a href="{:U("Article/show/id/$vo[id]")}"><img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" /></a>
+	                    <p>{$vo.updatetime|date="Y-m-d H:i:s",###}</p>
+	                    
+	                    <p><a href="{:U("Article/show/id/$vo[id]")}" target="_blank">{$vo.title}</a></p>
+						</li>
+                 	</volist>
+					</article>
+                 	                 </ul>
+            </div>
+			
+			<div class="item fixed">
+				 <h2>&nbsp;DM杂志</h2>
+                 <ul class="mlist fixed">                								
+	<article catid="69" num='10'  return="data">
+		<volist name="data" id="vo">
+		                <li>
+	                    <a href="{:U("Article/show/id/$vo[id]")}"><img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" /></a>
+	                    <p>{$vo.updatetime|date="Y-m-d H:i:s",###}</p>
+	                    <p><a href="{:U("Article/show/id/$vo[id]")}" target="_blank">{$vo.title}</a></p>
+						</li>
+                 	</volist>
+					</article>
+                 	                 </ul>
+            </div>
+			
+			<div class="item fixed">
+                 <h2>&nbsp;DM平面</h2>
+                 <ul class="mlist fixed">
+        <article catid="70" num='10'  return="data">
+		<volist name="data" id="vo">
+		                <li>
+	                    <a href="{:U("Article/show/id/$vo[id]")}"><img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" /></a>
+	                    <p>{$vo.updatetime|date="Y-m-d H:i:s",###}</p>
+	                    
+	                    <p><a href="{:U("Article/show/id/$vo[id]")}" target="_blank">{$vo.title}</a></p>
+						</li>
+        </volist>
+		</article>
+                 </ul>
+            </div>
+
+
+</div>
+</div>
+</body>
+
+</block>

@@ -1,0 +1,93 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>站点设置</h3>
+        <h5>网站全局内容基本选项设置</h5>
+      </div>
+    </div>
+  </div>
+  <!-- 操作说明 -->
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span> </div>
+    <ul>
+      <li>网站全局基本设置，系统及其他模块相关内容在其各自栏目设置项内进行操作。</li>
+    </ul>
+  </div>
+  <form method="post" action="{:U('Config/save')}" enctype="multipart/form-data" name="form1">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="site_name">网站名称</label>
+        </dt>
+        <dd class="opt">
+          <input id="site_name" name="config[WEB_SITE_TITLE]" value="{:C('WEB_SITE_TITLE')}" class="input-txt" type="text" />
+          <p class="notic">网站名称，将显示在前台顶部欢迎信息等位置</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="site_url">网站地址</label>
+        </dt>
+        <dd class="opt">
+          <input id="site_url" name="config[WEB_PATH]" value="{:C('WEB_PATH')}" class="input-txt" type="text" />
+          <p class="notic">网站URL，结尾不需要添加以"/"</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="icp_number">ICP证书号</label>
+        </dt>
+        <dd class="opt">
+          <input id="icp_number" name="config[ICP_NUMBER]" value="{:C('ICP_NUMBER')}" class="input-txt" type="text" />
+          <p class="notic">前台页面底部可以显示 ICP 备案信息，如果网站已备案，在此输入你的备案号，它将显示在前台页面底部，如果没有请留空</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="statistics_code">第三方流量统计代码</label>
+        </dt>
+        <dd class="opt">
+          <textarea name="config[STATISTICS_CODE]" rows="6" class="tarea" id="statistics_code">{:C('STATISTICS_CODE')}</textarea>
+          <p class="notic">前台页面底部可以显示第三方统计</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">站点状态</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="site_status1" <if condition="C('SITE_STATUS') eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>开启</label>
+            <label for="site_status0" <if condition="C('SITE_STATUS') eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>关闭</label>
+            <input id="site_status1" name="config[SITE_STATUS]" <if condition="C('SITE_STATUS') eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="site_status0" name="config[SITE_STATUS]" <if condition="C('SITE_STATUS') eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic">可暂时将站点关闭，其他人无法访问，但不影响管理员访问后台</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="closed_reason">关闭原因</label>
+        </dt>
+        <dd class="opt">
+          <textarea name="config[CLOSED_REASON]" rows="6" class="tarea" id="closed_reason" >{:C('CLOSED_REASON')}</textarea>
+          <p class="notic">当网站处于关闭状态时，关闭原因将显示在前台</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="closed_reason">后台允许访问的IP</label>
+        </dt>
+        <dd class="opt">
+          <textarea name="config[ADMIN_ALLOW_IP]" rows="6" class="tarea" id="closed_reason" >{:C('ADMIN_ALLOW_IP')}</textarea>
+          <p class="notic">只允许次IP地址访问后台，多个以","分割</p>
+        </dd>
+      </dl>
+      <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onclick="document.form1.submit()">确认提交</a></div>
+    </div>
+  </form>
+</div>
+</block>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>{:C('WEB_SITE_TITLE')} - {$Think.YUNWAN_APPNAME}.</title>
+<link href="__JS__/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="__CSS__/index.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/font-awesome/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript">
+var ADMIN_SITE_URL = '{:C("WEB_PATH")}/admin.php';
+var ADMIN_IMG_URL = '__IMG__';
+var ADMIN_CSS_URL = '__CSS__';
+var ADMIN_JS_URL = '__JS__';
+var PUBLIC_STATIC_URL = '__STATIC__';
+var SITEURL = '{:C("WEB_PATH")}/admin.php';
+</script>
+<script src="__STATIC__/js/jquery-v1.8.3.min.js" type="text/javascript"></script>
+<script src="__JS__/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="__STATIC__/js/dialog/dialog.js" id="dialog_js" charset="utf-8"></script>
+<script type="text/javascript" src="__JS__/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__JS__/jquery.bgColorSelector.js"></script>
+<script type="text/javascript" src="__JS__/admincp.js"></script>
+<script type="text/javascript" src="__STATIC__/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="__STATIC__/js/jquery.Jcrop/jquery.Jcrop.js" id="cssfile2"></script>
+<link href="__STATIC__/js/jquery.Jcrop/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="admincp-map ui-widget-content" nctype="map_nav" style="display:none;" id="draggable" >
+  <div class="title ui-widget-header" >
+    <h3>管理中心全部菜单</h3>
+    <h5>切换显示全部管理菜单，通过点击勾选可添加菜单为管理常用操作项，最多添加10个</h5>
+    <span><a nctype="map_off" href="JavaScript:void(0);">X</a></span>
+  </div>
+  <div class="content">
+    <ul class="admincp-map-nav">
+	  <volist name="__MENU__.main" id="menu">
+	  <li><a href="javascript:void(0);" data-param="map-{$menu.dataparam}">{$menu.title}</a></li>
+      </volist>
+	</ul>
+	<foreach name="__MENU__.child" item="sub_menu" key="key">
+	<div class="admincp-map-div" data-param="map-{$key}">
+	  <foreach name="sub_menu" item="menus" key="k">
+	  <dl>
+	    <dt>{$k}</dt>
+		<foreach name="menus" item="menu" key="k2">
+		<if condition="$menu neq $sub_menu.group ">
+		<dd <if condition="in_array($key.'/'.$menu['url'],$quicklink)">class="selected"</if>><a href="javascript:void(0);" data-param="{$key}/{$menu.url}">{$menu.title}</a><i class="fa fa-check-square-o"></i></dd>
+		</if>
+		</foreach>
+      </dl>
+	  </foreach>
+	</div>
+	</foreach>
+  </div>
+<script>
+//固定层移动
+$(function(){
+	//管理显示与隐藏
+	$("#admin-manager-btn").click(function () {
+		if ($(".manager-menu").css("display") == "none") {
+			$(".manager-menu").css('display', 'block'); 
+			$("#admin-manager-btn").attr("title","关闭快捷管理"); 
+			$("#admin-manager-btn").removeClass().addClass("arrow-close");
+		}
+		else {
+			$(".manager-menu").css('display', 'none');
+			$("#admin-manager-btn").attr("title","显示快捷管理");
+			$("#admin-manager-btn").removeClass().addClass("arrow");
+		}           
+	});
+	$("#draggable").draggable({
+		handle: "div.title"
+	});
+	$("div.title").disableSelection()
+
+	$('#_pic').change(uploadChange);
+	function uploadChange(){
+		var filepatd=$(this).val();
+		var extStart=filepatd.lastIndexOf(".");
+		var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("file type error");
+			$(this).attr('value','');
+			return false;
+		}
+		if ($(this).val() == '') return false;
+		ajaxFileUpload();
+	}
+	function ajaxFileUpload()
+	{
+		$.ajaxFileUpload
+		(
+			{
+				url:'{:U("User/avatar")}',
+				secureuri:false,
+				fileElementId:'_pic',
+				dataType: 'json',
+				success: function (data, status)
+				{
+					if (data.status == 1){
+						ajax_form('cutpic','裁剪','{:U("User/avatar_cut")}&x=100&y=100&resize=1&ratio=1&url='+data.url,690);
+					}else{
+						alert(data.msg);
+					}
+					$('#_pic').bind('change',uploadChange);
+				},
+				error: function (data, status, e)
+				{
+					alert('上传失败');
+					$('#_pic').bind('change',uploadChange);
+				}
+			}
+		)
+	};
+});
+//裁剪图片后返回接收函数
+function call_back(picname){
+    $.getJSON('index.php?act=index&op=save_avatar&avatar=' + picname, function(data){
+        if (data) {
+            $('img[nctype="admin_avatar"]').attr('src', 'upload/admin/avatar/' + picname);
+        }
+    });
+}
+</script> 
+</div>
+<div class="admincp-header">
+  <div class="bgSelector"></div>
+  <div id="foldSidebar"><i class="fa fa-outdent " title="展开/收起侧边导航"></i></div>
+  <div class="admincp-name">
+    <h1>{:C('WEB_SITE_TITLE')}</h1>
+    <h2>{$Think.YUNWAN_APPNAME}</h2>
+  </div>
+  <div class="nc-module-menu">
+    <ul class="nc-row">
+	  <volist name="__MENU__.main" id="menu">
+	  <li data-param="{$menu.dataparam}"><a href="javascript:void(0);">{$menu.title}</a></li>
+      </volist>
+    </ul>
+  </div>
+  <div class="admincp-header-r">
+    <div class="manager">
+      <dl>
+        <dt class="name">{:session('admin_auth.username')}</dt>
+		<if condition="$vo.uid eq C('USER_ADMINISTRATOR') ">
+        <dd class="group">{:usergroup(session('admin_auth.uid'))}</dd>
+		<else />
+		<dd class="group">系统管理员</dd>
+		</if>
+      </dl>
+      <span class="avatar">
+        <input name="_pic" type="file" class="admin-avatar-file" id="_pic" title="设置管理员头像"/>
+        <img alt="" nctype="admin_avatar" src="__IMG__/login/admin.png">
+	  </span>
+	  <i class="arrow" id="admin-manager-btn" title="显示快捷管理菜单"></i>
+      <div class="manager-menu">
+        <div class="title">
+          <h4>最后登录</h4>
+          <a href="javascript:void(0);" onclick='CUR_DIALOG = ajax_form("modifypw", "修改密码", "{:U(\"User/modifypw\")}");' class="edit-password">修改密码</a>
+		</div>
+        <div class="login-date">
+          {:time_format(session('admin_auth.last_login_time'))} <span>(IP:{:session('admin_auth.last_login_ip')})</span>
+		</div>
+        <div class="title">
+          <h4>常用操作</h4>
+          <a href="javascript:void(0)" class="add-menu">添加菜单</a> </div>
+          <ul class="nc-row" nctype="quick_link">
+			<foreach name="__MENU__.child" item="sub_menu" key="key">
+			  <foreach name="sub_menu" item="menus" key="k">
+				<foreach name="menus" item="menu" key="k2">
+				<if condition="$menu neq $sub_menu.group ">
+					<if condition="in_array($key.'/'.$menu['url'],$quicklink)">
+					<li><a href="javascript:void(0);" onclick="openItem('{$key}/{$menu.url}')">{$menu.title}</a></li>
+					</if>
+				</if>
+				</foreach>
+			  </foreach>
+			</foreach>
+          </ul>
+        </div>
+    </div>
+    <ul class="operate nc-row">
+      <!--<li nctype="pending_matters">
+	    <a class="toast show-option" href="javascript:void(0);" onclick="$.cookie('commonPendingMatters', 0, {expires : -1});ajax_form('pending_matters', '待处理事项', 'index.php?act=common&op=pending_matters', '480');" title="查看待处理事项">&nbsp;<em>1</em></a>
+	  </li>-->
+      <li><a class="sitemap show-option" nctype="map_on" href="javascript:void(0);" title="查看全部管理菜单">&nbsp;</a></li>
+      <li><a class="style-color show-option" id="trace_show" href="javascript:void(0);" title="给管理中心换个颜色">&nbsp;</a></li>
+      <li><a class="homepage show-option" target="_blank" href="index.php?s=Index/index.html" title="新窗口打开首页">&nbsp;</a></li>
+      <li><a class="login-out show-option" href="{:U('Public/logout')}" title="安全退出管理中心">&nbsp;</a></li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="admincp-container unfold">
+  <div class="admincp-container-left">
+    <div class="top-border">
+	  <span class="nav-side"></span><span class="sub-side"></span>
+	</div>
+	<foreach name="__MENU__.child" item="sub_menu" key="key">
+    <div id="admincpNavTabs_{$key}" class="nav-tabs">
+	  <foreach name="sub_menu" item="menus" key="k">
+	  <dl>
+	    <dt><a href="javascript:void(0);"><span class="ico-system-0"></span><h3>{$k}</h3></a></dt>
+		<dd class="sub-menu">
+		  <ul>
+		    <foreach name="menus" item="menu" key="k2">
+			<if condition="$menu neq $sub_menu.group ">
+		    <li><a href="javascript:void(0);" data-param="{$key}/{$menu.url}">{$menu.title}</a></li>
+			</if>
+			</foreach>
+		  </ul>
+		</dd>
+	  </dl>
+	  </foreach>
+	</div>
+	</foreach>
+	<div class="about" title="关于QRIC" onclick="ajax_form('about', '', '{:U('Public/aboutus')}', 640);"><i class="fa fa-copyright"></i><span>QRIC</span></div>
+  </div>
+  <div class="admincp-container-right">
+    <div class="top-border"></div>
+    <iframe src="" id="workspace" name="workspace" style="overflow: visible;" frameborder="0" width="100%" height="94%" scrolling="yes" onload="window.parent"></iframe>
+  </div>
+</div>
+</body>
+</html>

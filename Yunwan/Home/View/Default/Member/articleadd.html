@@ -1,0 +1,112 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<link href="/Static/Admin/css/index.css" rel="stylesheet" type="text/css">
+<link href="__STATIC__/font-awesome/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="__STATIC__/js/jquery.validation.min.js"></script>
+
+<script type="text/javascript" src="/Static/Admin/js/jquery.picTip.js"></script>
+
+<style>
+html, body {
+overflow: auto;
+}
+</style>
+<div class="wrapper mt10 curr-nav">
+     <a href="{:C('WEB_PATH')}">首页</a> &gt; <a href="{:U('Member/index')}">用户中心</a> &gt; 内容列表
+</div>
+<div class="wrapper member-center mt10 mb10">
+<include file="Public/memberleft"/>
+</block>
+<block name="body">
+
+<div class="right-layout fr">
+	<div class="tabmenu">
+		<ul class="tab">
+			<li class="normal"><a href='{:U("Member/articlelist/id/$catid")}'>内容列表</a></li>
+			<li class="active"><a href='{:U("Member/articleadd/id/$catid")}'>发布内容</a></li>
+		</ul>
+	</div>
+	 <form id="article_form" enctype="multipart/form-data" method="post">
+		<div class="ncap-form-default">
+		  <volist name="list" id="vo">
+		  <dl class="row">
+			<dt class="tit">
+			  <label for="field"><if condition="$vo.must eq 1 "><em>*</em></if>{$vo.name}</label>
+			</dt>
+			<dd class="opt">
+			  {:form_input($vo['formtype'],$vo['field'],$info[$vo['field']])}
+			  <span class="err"></span>
+			  <p class="notic"></p>
+			</dd>
+		  </dl>
+		  </volist>
+		  <div class="bot">
+		  <input type="hidden" name="id" value="{$info.id|default=''}">
+		  <input type="hidden" name="catid" value="{$info.catid}">
+		  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+		  </div>
+		</div>
+	  </form>
+	
+</div>
+
+<div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#article_form").valid()){
+		$("#article_form").submit();
+	}
+});
+
+$(function(){
+	// 模拟网站LOGO上传input type='file'样式
+	<volist name="list" id="vo">
+	<if condition="$vo.formtype eq 'image' ">
+	$("#{$vo.field}").change(function(){
+		$("#textfield{$vo.field}").val($(this).val());
+	});
+	</if>
+	</volist>
+
+	//表单验证	
+	$('#article_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        },
+        rules : {
+			<volist name="list" id="vo">
+			<if condition="$vo.must eq 1 ">
+			{$vo.field} : {
+                required : true
+            },
+			</if>
+			<if condition="$vo.formtype eq 'number' ">
+			{$vo.field} : {
+                number   : true
+            },
+			</if>
+			</volist>
+        },
+        messages : {
+			<volist name="list" id="vo">
+			<if condition="$vo.must eq 1 ">
+			{$vo.field} : {
+                required : '<i class="fa fa-exclamation-circle"></i>{$vo.name}不能为空',
+            },
+			</if>
+			<if condition="$vo.formtype eq 'number' ">
+			{$vo.field} : {
+                number   : '<i class="fa fa-exclamation-circle"></i>{$vo.name}仅能为数字'
+            },
+			</if>
+			</volist>
+        }
+    });
+});
+</script>
+</block>

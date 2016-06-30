@@ -1,0 +1,130 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href="{$Think.cookie.__forward__}" title="返回菜单列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>后台菜单管理 - 新增</h3>
+        <h5>后台菜单管理</h5>
+      </div>
+    </div>
+  </div>
+  <form id="menu_form" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="title"><em>*</em>菜单名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.title|default=''}" name="title" id="title" maxlength="20" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">（用于后台显示的名称）</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="url"><em>*</em>菜单链接</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.url|default=''}" name="url" id="url" maxlength="40" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">（U函数解析的URL或者外链）</p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="group">菜单分组</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.group|default=''}" name="group" id="group" maxlength="20" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">（用于左侧分组二级菜单）</p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="pid">上级菜单</label>
+        </dt>
+        <dd class="opt">
+          <select name="pid" id="pid">
+            <volist name="Menus" id="menu">
+				<option value="{$menu.id}">{$menu.title_show}</option>
+			</volist>
+          </select>
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">菜单状态</dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="hide1" <if condition="$info.hide eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>显示</label>
+            <label for="hide0" <if condition="$info.hide eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>隐藏</label>
+            <input id="hide1" name="hide" <if condition="$info.hide eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="hide0" name="hide" <if condition="$info.hide eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="sort">排序</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.sort|default=0}" name="sort" id="sort" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">数字范围为0~255，数字越小越靠前</p>
+        </dd>
+      </dl>
+      <div class="bot">
+	  <input type="hidden" name="id" value="{$info.id|default=''}">
+	  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+	  </div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+$('#pid').attr('value','{$info.pid|default=0}');
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#menu_form").valid()){
+		$("#menu_form").submit();
+	}
+});
+
+$(function(){
+//表单验证	
+	$('#menu_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        },
+        rules : {
+            title : {
+                required : true
+            },
+            url : {
+            	required :true
+            },
+            sort : {
+                number   : true
+            }
+        },
+        messages : {
+            title : {
+                required : '<i class="fa fa-exclamation-circle"></i>菜单名称不能为空',
+            },
+            url : {
+            	required : '<i class="fa fa-exclamation-circle"></i>菜单链接不能为空',
+            },
+            sort  : {
+                number   : '<i class="fa fa-exclamation-circle"></i>分类排序仅能为数字'
+            }
+        }
+    });
+});
+</script>
+</block>

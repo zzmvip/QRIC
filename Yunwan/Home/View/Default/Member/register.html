@@ -1,0 +1,101 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<style>
+.header,.nav,.ad_top{display:none;}
+.logo_sep {
+float: left;
+width: 0;
+height: 28px;
+margin: 35px 22px;
+border-left: 1px solid #dfdfdf;
+}
+.logo_txt {
+float: left;
+font-size: 26px;
+margin: 30px 0;
+line-height: 36px;
+color: #999;
+}
+.login-cont{height:600px;width:100%;overflow: hidden;background:#3E9FE3 url(__IMG__/login.png) 280px center no-repeat;}
+.login-cont .hlLoginH{margin:60px 650px;height:460px;}
+</style>
+</block>
+<block name="body">
+<div class="wrapper ">
+	<h1 class="fl mt10 mb10"><a href="{:C('WEB_PATH')}" title="广告搜搜"><img src="__IMG__/logo.png" style="height:70px;"></a></h1>
+	<span class="logo_sep"></span>
+	<span class="logo_txt">注册</span>
+	<div class="cb"></div>
+</div>
+<div class="login-cont">
+    <div class="wrapper login-catonBg">
+	    <div class="hlLoginH">
+            <h2 class="mb10">注册<a class="red1" href="{:U('Member/login')}">登录</a></h2>
+            <form method="post" action="{:U('Member/register')}" class="form-login" id="loginForm">
+                <div class="input">
+					<input nullmsg="请输入您的用户名！" datatype="*6-18" placeholder="用户名" errormsg="请输入正确的用户名！" type="text" name="username" value="" ajaxurl="{:U('Member/ajax/type/username')}" autofocus="" class="form-control input-lg">
+				</div>
+				<div class="input">
+					<input type="password" placeholder="密码" class="form-control input-lg" name="password" plugin="passwordStrength"  datatype="*6-18" errormsg="密码范围在6~18位之间！" nullmsg="请输入密码！">
+					<div class="passwordStrength" style="display:none;"><b>密码强度：</b> <span>弱</span><span>中</span><span class="last">强</span></div>
+				</div>
+				<div class="input">
+				    <input type="password" placeholder="确认密码" class="form-control input-lg" name="repassword" datatype="*" recheck="password" errormsg="您两次输入的账号密码不一致！" sucmsg="两次密码输入一致" nullmsg="请重复输入密码！">
+				</div>
+				<div class="input">
+				    <input type="text" autofocus="" placeholder="邮箱" class="form-control input-lg" nullmsg="请输入邮箱，用于找回密码。" datatype="e" name="email" value="" ajaxurl="{:U('Member/ajax/type/email')}">
+				</div>
+				<div class="input">
+				    <input nullmsg="请输入手机号码。" placeholder="手机号码" datatype="*11-11" errormsg="请输入正确的手机号码！" type="text" name="mobile" value="" datatype="m" ajaxurl="{:U('Member/ajax/type/mobile')}" autofocus="" class="form-control input-lg">
+				</div>
+				<div class="agreeBox">
+				    <div class="fl err-msg"></div>
+					<!--<a href="#" class="fr grey0">忘记密码?</a>-->
+				</div>
+				<a href="javascript:;" title="立即注册" id="loginSubmit" class="btn btn-grapefruit">立即注册</a>
+            </form>
+	    </div>
+	</div>
+</div>
+<script type="text/javascript" src="__STATIC__/js/jquery.Validform.min.js"></script>
+<script type="text/javascript">
+		$(function(){
+			
+			$("#loginForm").Validform({
+				btnSubmit:"#loginSubmit",
+				postonce:true,
+				ajaxPost:true,
+				tiptype:function(msg,o,cssctl){
+					if(!o.obj.is("form")){
+						var objtip=o.obj.siblings(".Validform_checktip");
+						cssctl(objtip,o.type);
+						$('.err-msg').html(msg);
+					}
+				},
+				usePlugin:{
+					passwordstrength:{
+						minLen:6,
+						maxLen:18,
+						trigger:function(obj,error){
+							if(error){
+								obj.next(".passwordStrength").hide();
+							}else{
+								obj.next(".passwordStrength").show();	
+							}
+						}
+					}
+				},
+				callback:function(data){
+					if(data.status=="y"){
+						$('.err-msg').html(data.info);
+						window.setTimeout("javascript:location.href='{:U('Member/login')}'", 2000);
+					}else{
+						$('.err-msg').html(data.info);
+					}
+				}
+			});
+
+		});
+	</script>
+</block>

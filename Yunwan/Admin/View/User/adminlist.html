@@ -1,0 +1,102 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>权限设置</h3>
+        <h5>管理中心操作权限及分组设置</h5>
+      </div>
+      <ul class="tab-base nc-row">
+		<li><a href="{:U('User/adminlist')}"  class="current"><span>管理员</span></a></li>
+		<li><a href="{:U('AuthManager/index')}" ><span>权限组</span></a></li>
+	  </ul> 
+	</div>
+  </div>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="150" align="center" class="handle">操作</th>
+          <th width="100" align="left">登录名</th>
+          <th width="120" align="center">上次登录时间</th>
+		  <th width="120" align="center">上次登录IP</th>
+          <th width="60" align="center">登录次数</th>
+          <th width="60" align="center">状态</th>
+          <th width="120" align="center">权限组</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="_list" id="vo">
+          <tr class="hover">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td class="handle">
+		  <if condition="$vo.uid eq C('USER_ADMINISTRATOR') ">
+		    <span>--</span>
+		  <else />
+			<a onclick="fg_del({$vo.uid})" href="javascript:void(0);" class="btn red"><i class="fa fa-trash-o"></i>删除</a>
+			<a href='{:U("User/adminedit/uid/$vo[uid]")}' class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+		  </if>
+          </td>
+          <td>{$vo.username}</td>
+		  <if condition="$vo.uid == session('admin_auth.uid') ">
+          <td>{:time_format(session('admin_auth.last_login_time'))}</td>
+          <td>{:session('admin_auth.last_login_ip')}</td>
+		  <else/>
+		  <td>{:time_format($vo['last_login_time'])}</td>
+          <td>{$vo.last_login_ip}</td>
+		  </if>
+          <td>{$vo.login}</td>
+          <td><span <if condition="$vo.status == 1 ">class="yes"<else/>class="no"</if>><i <if condition="$vo.status == 1 ">class="fa fa-check-circle"<else/>class="fa fa-ban"</if>></i>{$vo.status_text}</span></td>
+          <td>
+		  <if condition="$vo.uid eq C('USER_ADMINISTRATOR') ">
+		  系统管理员
+		  <else />
+		  {:usergroup("$vo[uid]")}
+		  </if>
+		  </td>
+          <td></td>
+        </tr>
+	  </volist>
+      </tbody>
+    </table>
+</div>
+</block>
+<block name="script">
+<script>
+$('.flex-table').flexigrid({	
+	height:'auto',// 高度自动
+	usepager: false,// 不翻页
+	striped: true,// 使用斑马线
+	resizable: false,// 不调节大小
+	reload: false,// 不使用刷新
+	columnControl: false,// 不使用列控制 
+	title: '管理员列表',
+	buttons : [
+               {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add', onpress : fg_operation }
+           ]
+	});
+
+function fg_operation(name, grid) {
+    if (name == 'add') {
+        window.location.href = '{:U("User/adminadd")}';
+    }
+}
+function fg_del(ids) {
+    if (typeof ids == 'number') {
+        var ids = new Array(ids.toString());
+    };
+    id = ids.join(',');
+    if(confirm('删除后将不能恢复，确认删除这项吗？')){
+        $.getJSON('{:U("User/admindel")}', {id:id}, function(data){
+            if (data.state) {
+                location.reload();
+            } else {
+                showError(data.msg)
+            }
+        });
+    }
+}
+</script>
+</block>

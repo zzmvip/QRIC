@@ -1,0 +1,53 @@
+.dh {
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+.ftd {
+    background: #bf2e1b none repeat scroll 0 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+	width:1180px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 20px;
+}
+.content{
+ margin:0 auto;
+ width:1200px
+}
+th.bl_none {
+    text-align: left;
+    text-indent: 20px;
+}
+ th {
+    background: #E8E8E8 none repeat scroll 0% 0%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+table tr td, table tr th {
+    empty-cells: show;
+}
+
+.fhjx{
+    background-color: #bf2e1b;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+.qjs {
+    background-color:#E5511D;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+	  color: #FFF;
+}
+.cart_settlement {
+    width: 100px;
+    height: 50px;
+    display: block;
+    font-size: 14px;
+     background-color:#E5511D;
+}

@@ -1,0 +1,497 @@
+<extend name="Public/sbase"/>
+<block name="body">
+<script>
+$(function($) {
+	$('#buyNumbers .g-number-btn-plus').click(function(){
+		var number = parseInt($('#buyNumbers .g-number-input').val());
+		$('#buyNumbers .g-number-input').val(number+1);
+	});
+	$('#buyNumbers .g-number-btn-minus').click(function(){
+		var number = parseInt($('#buyNumbers .g-number-input').val());
+		if(number>1){
+			$('#buyNumbers .g-number-input').val(number-1);
+		}
+	});
+	$('#buyNumbers .g-number-input').mouseover(function(){
+		$(this).focus().select();
+	});
+});
+</script>
+<style>
+.header .logo {
+    width: 240px;
+    margin: 10px 63px;
+}
+ .logo img {
+    border: medium none;
+    vertical-align: middle;
+}
+.g-detail-main-count-number {display: inline-block;margin: 0 5px;width: 105px;height: 30px;vertical-align: middle;}
+.g-number {padding-right: 16px;position: relative;display: inline-block;vertical-align: middle;  padding: 0 24px;}
+.g-number-input {font-size: 14px;text-align: center;width: 45px;border: 1px solid #e0e0e0;height: 22px;padding: 2px 4px;outline: none;}
+.g-number-btn {font-size: 12px;text-decoration: none;position: absolute;right: 0;width: 10px;height: 10px;line-height: 8px;text-align: center;overflow: hidden;background: #F5F5F5; color: #9e9e9e;border: 1px solid #e0e0e0;}
+.g-number .g-number-btn { font-size: 18px;width: 26px;height: 26px;line-height: 24px;}
+.g-number .g-number-btn-plus {right: 0;top: 0;}
+.g-number .g-number-btn-minus {right: auto;left: 0;top: 0;}
+
+.header{
+border-bottom: 2px solid #0078C6;
+width:100%;
+ margin-top: 8px;
+}
+
+.g-row {
+   
+   padding-top:50px;
+}
+body {
+  font: 12px/1.5 tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;
+  color: #333;
+  min-width: 1000px;
+}
+*{margin:0;padding:0;}
+li, ol, ul{
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.g-row {
+  margin-right: auto;
+  margin-left: auto;
+  width: 960px;
+}
+.channel-tips {
+  margin-bottom: 15px;
+}
+.channel-tips-title {
+  display: inline-block;
+  vertical-align: top;
+  word-spacing: normal;
+  letter-spacing: normal;
+  font-size: 14px;
+  line-height: 999px;
+  overflow: hidden;
+  background-image: url(http://ccp.vipstatic.com/img/cart/te/4/cart/sprites.png?4437abb6);
+  background-position: 0 -156px;
+  width: 61px;
+  height: 20px;
+}
+.channel-tips .channel-tips-cnt {
+display: inline-block;
+  vertical-align: top;
+  word-spacing: normal;
+  letter-spacing: normal;
+  font-size: 12px;
+  height: 20px;
+  margin-left: 15px;
+  padding-left: 15px;
+  border-left: 1px solid #c4c4c4;
+}
+.shopping-tips-text {
+  margin-right: 12px;
+  color: #666;
+  font: 14px/20px 'Microsoft Yahei';
+  float: left;
+  font-size: 15px;
+    display: block;
+}
+.m-orders {
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+.orders-hd {
+  width: 956px;
+  height: 44px;
+  border-left: 2px solid #4daaeb;
+  border-right: 2px solid #4daaeb;
+  background-color: #f9f9f9;
+  border-right-color: #0078C6;
+  border-left-color: #0078C6;
+}
+.orders-hd ul {
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  height: 42px;
+  line-height: 42px;
+}
+.m-orders .inline-block-item {
+  width: 410px;
+    display: inline-block;
+  vertical-align: top;
+  word-spacing: normal;
+  letter-spacing: normal;
+  font-size: 12px;
+}
+.orders-hd .product-item {
+  zoom: 1;
+  padding-left: 20px;
+  width: 409px;
+  color: #333;
+  font-size: 14px;
+}
+.m-orders .price-item {
+  width: 160px;
+  text-align: center;
+}
+.m-orders .product-item {
+  width: 410px;
+}
+.m-orders .quantity-item {
+  width: 170px;
+  text-align: center;
+}
+.m-orders .subtotal-item {
+  width: 100px;
+  text-align: center;
+}
+.m-orders .actions-item {
+  width: 58px;
+  text-align: center;
+}
+.orders-hd .product-item .m-checkbox, .orders-hd .product-item .product-item-title {
+  float: left;
+  margin-right: 10px;
+}
+.orders-hd .product-item .checkbox-text, .orders-hd .product-item .product-item-title {
+  color: #0078C6;
+  font-weight: 700;
+}
+.orders-hd .product-item .m-checkbox, .orders-hd .product-item .product-item-desc {
+  padding: 10px 0 11px;
+  line-height: 21px;
+}
+.orders-hd .product-item .product-item-desc {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.orders-bd {
+  border-left: 1px solid #d8d8d8;
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #dfdfdf;
+}
+.promotion-on-box {
+  margin-top: -1px;
+  border-top: 1px solid #dfdfdf;
+  border-top-color: #feeed1;
+  background-color: #fffdfb;
+}
+.table-box-inner {
+  padding: 0 20px;
+}
+.orders-table .table-last-row td {
+  padding-bottom: 20px;
+  border-bottom: none;
+}
+.product-small {
+  padding-left: 92px;
+  min-height: 74px;
+}
+.orders-table .product-item .product-mini, .orders-table .product-item .product-small {
+  width: 230px;
+}
+.m-product .product-pic {
+  display: inline;
+  float: left;
+  margin-left: -90px;
+  width: 75px;
+  height: 95px;
+  border: 1px solid #e0e0e0;
+  line-height: 14px;
+}
+.product-small .product-pic {
+  width: 58px;
+  height: 74px;
+  margin-left: -92px;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+.orders-bd .product-pic-trigger {
+  position: relative;
+  z-index: 7;
+  zoom: 1;
+}
+.m-product .product-pic a {
+  color: #666;
+}
+.m-product .product-pic img {
+  display: block;
+  overflow: hidden;
+}
+.m-product .product-title {
+  margin-bottom: 5px;
+  max-height: 32px;
+  _height: 32px;
+  font-weight: 400;
+  line-height: 16px;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.product-small .product-title {
+  margin-bottom: 5px;
+  padding-top: 11px;
+}
+.m-product .product-title a {
+  color: #333;
+  text-decoration: none;
+}
+.m-product .product-size {
+  margin-bottom: 5px;
+}
+.m-orders .price-item {
+  width: 160px;
+  text-align: center;
+}
+.orders-table .price-item .m-price {
+  display: block;
+  color: #333;
+  position: relative;
+}
+.u-yen {
+  padding: 0 2px;
+  font-family: Arial;
+}
+.u-price {
+  font-family: Arial;
+}
+.orders-table .m-price strong {
+  font-size: 14px;
+  position: relative;
+}
+.orders-table .price-item .market-price {
+  color: #999;
+}
+.orders-table .price-item .market-price {
+  color: #999;
+}
+.orders-table .price-item .market-price {
+  color: #999;
+}
+.m-orders .quantity-item {
+  width: 170px;
+}
+.m-orders .subtotal-item {
+  width: 120px;
+  text-align: center;
+}
+.m-orders .subtotal-item {
+  width: 120px;
+  text-align: center;
+}
+.orders-table .subtotal-item .subtotal-price {
+  display: block;
+  color: #0078C6;
+}
+.orders-table .m-price strong {
+  font-size: 14px;
+  position: relative;
+}
+.m-orders .actions-item {
+  width: 58px;
+  text-align: center;
+}
+.m-orders-total {
+  margin-bottom: 36px;
+}
+.orders-total-bd {
+  padding: 18px 20px 15px;
+  border: 1px solid #ecebeb;
+}
+.m-orders-total .price-panel {
+  margin-left: 400px;
+  text-align: right;
+  vertical-align: bottom;
+}
+.m-orders-total .price-panel li {
+  margin-bottom: 5px;
+  color: #888;
+  line-height: 21px;
+}
+.m-orders-total .price-panel .m-price {
+  float: right;
+  width: 110px;
+}
+.m-orders-total .price-panel .discount .m-price, .m-orders-total .price-panel .summary .m-price {
+  color: #333;
+  font-size: 14px;
+}
+.m-orders-total .price-panel .quantity {
+  margin-right: 3px;
+  margin-left: 3px;
+  color: #0078C6;
+  font-family: Arial;
+}
+.m-orders-total .price-panel .total-amount {
+  height: 22px;
+}
+
+.m-orders-total .price-panel .total-amount .m-price {
+  color: #0078C6;
+}
+.m-orders-total .price-panel .total-amount-text {
+  margin-right: -5px;
+}
+.orders-total-ft-placeholder {
+  height: 48px;
+}
+.orders-total-ft {
+  position: relative;
+  margin-top: -1px;
+  padding: 13px 185px 13px 22px;
+  width: 751px;
+  height: 20px;
+  border: 1px solid #e2e1e1;
+  background-color: #f3f3f3;
+}
+.m-shopping-tips {
+  height: 20px;
+}
+.orders-total-ft .m-shopping-tips {
+  float: right;
+}
+.z-shopping-tips-timeout .timeout-text {
+  display: block;
+}
+.orders-total-ft .btn-orders-submit {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 162px;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  border-radius: 0;
+  z-index: 1;
+    background-color: #0078C6;
+  border: 1px solid #0078C6;
+  color: #fff;
+  font: 18px/44px tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,'\5FAE\8F6F\96C5\9ED1','\5B8B\4F53',sans-serif;
+
+}
+</style>
+
+	<div class="g-row">
+		<div class="channel-tips">
+			<h2 class="channel-tips-title">购物车</h2>
+			<div class="channel-tips-cnt">
+				<p class="shopping-tips-text">又逛超时了。立即结算抢回还有货的商品吧~</p>
+			</div>
+		</div>
+
+		<div class="m-orders">
+			<div class="orders-hd">
+				<ul class="m-inline-block">
+					<li class="inline-block-item product-item">
+						<span class="product-item-title">积分商城</span>
+						<span class="product-item-desc">发货订单</span>
+
+					</li>
+					<li class="inline-block-item price-item">
+						<span class="text">市场价</span>
+					</li>
+					<li class="inline-block-item quantity-item">
+						<span class="text">数量</span>
+					</li>
+					<li class="inline-block-item subtotal-item">
+						<span class="text">积分</span>
+					</li>
+					<li class="inline-block-item actions-item">
+						<span class="text">操作</span>
+					</li>
+				</ul>
+			</div>
+			 <volist name="list" id="vo">
+			 <form id="article_form" enctype="multipart/form-data" method="post" action="{:U("Shop/news/id/$vo[id]")}">
+          
+			<div class="orders-bd">
+				<div class="promotion-on-box">
+					<div class="table-box-inner">
+						<table class="table orders-table">
+							<tbody>
+								<tr>
+									<td class="product-item">
+										<div class="m-product product-small">
+											<div class="product-pic">
+												<a rel="external" href="#" target="_blank">
+													<img width="58" height="74" alt="" src="{:C('PRODUCT_UPLOAD.rootPath')}{$vo.thumb}">
+												</a>
+											</div>
+											<h3 class="product-title">
+												<a rel="external" title="{$info.name}" href="#" target="_blank">{$vo.name}</a>
+											</h3>
+											
+										</div>
+									</td>
+									<td class="price-item">
+										<span class="m-price">
+											<span class="u-yen">¥</span><strong class="u-price">{$vo.price}</strong>
+											 
+										</span>
+										<del class="m-price market-price">
+											<span class="u-yen">¥</span><span class="u-price">1080</span>
+										</del>
+									</td>
+									<td class="quantity-item"><div id="buyNumbers" class="g-detail-main-count-number">
+						<div class="g-number" id="pro-vieg-4">
+						{$vo.number}
+						</div>
+					</div></td>
+									<td class="subtotal-item">
+										<span class="m-price subtotal-price">
+											<span class="u-yen"></span><strong class="u-price">{$vo.integral}</strong>
+										</span>
+									</td>
+									<td class="actions-item">
+										<a href="{:U("Shop/del/id/$vo[id]")}">删除</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+            </volist>
+			<div class="m-orders-total">
+			    <div class="orders-total-bd">
+				    <div class="price-panel">
+					    <ul>
+							<li class="summary">
+								<span class="m-price">
+									<span class="u-yen">¥</span><span class="u-price">{$total}</span>
+								</span>
+								共<span class="quantity">{$number}</span>件商品&nbsp;&nbsp;商品金额
+							</li>
+							<li class="total-amount">
+								<span class="m-price">
+									<span class="u-yen">¥</span><span class="u-price">{$total}</span>
+								</span>
+								<span class="total-amount-text">
+									总金额（<span class="J_pms_fee_hint">已免运费</span>）
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="orders-total-ft-placeholder">
+					<div class="orders-total-ft">
+						<div class="m-shopping-tips">
+							<p class="shopping-tips-text">
+								立即结算抢回还有货的商品吧~
+							</p>
+						</div>
+						 <input type="submit" value="立即结算" class='btn-orders-submit' title="">
+					
+					</div>
+				</div>
+			</div>
+			</form>
+			</div>
+
+
+	</div>
+</block>

@@ -1,0 +1,114 @@
+@charset "utf-8";
+body {
+    color: #333;
+    font-family: "Helvetica Neue",Helvetica,Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+}
+.success_stories {
+	margin: 20px auto 0;
+    width: 1200px;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+.graphy_list_c{
+	width:1200px;
+	margin:0 auto;
+	margin-top:20px;
+}
+.graphy_list_m {
+    margin-top: 30px;
+}
+.graphy_list .graphy_list_c .title {
+    border: medium none;
+    color: #696969;
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+}
+.container .title {
+    border-bottom: 2px solid #000;
+    height: 60px;
+}
+.title{
+	color: #a5a5a5;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.col-md-3 {
+    width: 25%;
+}
+.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+    float: left;
+}
+.col-sm-3 {
+    width: 24%;
+}
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+    float: left;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    min-height: 1px;
+    padding-left: 0;
+    padding-right: 6px;
+    position: relative;
+}
+.graphy_list_c a {
+    color: #595959;
+}
+.thumbnail {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 6px;
+    padding: 4px;
+    transition: border 0.2s ease-in-out 0s;
+}
+.thumbnail:hover {
+    background-color: #333;
+    border: 1px solid #333;
+    border-radius: 0;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 6px;
+    padding: 4px;
+    transition: border 0.2s ease-in-out 0s;
+	color:#fff;
+}
+.thumbnail a > img, .thumbnail > img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+    display: block;
+    height: 240px;
+    max-width: 100%;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0 none;
+}
+.graphy_list_c .graphy_list_c_t {
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+}
+.pull-left {
+    float: left !important;
+}
+.pull-right {
+    float: right !important;
+}

@@ -1,0 +1,65 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<div class="wrapper mt10 curr-nav">
+     <a href="{:C('WEB_PATH')}">首页</a> &gt; <a href="{:U('Member/index')}">用户中心</a> &gt; 内容列表
+</div>
+<div class="wrapper member-center mt10 mb10">
+<include file="Public/memberleft"/>
+</block>
+<block name="body">
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".registerform").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20
+			}
+		}		
+	});
+})
+</script>
+<div class="right-layout fr">
+	<div class="tabmenu">
+		<ul class="tab">
+			<li class="active"><a href='{:U("Member/articlelist/id/$catid")}'>订单列表</a></li>
+			
+		</ul>
+	</div>
+	<table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th width="300">订单编号</th>
+					<th width="300">物流单号</th>
+					<th width="100">积分</th>
+					<th width="100">状态</th>
+					<th class="">操作</th>
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+                <volist name="list" id="data">
+                    <tr>
+                        <td>{$data.order_sn}</td>
+						<td>{$data.shipping_code}</td>
+						<td>{$data.goods_amount}</td>
+                        <td>{$data.order_state_text}</td>
+					<td>
+					<if condition="$data.order_state eq 40  "><a href='#'>已收货</a><elseif condition="$data.order_state eq 30"/><a href='{:U("Member/goods/id/$data[id]")}'>确认收货</a><elseif condition="$data.order_state eq 20"/><a href='#'>正在发货</a><else /> <a href='{:U("Shop/sets/id/$data[order_sn]")}'>去付款</a></if>
+					<if condition="($data.order_state eq 40) OR ($data.order_state eq 10) "> <a href='{:U("Member/del/id/$data[id]")}'>删除</a></if>
+					</td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+	
+</div>
+
+<div class="cb"></div>
+</div>
+
+</block>

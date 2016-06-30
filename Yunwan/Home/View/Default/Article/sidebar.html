@@ -1,0 +1,19 @@
+<h3 class="side-h2">最新资讯<a href="{:U('Article/zx')}" class="more" style="font-size:12px; display:block;text-align:right;">更多…</a></h3>
+<article catid="89" num='10' order="id desc">
+<volist name="data" id="vo">
+<div class="side">
+<i class="iconfont">&#xe6fa;</i>
+<i class="icon-caret-right">&nbsp;</i><a href="{:U("Article/show/id/$vo[id]")}">{$vo.title}</a>
+<span style=" font-size:12px; color:#999; font-weight:100;float:right;margin-right:5px;">&nbsp; &nbsp;{$vo.updatetime|date="Y-m-d",###}</span>
+</div>
+<div class="sideline"></div>
+</volist>
+</article>
+
+<!--侧边1号广告位-->
+<div id="g-sidebar1">
+<div class="g-single-main g-main">
+<div style="background:#B40003;height:100px;font-size:22px;line-height:100px;text-align:center;">{:Advs('71')}</div>	
+</div>
+<div class="clear"></div>
+</div><!--侧边1号广告位-->

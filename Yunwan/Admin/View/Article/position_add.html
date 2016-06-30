@@ -1,0 +1,79 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href='{:U("Article/position")}' title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>添加推荐位</h3>
+        <h5>文章推荐位</h5>
+      </div>
+    </div>
+  </div>
+  <!-- 操作说明 -->
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span> </div>
+    <ul>
+      <li>文章推荐位</li>
+    </ul>
+  </div>
+  <form action="" id="add_form" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label for="admin_name"><em>*</em>推荐位名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" id="title" name="title" value="{$info.title}" class="input-txt">
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="admin_password">推荐位描述</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" id="description" name="description" value="{$info.description}" class="input-txt">
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <input type="hidden" id="id" name="id" value="{$info.id}">
+      <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script>
+//按钮先执行验证再提交表
+$(document).ready(function(){
+	//按钮先执行验证再提交表单
+	$("#submitBtn").click(function(){
+	    if($("#add_form").valid()){
+	     $("#add_form").submit();
+		}
+	});
+	
+	$("#add_form").validate({
+		errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        },
+		
+        rules : {
+			title : {
+                required : true
+            }     
+        },
+        messages : {
+            title : {
+                required : '<i class="fa fa-exclamation-circle"></i>推荐位名称不能为空'
+            }
+        }
+	});
+});
+</script> 
+</block>

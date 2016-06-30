@@ -1,0 +1,93 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href='{:U("Nav/lists")}' title="返回内容列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>导航管理 - 新增/更新</h3>
+      </div>
+    </div>
+  </div>
+  <form id="Nav_form" enctype="multipart/form-data" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+	  
+        <dt class="tit">
+          <label for="field"><em>*</em>分类名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" class="input-txt" id="name" name="name" value="{$info.name}">
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+		
+		<dt class="tit">
+          <label for="field"><em>*</em>URL</label>
+        </dt>
+		<dd class="opt">
+          <input type="text" class="input-txt" id="url" name="url" value="{$info.url}">
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+		
+		<dt class="tit">
+          <label for="field"><em>*</em>排序</label>
+        </dt>
+		<dd class="opt">
+          <input type="text" class="input-txt" id="sort" name="sort" value="{$info.sort}">
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+		
+		 <dl class="row">
+		 <dt class="tit">
+          <label for="field"><em>*</em>状态</label>
+        </dt>
+		<dd class="opt">
+          <div class="onoff">
+            <label for="status1" <if condition="$info.status eq 1 ">class="cb-enable selected"<else/>class="cb-enable "</if>>显示</label>
+            <label for="status0" <if condition="$info.status eq 0 ">class="cb-disable  selected"<else/>class="cb-disable "</if>>隐藏</label>
+            <input id="status1" name="status" <if condition="$info.status eq 1 ">checked="checked"</if> value="1" type="radio">
+            <input id="status0" name="status" <if condition="$info.status eq 0 ">checked="checked"</if> value="0" type="radio">
+          </div>
+        </dd>
+		</dl>
+      <div class="bot">
+	  <input type="hidden" name="id" value="{$info.id|default=''}">
+	  <input type="hidden" name="pid" value="{$info.pid}">
+	  <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a>
+	  </div>
+    </div>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/js/jquery.nyroModal.js"></script> 
+<script type="text/javascript">
+
+
+//按钮先执行验证再提交表单    
+$("#submitBtn").click(function(){
+	if($("#Nav_form").valid()){
+		$("#Nav_form").submit();
+	}
+});
+
+$(function(){
+	
+	//表单验证	
+	$('#Nav_form').validate({
+        errorPlacement: function(error, element){
+			var error_td = element.parent('dd').children('span.err');
+            error_td.append(error);
+        },
+        rules : {
+			
+        },
+        messages : {
+			
+        }
+    });
+});
+</script>
+</block>

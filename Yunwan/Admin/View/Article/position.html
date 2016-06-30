@@ -1,0 +1,78 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>文章推荐位管理</h3>
+        <h5>推荐位管理</h5>
+      </div>
+	</div>
+  </div>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="150" align="center" class="handle">操作</th>
+          <th width="100" align="left">推荐位ID</th>
+          <th width="120" align="center">推荐位名称</th>
+		  <th width="120" align="center">推荐位描述</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="_list" id="vo">
+          <tr class="hover">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td class="handle">
+		    <a onclick="fg_del({$vo.id})" href="javascript:void(0);" class="btn red"><i class="fa fa-trash-o"></i>删除</a>
+			<a href='{:U("Article/position_edit/id/$vo[id]")}' class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+          </td>
+          <td>{$vo.id}</td>
+		  <td>{$vo.title}</td>
+          <td>{$vo.description}</td>
+          <td></td>
+        </tr>
+	  </volist>
+      </tbody>
+    </table>
+</div>
+</block>
+<block name="script">
+<script>
+$('.flex-table').flexigrid({	
+	height:'auto',// 高度自动
+	usepager: false,// 不翻页
+	striped: true,// 使用斑马线
+	resizable: false,// 不调节大小
+	reload: false,// 不使用刷新
+	columnControl: false,// 不使用列控制 
+	title: '文章推荐位',
+	buttons : [
+               {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add', onpress : fg_operation },
+               {display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation }
+           ]
+	});
+
+function fg_operation(name, grid) {
+    if (name == 'add') {
+        window.location.href = '{:U("Article/position_add")}';
+    }
+}
+function fg_del(ids) {
+    if (typeof ids == 'number') {
+        var ids = new Array(ids.toString());
+    };
+    id = ids.join(',');
+    if(confirm('删除后将不能恢复，确认删除这项吗？')){
+        $.getJSON('{:U("Article/position_del")}', {id:id}, function(data){
+            if (data.state) {
+                location.reload();
+            } else {
+                showError(data.msg)
+            }
+        });
+    }
+}
+</script>
+</block>

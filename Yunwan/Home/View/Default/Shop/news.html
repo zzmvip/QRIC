@@ -1,0 +1,565 @@
+<extend name="Public/sbase"/>
+<block name="body">
+
+<style>
+.header .logo {
+    width: 240px;
+    margin: 10px 63px;
+}
+ .logo img {
+    border: medium none;
+    vertical-align: middle;
+}
+
+.header {
+    border-bottom: 2px solid #0078c6;
+    margin-top: 8px;
+    width: 100%;
+}
+.g-row {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+	padding-top:45px;
+}
+.channel-tips {
+    margin-bottom: 15px;
+}
+.m-inline-block {
+    font-size: 0;
+}
+.channel-tips-title {
+  
+    height: 20px;
+    width: 123px;
+}
+
+.f-clearfix::after, .f-clearfix::before, .g-hd::after, .g-hd::before, .m-shopping-tips::after, .m-shopping-tips::before, .product-tab .tab-hd::after, .product-tab .tab-hd::before {
+    content: " ";
+    display: table;
+}
+.f-clearfix::after, .g-hd::after, .m-shopping-tips::after, .product-tab .tab-hd::after {
+    clear: both;
+}
+.f-clearfix::after, .f-clearfix::before, .g-hd::after, .g-hd::before, .m-shopping-tips::after, .m-shopping-tips::before, .product-tab .tab-hd::after, .product-tab .tab-hd::before {
+    content: " ";
+    display: table;
+}
+.channel-tips .channel-tips-cnt {
+    border-left: 1px solid #c4c4c4;
+    margin-left: 15px;
+    padding-left: 15px;
+}
+.m-shopping-tips {
+    height: 20px;
+}
+.inline-block-item {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: normal;
+    vertical-align: top;
+    word-spacing: normal;
+}
+
+.channel-tips .shopping-tips-text {
+    font-size: 15px;
+}
+.m-shopping-tips .shopping-tips-text {
+    float: left;
+}
+.shopping-tips-text {
+    color: #666;
+    margin-right: 12px;
+}
+.address-box {
+    margin-bottom: 20px;
+}
+.m-box .box-hd::after, .m-box .box-hd::before {
+    content: " ";
+    display: table;
+}
+.m-box .box-hd::after {
+    clear: both;
+}
+.m-box .box-hd::after, .m-box .box-hd::before {
+    content: " ";
+    display: table;
+}
+.m-box .box-hd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #f9f9f9;
+    border-bottom-right-radius: 3px;
+    border-color: #e2e2e2 #e2e2e2 #e2e2e2 #0078C6;
+    border-image: none;
+    border-style: solid;
+    border-top-right-radius: 3px;
+    border-width: 1px 1px 1px 2px;
+    height: 18px;
+    line-height: 18px;
+    padding: 10px 15px;
+}
+
+.address-hd-operate {
+    float: right;
+}
+
+a {
+    color: #1d94d1;
+    text-decoration: none;
+	 background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	outline: 0 none;
+}
+
+a, img {
+    vertical-align: top;
+}
+.address-box .box-bd {
+    padding-top: 15px;
+}
+
+.g-row {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+}
+
+.z-address-box-new-customers .address-form-wrapper {
+    display: block;
+}
+.address-box .address-form-wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.address-form .form-title-item {
+    z-index: 6;
+}
+.address-form .form-item {
+    display: block;
+    margin-bottom: 12px;
+}
+.ui-form-item-group {
+    opacity: 1 !important;
+    position: relative;
+    transition: none 0s ease 0s !important;
+    vertical-align: top;
+}
+
+
+.address-form .ui-input, .address-form .ui-textarea {
+    font-size: 14px;
+    vertical-align: top;
+    width: 218px;
+}
+
+
+.address-form .ui-tooltips {
+    left: 250px;
+    top: 0;
+    white-space: nowrap;
+}
+
+.z-ui-tooltips-in, .z-ui-tooltips-in .ui-tooltips {
+    opacity: 1;
+    transform: translate(0px, 0px);
+    transition-duration: 0.25s;
+    visibility: visible;
+}
+.ui-tooltips-warning {
+    border-color: #f8dbb1;
+    box-shadow: none;
+}
+.ui-tips-pop, .ui-tooltips {
+    border-radius: 2px;
+    color: #4d4d4d;
+    font: 12px/18px tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,"微软雅黑","宋体",sans-serif;
+    max-width: 800px;
+    position: absolute;
+    z-index: 50;
+}
+
+.ui-tooltips-left-arrow .ui-tooltips-arrow, .ui-tooltips-left-bottom-arrow .ui-tooltips-arrow, .ui-tooltips-left-top-arrow .ui-tooltips-arrow {
+    height: 100%;
+    left: -11px;
+    top: 0;
+    width: 10px;
+}
+.ui-tooltips-arrow {
+    position: absolute;
+}
+
+.ui-tooltips-warning .arrow-out {
+    color: #f8dbb1;
+}
+.ui-tooltips-warning .arrow {
+    text-shadow: none;
+}
+.ui-tooltips-left-arrow .arrow, .ui-tooltips-left-arrow .arrow-out {
+    top: 50%;
+}
+.ui-tooltips-left-arrow .arrow-out, .ui-tooltips-left-bottom-arrow .arrow-out, .ui-tooltips-left-top-arrow .arrow-out {
+    margin-top: -7px;
+    right: -11px;
+}
+.ui-tips-pop .arrow, .ui-tooltips .arrow {
+    font: 400 12px/14px 宋体,Hiragino Sans GB;
+    height: 14px;
+    position: absolute;
+    text-align: left;
+    width: 14px;
+}
+
+.ui-tooltips-warning .arrow {
+    color: #fffaf3;
+    text-shadow: none;
+}
+.ui-tooltips-left-arrow .arrow, .ui-tooltips-left-arrow .arrow-out {
+    top: 50%;
+}
+.ui-tooltips-left-arrow .arrow, .ui-tooltips-left-bottom-arrow .arrow, .ui-tooltips-left-top-arrow .arrow {
+    margin-top: -7px;
+    right: -12px;
+}
+.ui-tips-pop .arrow, .ui-tooltips .arrow {
+    font: 400 12px/14px 宋体,Hiragino Sans GB;
+    height: 14px;
+    position: absolute;
+    text-align: left;
+    width: 14px;
+}
+
+.ui-tooltips-warning .ui-tooltips-content {
+    background-color: #fffaf3;
+}
+.ui-tooltips-content {
+    padding: 6px 0px;
+    position: relative;
+}
+
+
+
+.ui-tooltips-msg .vipFont {
+    display: inline-block;
+    margin-left: -26px;
+    text-align: left;
+    vertical-align: top;
+    width: 26px;
+}
+.if-sigh {
+    color: #f9a123;
+}
+.vipFont {
+    font-family: vipFont;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.address-form .form-item {
+    display: block;
+    margin-bottom: 12px;
+}
+.ui-form-item-group {
+    opacity: 1 !important;
+    position: relative;
+    transition: none 0s ease 0s !important;
+    vertical-align: top;
+}
+
+.address-form .ui-input, .address-form .ui-textarea {
+    font-size: 14px;
+    vertical-align: top;
+    width: 218px;
+}
+.ui-input {
+    height: 18px;
+    line-height: 18px;
+    padding: 6px 10px;
+}
+.ui-input, .ui-textarea {
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    color: #333;
+    outline: 0 none;
+    transition: border-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+}
+
+.address-form .ui-textarea {
+    height: 18px;
+    line-height: 18px;
+    padding: 6px 10px;
+    width: 468px;
+}
+.address-form .ui-input, .address-form .ui-textarea {
+    font-size: 14px;
+    vertical-align: top;
+}
+.ui-textarea {
+    overflow: auto;
+    resize: vertical;
+}
+.ui-input, .ui-textarea {
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+    border-radius: 3px;
+    color: #333;
+    outline: 0 none;
+    transition: border-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+}
+.address-form .form-item-actions .ui-btn-primary {
+    margin-right: 16px;
+    width: 120px;
+}
+.ui-btn-loading, button.ui-btn-loading {
+    padding: 0px;
+    overflow: hidden;
+}
+.ui-btn-primary, .ui-btn-primary:active, .ui-btn-primary:hover, .ui-btn1, .ui-btn1:active, .ui-btn1:hover {
+    color: #FFF;
+}
+.ui-btn-primary, .ui-btn1 {
+    background-color: #F10180;
+    border: 1px solid #F10180;
+}
+.ui-btn-medium, .ui-btn-nor {
+    min-width: 60px;
+    padding: 0px 19px;
+    font: 15px/30px tahoma,arial,Hiragino Sans GB,WenQuanYi Micro Hei,"微软雅黑","宋体",sans-serif;
+    height: 30px;
+}
+.ui-btn-big, .ui-btn-large, .ui-btn-medium, .ui-btn-mini, .ui-btn-nor, .ui-btn-small {
+    display: inline-block;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: top;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+.ui-btn-loading-before {
+    cursor: pointer;
+}
+.ui-btn-loading-before {
+    display: inline-block;
+}
+.ui-btn-medium .ui-btn-loading-after, .ui-btn-nor .ui-btn-loading-after {
+    margin-top: -30px;
+    line-height: 30px;
+    height: 30px;
+}
+.ui-btn-loading-after {
+    display: none;
+    background-color: #D0D0D0;
+}
+.checkout-review-inner .review-others-wrapper, .checkout-review-inner .review-price-wrapper {
+    vertical-align: bottom;
+}
+.inline-block-item {
+    display: inline-block;
+    vertical-align: top;
+    word-spacing: normal;
+    letter-spacing: normal;
+    font-size: 14px;
+}
+.checkout-review-inner .review-others, .checkout-review-inner .review-price {
+    vertical-align: baseline;
+}
+
+.review-price {
+    width: 430px;
+}
+.review-price-item .m-price {
+    float: right;
+}
+
+strong {
+    font-weight: bold;
+    float: right;
+}
+.ui-btn-loading-before {
+    display: inline-block;
+    width: 100px;
+    height: 33px;
+    font-size: 19px;
+	background-color: #0078C6;
+	color:#FFF;
+}
+.ui-btn-loading-befor {
+    display: inline-block;
+    width: 50px;
+    height: 33px;
+    font-size: 19px;
+	background-color: #0078C6;
+	color:#FFF;
+}
+
+</style>
+<div class='g-row J_ue_position_container'>
+			<div class="m-inline-block channel-tips">
+				 <h1 class="inline-block-item channel-tips-title">确认订单信息</h1>
+				<!--
+					`z-shopping-tips-timeout` 显示出超时文案
+					`z-shopping-tips-success` 成功提交时文案
+				-->
+					<div class="inline-block-item channel-tips-cnt m-shopping-tips J_countDown">
+							<p class="shopping-tips-text countdown-text">
+						请在<span class="countdown"><span class="countdown-num J_operate_countDown_min">05</span>分<span class="countdown-num J_operate_countDown_sec">55</span>秒</span>内提交订单，下单后你另有 30 分钟的支付时间。
+					</p>
+				   </div>
+			</div>
+	<div id='J_address_module' class='m-box address-box z-address-box-initialize-success z-address-box-new-customers'>
+			  <div class="box-hd">
+					<h2 class="box-hd-title">收货信息</h2>
+				</div>
+			<div class="">
+					<table class="flex-table">
+			  <thead>
+				<tr>
+				  <th width="20" align="center" class="sign"><i class="ico-check"></i></th>
+				  <th width="150" align="center" class="handle">操作</th>
+				  <th width="100" align="left">收货名字</th>
+				  <th width="120" align="center">手机号码</th>
+				  <th width="120" align="center">备用号码</th>
+				  <th width="220" align="center">收货地址</th>
+				  <th width="220" align="center">详细地址</th>
+				
+				  
+				  <th></th>
+				</tr>
+			  </thead>
+			  <tbody>
+			 <volist name="list" id="vo">
+				  <tr class="hover">
+				  <td class="sign"><i class="ico-check"></i></td>
+				  <td class="handle">
+				  
+						<a " href='{:U("Shop/del/id/$vo[id]")}' class="btn blue">删除</a>
+					<a  class="btn blue">选中
+				<input name="is_defalut1" type="radio" value="{$vo[id]}" /></a>
+				
+				  </td>
+				  <td>{$vo.name}</td>
+				  <td>{$vo.phone}</td>
+				  <td>{$vo.bphone}</td>
+				 <td>{$vo.address}</td>
+				 <td>{$vo.xaddress}</td>
+				  <td></td>
+				</tr>
+			 </volist>
+			 
+			  </tbody>
+			</table>
+			</div>
+	
+	<div class="box-bd">
+	 <form class="J_form m-form address-form" method="post"action="{:U('Shop/address')}">
+		    <div class="address-box-cnt address-box-cnt-initialize-success">
+     
+	  
+	   
+					   <div class="form-item  form-title-item  ui-form-item-group  J_form_item z-ui-form-item-warning">
+							<input type="text" mars_sead="address_name_input" autofocus="true" value="" name="name" placeholder="收货人姓名" class="ui-input">
+										
+						  <div class="ui-tooltips ui-tooltips-warning ui-tooltips-left-arrow z-ui-tooltips-in">
+				  
+					        <div class="ui-tooltips-content">
+									<p class="ui-tooltips-msg">
+							   <span class="J_tips_txt">请输入收货人姓名</span>
+							</p>
+							</div>
+					   </div>
+					
+						</div>
+				      <div class="form-item  form-mobile-item  ui-form-item-group  J_form_item">
+						
+							<input type="text" data-or-verification="phone" mars_sead="address_phone_input" value="" name="phone" placeholder="手机号码" class="ui-input">
+					 </div>
+			 
+					<div class="form-item  form-tel-item  ui-form-item-group  J_form_item">
+					
+						<input type="text" data-or-verification="mobile" mars_sead="address_telephone_input" value="" name="bphone" placeholder="备用联系电话（固话/手机）" class="ui-input">
+					
+						<span class="form-tel-tips">*可选填，为确保及时收货，请尽量填写备用电话（固话或手机）</span>
+					</div>
+				
+					  <div class="form-item form-address-item ui-form-item-group J_form_item J_area_picker" style="min-width:100px">
+					  <input type="hidden" name="area_info" id="area_info" value="">
+					   </div>
+			   
+					   <div class="form-item  form-address-detail-item  ui-form-item-group  J_form_item" style="min-width:100px">
+						<textarea mars_sead="address_detail_input" name="xaddress" placeholder="详细地址" class="ui-textarea  address-textarea  J_special_tips_textarea"></textarea>
+					 </div>
+		  
+					  <div>默认地址
+					<input name="is_defalut" type="radio" value="1" />是
+					<input name="is_defalut" type="radio" value="0" />否
+					  <input type='submit' class="ui-btn-loading-befor" value="保存">
+					</div>
+			 </div>
+		   </form>
+		   </div>
+		   
+		   
+		   	<div class=''>
+		   <form class="" method="post" action="{:U('Shop/point')}">
+		    <input type="hidden" name="as" id="as">
+		        <div class="inline-block-item review-price-wrapper">
+                    <div class="review-price">
+                        <ul class="review-price-list">
+                            <li class="review-price-item J_sum_items" style='padding-top:10px'>
+                                <span class="m-price">
+                                    <span class="u-yen">¥</span><span class="u-price J_goods_amount">{$total}</span>
+                                </span>
+                                <h4 class="review-price-item-title">商品金额：</h4>
+                            </li>
+                            <li class="review-price-item J_sum_items" style='padding-top:20px'>
+                                <span class="m-price">
+                                    <span class="u-yen">¥</span><span class="u-price J_shipping_amount">0</span>
+                                </span>
+                                <h4 class="review-price-item-title">运费：</h4>
+                            </li>
+                            
+                        </ul>
+                        <div class="review-total-price J_sum_items" style='padding-top:10px'>
+                            <strong class="m-price">
+                                <span class="u-yen">¥</span><span class="u-price J_pay_amount">{$total}</span>
+                            </strong>
+                            <h4 class="review-total-price-title">待支付：</h4>
+                        </div>
+                            <div class="review-price-actions J_can_not_order_tips z-review-price-actions-show-tips" id="J_can_not_order_tips">
+                             <input type='submit' class="ui-btn-loading-before" value="提交订单">
+                                    <span class="ui-btn-loading-after"><i class="ii-loading-gray-32x32"></i></span>
+                                </div>
+						
+                    </div>
+                </div>
+		       </form>
+
+	          </div> 
+	 
+	       </div>
+		</div>
+    
+	
+
+<script>
+
+$(function() {
+	$('#as').val($('input[name="is_defalut1"]:checked').val());
+	$('input[name="is_defalut1"]').click(function(){
+		$('#as').val($('input[name="is_defalut1"]:checked').val());
+	});
+});
+
+$("#area_info").sy_region();
+
+</script>
+              
+                 
+</block>

@@ -1,0 +1,59 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<div class="wrapper mt10 curr-nav">
+     <a href="{:C('WEB_PATH')}">首页</a> &gt; <a href="{:U('Member/index')}">用户中心</a> &gt; 内容列表
+</div>
+<div class="wrapper member-center mt10 mb10">
+<include file="Public/memberleft"/>
+</block>
+<block name="body">
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".registerform").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:20
+			}
+		}		
+	});
+})
+</script>
+<div class="right-layout fr">
+	<div class="tabmenu">
+		<ul class="tab">
+			<li class="active"><a href='{:U("Member/articlelist/id/$catid")}'>内容列表</a></li>
+			<li class="normal"><a href='{:U("Member/articleadd/id/$catid")}'>发布内容</a></li>
+		</ul>
+	</div>
+	<table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th width="500">名称</th>
+					<th width="100">发布时间</th>
+					<th class="">操作</th>
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+                <volist name="list" id="data">
+                    <tr>
+                        <td>{$data.title}</td>
+                        <td>{$data.updatetime|date="y-m-d",###}</td>
+					<td><a href='{:U("Member/articleedit/id/$data[id]")}'>编辑</a>
+					</td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+	
+</div>
+
+<div class="cb"></div>
+</div>
+
+</block>

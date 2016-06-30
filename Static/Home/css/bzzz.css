@@ -1,0 +1,247 @@
+@charset "utf-8";
+/* CSS Document */
+body{ background:url(/templates/lifeweek/images/top_bg.png) repeat-x scroll 0 0;}
+
+.container{ width:1200px; margin:0 auto;}
+/*search*/
+.magazine_search{ height:102px; margin-bottom:20px;}
+.yearsline{ height:44px; overflow:hidden; background:url(/templates/lifeweek/images/year_s_bg.png) repeat-x scroll 0 0; margin-bottom:1px; border: 1px solid #ededed;}
+.yearsline a{ float:left; width:51px; border-left: 1px solid #fefefe; border-right: 1px solid #ededed; display:block; height:44px; line-height:44px; text-align:center;}
+.yearsline a:hover{ background-color:#fff; color:#F00;}
+.yearsline a.y1997{ border-right:0; width:45px;}
+.yearsline a.cur{ background-color:#fff; color:#F00;}
+.yearsline span{ width:166px; border-right: 1px solid #ededed; float:left;  display:block; height:44px; line-height:44px; padding-left:30px;}
+
+.keyswordline{ height:56px; background-color:#ededed;}
+.year_cur{ width:168px; float:left; padding-left:30px; font-size:18px; padding-top:20px;}
+.kw_s{ width:380px; float:left; padding:15px 0 0 30px;}
+.date_s{ width:370px; float:left; padding-top:15px;}
+.text_200{ width:190px; height:25px; border: 1px solid #c0c0c0; background:#fff; line-height:25px; vertical-align:1px; vertical-align:-1px\0; text-indent:2px; color:#8d8d8d; *vertical-align:-6px; margin-left:3px;}
+.text_70{  width:70px; height:25px; border: 1px solid #c0c0c0; background:#fff; line-height:25px; vertical-align:1px; vertical-align:-1px\0; text-indent:2px; color:#8d8d8d; *vertical-align:-6px; margin-left:3px;}
+.btn{ height:27px; border:0; line-height:27px; text-align:center; cursor:pointer; *vertical-align:-6px;}
+.btn_56{ width:56px; background:url(/templates/lifeweek/images/btn_56.png) no-repeat scroll 0 0;}
+.btn_60{ width:60px; background:url(/templates/lifeweek/images/btn_60.png) no-repeat scroll 0 0; }
+
+/*magazines*/
+.magalist{}
+.item{ margin-bottom:12px; padding-bottom:8px; background:url(/templates/lifeweek/images/maga_listbg.png) no-repeat scroll center bottom; clear:both;}
+.months{ height:30px; overflow:hidden; background:url(/templates/lifeweek/images/month_bg.png) repeat-x scroll 0 0;}
+.months .inL{ height:30px; background:url(/templates/lifeweek/images/month_leftbg.png) no-repeat scroll left 0;}
+.months .inL .inR{ height:30px; background:url(/templates/lifeweek/images/month_rightbg_right.png) no-repeat scroll right 0;}
+.months .inL .inR span{ height:30px; display:inline-block; overflow:hidden; line-height:30px; background:url(/templates/lifeweek/images/month_rightbg.png) no-repeat scroll right 0;font-size:22px; padding-bottom:10px; }
+.item h2{ border-left:4px solid #FF9933; font-size:22px;line-height:30px;margin-bottom:10px;}
+ul.mlist{ overflow:hidden; border:1px solid #d8d8d8; clear:both; background-color:#f9f9f6; padding:10px 0 15px 30px; *padding:10px 0 30px 30px; _padding:10px 0 15px 30px;}
+ul.mlist li{ width:184px; float:left; background-color:#fff; border: 1px solid #e5e5e5; padding:9px; margin:0 29px 20px 0;}
+ul.mlist li img{ width:184px; height:242px; margin-bottom:6px;}
+ul.mlist li p{ padding-bottom:6px; text-align:center;}
+a.redbtn{ width:58px; height:22px; display:inline-block; background:url(/templates/lifeweek/images/redbtn.png) no-repeat scroll 0 0; color:#FFF; text-align:center; line-height:22px; margin-right:3px;}
+a.redbtn:hover{ color:#fff; background:url(/templates/lifeweek/images/redbtn.png) no-repeat scroll 0 -22px;}
+a.graybtn{ width:58px; height:22px; display:inline-block; background:url(/templates/lifeweek/images/graybtn.png) no-repeat scroll 0 0; color:#000; text-align:center; line-height:22px; margin-right:3px;}
+a.graybtn:hover{ color:#000; background:url(/templates/lifeweek/images/graybtn.png) no-repeat scroll 0 -22px;}
+
+/*aboutarticle*/
+.aboutarticle{ margin-top:20px;}
+.aboutarticle h5{ font-size:12px; background:#f9f9f6; border: 1px solid #d8d8d8; height:28px; padding-left:30px; margin-bottom:10px; line-height:28px;}
+ul.atlist li{ background:url(/templates/lifeweek/images/arrow_ico.gif) no-repeat scroll 0 7px; padding-left:20px; height:30px; width:460px; overflow:hidden; float:left; margin-bottom:6px; border-bottom:1px solid #d8d8d8; line-height:30px; margin-right:30px;}
+
+/*magazine-detail*/
+.site{ width:988px; margin:0 auto; margin-bottom:20px; height:28px; border:1px dotted #ccc; line-height:28px; text-indent:4px;}
+.leftcover{ width:380px;}
+.rightcontent{ width:590px;}
+.coverline{ padding:14px; border: 1px solid #dfdfdf;}
+.coverline p img{ height:460px; width:350px;}
+ul.fuction{ height:25px; overflow:hidden; padding-top:10px; clear:both;}
+ul.fuction li.w_200{ width:190px; float:left;}
+ul.fuction li.w_160{ width:160px; float:right; text-align:right; padding-top:2px;_ padding-top:3px;}
+ul.fuction li.w_160 img{ vertical-align:-3px;}
+ul.fuction li.w_160 a{ margin-left:10px;}
+.bgline{ height:15px; overflow:hidden; background:url(/templates/lifeweek/images/coverpic_bg.png) no-repeat scroll 0 0;}
+
+.sns{ margin-top:5px; background-color:#f9f9f6;}
+.sns h3{ font-size:12px; height:30px; line-height:30px; background-color:#ebebeb; padding-left:25px;}
+.sns h3 a.left120{ width:120px; float:left;}
+.sns h3 a.left120:hover{ color:#000;}
+.sns h3 a.right60{ width:60px; font-weight:normal; float:right; padding-right:5px;}
+ul.userlist{ height:; overflow:hidden; padding-top:20px;}
+ul.userlist li{ padding:0 15px 15px 25px; clear:both; height:; overflow:hidden; background:url(/templates/lifeweek/images/dot_3.png) repeat-x scroll 0 bottom; margin-bottom:10px;}
+.lf_user{ width:40px; padding-top:4px; float:left;}
+.lf_user img{ width:40px; height:40px;}
+.rt_word{ width:280px; float:right; color:#8d8d8d;}
+
+.ad3{ margin-top:20px; height:150px; background-color:#ccc;}
+.newbook{ margin-top:20px; background-color:#f9f9f6;}
+.newbook h3{ font-size:12px; height:30px; line-height:30px; background-color:#ebebeb; padding-left:25px;}
+.newbook h3 a.left120{ width:120px; float:left;}
+.newbook h3 a.left120:hover{ color:#000;}
+.newbook h3 a.right60{ width:60px; font-weight:normal; float:right; padding-right:5px;}
+ul.booklist{ height:; overflow:hidden; padding-top:20px;}
+ul.booklist li{ padding:0 15px 15px 25px; clear:both; height:; overflow:hidden; background:url(/templates/lifeweek/images/dot_3.png) repeat-x scroll 0 bottom; margin-bottom:10px;}
+.lf_book{ width:100px; padding-top:4px; float:left;}
+.lf_book img{ width:100px;}
+.rt_buy{ width:220px; float:right;}
+.rt_buy p.syn{ color:#8d8d8d; padding:10px 0;}
+
+.issn{ height:40px; background-color:#f9f9f6; border:1px solid #dfdfdf; padding-left:30px; line-height:40px; font-weight:bold; margin-bottom:20px;}
+.directory{ background-color:#f9f9f6; border: 1px solid #dfdfdf;}
+.class_cover{ margin:1px; padding:20px 0 20px 30px; background:url(/templates/lifeweek/images/classcoverbg.png) repeat-x scroll 0 0;}
+.class_cover h1{ font-size:18px; font-family:"微软雅黑"; font-weight:normal; padding-right:20px;}
+.class_cover p{ color:#8d8d8d; padding:10px 20px 0 0;}
+ul.coverlist{ height:; overflow:hidden; margin-top:5px;}
+ul.coverlist li{ width:248px; _width:235px; float:left; background: url(/templates/lifeweek/images/dot.png) no-repeat scroll 0 7px; padding-left:10px; margin-right:20px;}
+.class{}
+.class h2{ background:#fff url(/templates/lifeweek/images/dot_10.png) no-repeat scroll 30px 10px; border:1px solid #dfdfdf; border-left:0; border-right:0; height:30px; line-height:32px; overflow:hidden; font-size:12px; }
+.class h2 span{ float:left; padding-left:45px; }
+.class h2 a{ float:right; padding-right:20px; font-weight:normal;}
+ul.classlist{ padding:20px 20px 20px 30px;}
+ul.classlist li{ background: url(/templates/lifeweek/images/dot.png) no-repeat scroll 0 7px; padding-left:10px;}
+
+ul.otherdirect{ background:#fff; padding:20px 20px 10px 30px; border-top: 1px solid #dfdfdf;}
+ul.otherdirect li{ width:120px; float:left; height:30px; overflow:hidden;}
+
+.bgline_rt{ height:9px; overflow:hidden; background:url(/templates/lifeweek/images/bgline_rt.png) no-repeat scroll 0 0;}
+
+
+
+
+@charset "utf-8";
+/* CSS Document */
+html,body,div,p,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,input,select,button,textarea,iframe,table,th,td{ margin: 0; padding: 0; }
+img { border: 0 none; vertical-align: top;}
+ul, li{ list-style-type: none;}
+h1, h2, h3, h4, h5, h6 { font-size: 14px; font-weight:normal;}
+body, input, select, button, textarea{ font-size:12px; font-family: "Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";}
+button{ cursor:pointer;}
+i, em, cite{ font-style: normal;}
+em{font-style:italic; font-size:12px;}
+body {color: #000; line-height: 1.2;}
+ 
+.fixed:after{ content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+.fixed{ display: block; min-height: 1%; }
+*html .fixed { height: 1%; }
+.clear{ diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0; }
+.more{ float: right; }
+.more a { font-weight: normal; font-size: 12px; }
+.fl, .fr{ display: inline; float: left; }
+.fr{ float: right; }
+
+
+/*头部*/
+.topbox{ background:url(../images/default_2012/top_bg.png) repeat-x scroll 0 0; height:235px;}
+.font14{ font-size:14px;}
+.font18{ font-size:18px;}
+.font16{ font-size:16px;}
+.font12{ font-size:12px;}
+.hd_1, .hd_2, .hd_3, .hd_4, ul.link, .copyright{ width:990px; margin:0 auto; overflow:hidden;}
+
+/**/
+.hd_1{ height:30px; line-height:28px; font-size:12px;}
+
+.welcome{ width:724px;}
+.collect{ width:142px;}
+.weibo{ width:124px;}
+a.r_15{ margin: 0 0 0 15px;}
+a.r_10{ margin: 0 0 0 6px;}
+
+a.lifeweeker, a.sina, a.qq, a.rs, a.lifeweeker_c, a.sina_c, a.qq_c, a.rs_c{ width:30px; height:29px; overflow:hidden; margin: 0 0 0 1px; float:left;}
+a.lifeweeker{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -123px;}
+a.lifeweeker:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -153px;}
+
+a.sina{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll -31px -123px;}
+a.sina:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll -31px -153px;}
+
+a.qq{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll -62px -123px;}
+a.qq:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll -62px -153px;}
+
+a.rs{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll -93px -123px;}
+a.rs:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll -93px -153px;}
+
+a.lifeweeker_c{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -153px;}
+a.lifeweeker_c:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -123px;}
+
+a.sina_c{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll -31px -153px;}
+a.sina_c:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll -31px -123px;}
+
+a.qq_c{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll -62px -153px;}
+a.qq_c:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll -62px -123px;}
+
+a.rs_c{ background:url(../images/default_2012/bgphoto.png) no-repeat scroll -93px -153px;}
+a.rs_c:hover{background:url(../images/default_2012/bgphoto.png) no-repeat scroll -93px -123px;}
+
+/**/
+.hd_2{ height:119px; background:url(../images/default_2012/g_bg.png) no-repeat scroll 530px 1px;}
+
+.logo{ width:670px; height:53px; background: url(../images/default_2012/bgphoto.png) no-repeat scroll 188px -61px; margin:32px 0 0 0;}
+a.logobox{ width:188px; height:52px; float:left; overflow:hidden;}
+.search319{ width:319px; margin:40px 0 0 0;}
+/*.text276{ width:270px; height:26px; border: 2px solid #434343; padding:3px; color:#a3a3a3;}
+.btn39{ width:39px; height:36px; background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -191px; cursor:pointer; border:0;text-indent:-9999px; padding-top:2px;_padding-top:2px;*padding_top:0;}*/
+
+.text276{ width:270px; height:26px; border: 2px solid #434343; padding:3px; color:#a3a3a3; line-height:26px\9; overflow:hidden;}
+.btn39{ width:39px; height:36px; background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -191px; cursor:pointer; border:0; vertical-align:-1px;vertical-align:1px\9;*vertical-align:0;text-indent:-9999px;}
+@media screen and (-webkit-min-device-pixel-ratio:0){ .btn39 { vertical-align:1px;} }
+/**/
+ul.hd_3{ font-size:16px; color:#fff;}
+ul.hd_3 li{ width:; float:left; line-height:49px; height:47px; overflow:hidden; background:url(../images/default_2012/menu_line.png) repeat-y scroll right 0;}
+ul.hd_3 li a{ color:#fff; padding:0 15px; height:47px; display:block; float:left; font-size:16px;}
+ul.hd_3 li a:hover, ul.hd_3 li a.cur{ background-color:#e60012;}
+ul.hd_3 li a.moreimg{ background: url(../images/default_2012/down.png) no-repeat scroll 52px 0px; padding:0 30px 0 15px;}
+ul.hd_3 li a.moreimg:hover{ background:#e60012 url(../images/default_2012/down.png) no-repeat scroll 52px -47px;}
+
+/**/
+ul.hd_4{}
+ul.hd_4 li{ float:left; padding:0 6px; line-height:39px;}
+
+/*Link*/
+a{ text-decoration:none; color:#000;}
+a:link    { text-decoration:none;color:#000;}
+a:visited { text-decoration:none;}
+a:hover   { text-decoration:none;color:#e13b40;}
+a:active  { text-decoration:none;}
+a{outline:none;}/* only Firefox */
+a{blr:expression(this.onFocus=this.blur());}/* onlyIE+ */
+
+a.red{ color:#e13b40;}
+a.red:hover{ color:#f14f4f;}
+
+a.gray{ color:#8d8d8d;}
+a.gray:hover{ color:#f14f4f;}
+
+a.black{ color:#000;}
+a.black:hover{ color:#8d8d8d;}
+
+a.hui{ color:#8d8d8d;}
+
+a.white{ color:#fff;}
+a.white:hover{ color:#e13b40;}
+
+/**/
+.rss268{ height:366px; overflow:hidden; margin:20px 0 0 0; background:url(../images/depth/rssbg.png) no-repeat scroll 0 0; color:#fff;}
+.pd62{ padding:62px 0 20px 20px; height:160px; line-height:21px;}
+.maga100{ width:102px; margin-right:20px;}
+.maga100 img{ width:100px; }
+.maga100 a{ border: 1px solid #e13b40; height:132px; display:block; float:left;}
+.maga100 a:hover{ border: 1px solid #fff;}
+
+a.rssbutton{ width:104px; height:27px; margin:10px 0 0 0; display:block; overflow:hidden; background:url(../images/depth/depthbg.png) no-repeat scroll -488px -113px; color:#505050; font-weight:bold; line-height:29px; text-align:center;}
+a.rssbutton:hover{ background:url(../images/depth/depthbg.png) no-repeat scroll -488px -177px; color:#fff;}
+
+ul.magazine{ padding:0 0 0 20px; clear:both;}
+ul.magazine li{ width:61px; margin-right:20px; float:left; color:#505050; text-align:center;}
+ul.magazine li img{ width:59px; margin-bottom:6px;}
+ul.magazine li a{ width:59px; height:78px; display:block; float:left; border: 1px solid #e2e2e2;}
+ul.magazine li a:hover{border: 1px solid #fff;}
+
+/*footer*/
+.hd_6{ margin:30px 0 0 0;}
+.flink{ background-color:#f2f2f2; padding:20px 0;}
+ul.link h3{ padding:0 0 10px 0;}
+ul.link li{ width:120px; float:left; line-height:22px;}
+
+.foot{ background-color:#434343; color:#fff; clear:both;}
+.copyright{background:url(../images/default_2012/bgphoto.png) no-repeat scroll 0 -243px; height:110px;}
+ul.crinfo{ width:680px; padding: 0 0 0 186px; margin:25px 0 0 0; }
+ul.crinfo li{ float:left; margin:0 15px 0 0;}
+ul.crinfo li a{ color:#fff; font-size:14px; float:left; white-space: nowrap;}
+ul.crinfo li.icp{ clear:both; width:680px; font-size:12px; color:#999898; margin:15px 0 0 0; float:left; }
+
+.mg25{ margin:30px 0 0 0;}

@@ -1,0 +1,142 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<div class="wrapper mt10 curr-nav">
+    <i class="iconfont">&#xe849;</i> <a href="{:C('WEB_PATH')}">首页</a> &gt; <a href="{:U('Member/index')}">用户中心</a> &gt; 个人资料
+</div>
+<div class="wrapper member-center mt10 mb10">
+<include file="Public/memberleft"/>
+</block>
+<block name="body">
+<script type="text/javascript">
+$(function(){		
+	var demo=$(".registerform").Validform({
+		tiptype:2	
+	});
+})
+</script>
+<div class="right-layout fr">
+	<div class="tabmenu">
+		<ul class="tab">
+			<li class="active"><a href="{:U('Member/modify')}">个人资料</a></li>
+			<li class="normal"><a href="{:U('Member/profile')}">修改密码</a></li>
+			<li class="normal"><a href="{:U('Member/userphoto')}">修改头像</a></li>
+		</ul>
+	</div>
+	<form class="registerform" method="post" action="">
+	<table class="lcm-default-table">
+		<tbody>
+			<tr>
+				<td align="right"><label>邮箱：</label></td>
+				<td class="tl"><input name="email" value="{$userinfo.email}"  type="text" class="text-max"></td>
+				<td class="tl"></td>
+			</tr>
+			<tr>
+				<td align="right"><label>手机：</label></td>
+				<td class="tl"><input name="mobile" value="{$userinfo.mobile}"  type="text" class="text-max"></td>
+				<td class="tl"></td>
+			</tr>
+			<tr>
+				<td align="right"><label>职位：</label></td>
+				<td class="tl"><input name="zhiwei" value="{$userinfo.zhiwei}"  type="text" class="text-max"></td>
+				<td class="tl"></td>
+			</tr>
+			<tr>
+				<td align="right"><label>工作电话：</label></td>
+				<td class="tl"><input name="dianhua" value="{$userinfo.dianhua}"  type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td><!-- datatype="/^\d{3,4}-?\d{7,9}$/" errormsg="工作电话格式不正确" -->
+			</tr>
+
+			<tr>
+				<td align="right"><label>微信：</label></td>
+				<td class="tl"><input name="weixin" value="{$userinfo.weixin}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>微博：</label></td>
+				<td class="tl"><input name="weibo" value="{$userinfo.weibo}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>QQ：</label></td>
+				<td class="tl"><input name="qq" value="{$userinfo.qq}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>爱好：</label></td>
+				<td class="tl"><input name="aihao" value="{$userinfo.aihao}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>公司名称：</label></td>
+				<td class="tl"><input name="gsmc" value="{$userinfo.gsmc}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>公司地址：</label></td>
+				<td class="tl"><input name="gsdz" value="{$userinfo.gsdz}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>所属行业：</label></td>
+				<td class="tl"><input name="sshy" value="{$userinfo.sshy}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>关键字：</label></td>
+				<td class="tl"><input name="gjz" value="{$userinfo.gjz}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>公司规模</label></td>
+				<td class="tl"><input name="gsgm" value="{$userinfo.gsgm}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>公司性质：</label></td>
+				<td class="tl"><input name="gsxz" value="{$userinfo.gsxz}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>法人姓名：</label></td>
+				<td class="tl"><input name="frxm" value="{$userinfo.frxm}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>法人身份证号：</label></td>
+				<td class="tl"><input name="frsfzh" value="{$userinfo.frsfzh}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>营业执照号：</label></td>
+				<td class="tl"><input name="yyzzh" value="{$userinfo.yyzzh}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>国税登记号：</label></td>
+				<td class="tl"><input name="gsdjh" value="{$userinfo.gsdjh}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>ICP备案许可证：</label></td>
+				<td class="tl"><input name="icp" value="{$userinfo.icp}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td align="right"><label>经营范围：</label></td>
+				<td class="tl"><input name="jyfw" value="{$userinfo.jyfw}" type="text" class="text-max"></td>
+				<td class="tl"><div class="Validform_checktip"></div></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td><input id="btnSubmitSave" type="submit" class="bluebut" value="保存" ></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+
+<div class="cb"></div>
+</div>
+
+</block>

@@ -1,0 +1,129 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>会员模型管理</h3>
+        <h5>会员模型添加修改等操作</h5>
+      </div>
+    </div>
+  </div>
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span>
+    </div>
+    <ul>
+      <li><a>管理会员模型</a></li>
+    </ul>
+  </div>
+  <form method='post'>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="150" class="handle" align="center">操作</th>
+		  <th width="200" align="center">名称</th>
+		  <th width="80" align="center">邮箱认证</th>
+		  <th width="80" align="center">手机认证</th>
+		  <th width="80" align="center">人工认证</th>
+		  <th width="80" align="center">是否启用</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="list" id="vo">
+         <tr data-id="{$vo.id}">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td class="handle">
+			  <a onclick="fg_del({$vo.id})" href="javascript:void(0);" class="btn red"><i class="fa fa-trash-o"></i>删除</a>
+			  <span class="btn"><em><i class="fa fa-cog"></i>设置<i class="arrow"></i></em>
+				<ul>
+				  <li><a href='{:U("MemberModule/edit/id/$vo[id]")}'>编辑会员模型</a></li>
+				  <li><a href='{:U("MemberModule/lists/id/$vo[id]")}'>栏目权限设置</a></li>
+				  <li><a href='{:U("MemberField/lists/id/$vo[id]")}'>扩展字段管理</a></li>
+				</ul>
+			  </span>
+          </td>
+		  <td><span title="可编辑" column_id="{$vo.id}" fieldname="name" nc_type="inline_edit" class="editable ">{$vo.name}</span></td>
+		  <td>
+			<div style="text-align: center; width: 100px;">
+			<span <if condition="$vo.email_auth == 1 ">class="on"<else/>class="off"</if>><i <if condition="$vo.email_auth == 1 ">class="fa fa-toggle-on"<else/>class="fa fa-toggle-off"</if>></i>{$vo.email_auth_text}</span>
+			</div>
+		  </td>
+		  <td>
+			<div style="text-align: center; width: 100px;">
+			<span <if condition="$vo.mobile_auth == 1 ">class="on"<else/>class="off"</if>><i <if condition="$vo.mobile_auth == 1 ">class="fa fa-toggle-on"<else/>class="fa fa-toggle-off"</if>></i>{$vo.mobile_auth_text}</span>
+			</div>
+		  </td>
+		  <td>
+			<div style="text-align: center; width: 100px;">
+			<span <if condition="$vo.user_auth == 1 ">class="on"<else/>class="off"</if>><i <if condition="$vo.user_auth == 1 ">class="fa fa-toggle-on"<else/>class="fa fa-toggle-off"</if>></i>{$vo.user_auth_text}</span>
+			</div>
+		  </td>
+		  <td>
+			<div style="text-align: center; width: 100px;">
+			<span <if condition="$vo.status == 1 ">class="on"<else/>class="off"</if>><i <if condition="$vo.status == 1 ">class="fa fa-toggle-on"<else/>class="fa fa-toggle-off"</if>></i>{$vo.status_text}</span>
+			</div>
+		  </td>
+          <td></td>
+         </tr>
+	  </volist>
+      </tbody>
+    </table>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+    $('.flex-table').flexigrid({
+        height:'auto',// 高度自动
+        usepager: false,// 不翻页
+        striped:false,// 不使用斑马线
+        resizable: false,// 不调节大小
+        title: '会员模型',// 表格标题
+        reload: false,// 不使用刷新
+        columnControl: false,// 不使用列控制
+        buttons : [
+                   {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add', onpress : fg_operation },
+                   {display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation }
+               ]
+    });
+
+    $('span[nc_type="inline_edit"]').inline_edit({a: 'MemberModule',c: 'ajax'});
+});
+
+function fg_operation(name, bDiv) {
+    if (name == 'add') {
+        window.location.href = '{:U("MemberModule/add")}';
+    } else if (name == 'del') {
+        if ($('.trSelected', bDiv).length == 0) {
+            showError('请选择要操作的数据项！');
+        }
+        var itemids = new Array();
+        $('.trSelected', bDiv).each(function(i){
+            itemids[i] = $(this).attr('data-id');
+        });
+        fg_del(itemids);
+    }
+}
+function fg_del(ids) {
+    if (typeof ids == 'number') {
+        var ids = new Array(ids.toString());
+    };
+    id = ids.join(',');
+    if(confirm('删除后将不能恢复，确认删除这项吗？')){
+        $.getJSON('{:U("MemberModule/del")}', {id:id}, function(data){
+            if (data.state) {
+                location.reload();
+            } else {
+                showError(data.msg)
+            }
+        });
+    }
+}
+</script>
+</block>

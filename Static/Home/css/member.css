@@ -1,0 +1,190 @@
+/* 常用标准按钮样式定义
+-------------------------------------------*/
+a.btn-mini,
+a.btn { font: normal 12px/20px "microsoft yahei", arial; color: #FFF; background-color: #CCD0D9; text-align: center; vertical-align: middle; display: inline-block; *display: inline; height: 20px; padding: 5px 10px; border-radius: 3px; cursor: pointer; *zoom: 1;}
+a.btn-mini { line-height: 16px; height: 16px; padding: 3px 7px; border-radius: 2px;}
+a.btn { height: 20px; padding: 5px 10px; border-radius: 3px; }
+a:hover.btn-mini,
+a:hover.btn { text-decoration: none; color: #FFF; background-color: #AAB2BD;}
+a.btn-mini i, 
+a.btn i { font-size: 14px !important; vertical-align: middle; margin: 0 4px 0 0 !important;}
+/*葡萄柚红*/
+a.btn-grapefruit { background-color: #ED5564;}
+a:hover.btn-grapefruit,
+a:hover.btn-grapefruit { background-color: #DB4453;}
+
+
+/* 内容部分通用表格样式 */
+.lcm-default-table { line-height:20px; width: 100%; border-collapse: collapse; clear: both;}
+.lcm-default-table thead th { color: #999; background-color: #FFF; text-align:center; height: 20px; padding: 8px 0; border-bottom: solid 1px #E7E7E7; }
+.lcm-default-table thead td, 
+.lcm-default-table tfoot th { background-color: #FFF; height: 20px; padding: 5px 0; border-bottom: solid 1px #E7E7E7;}
+.lcm-default-table tfoot th { border-top: solid 1px #E6E6E6;}
+.lcm-default-table thead td .checkall,
+.lcm-default-table tfoot th .checkall { vertical-align: middle; display: inline-block; *display: inline/*IE7*/; margin: 0 4px 0 8px; *zoom: 1;}
+.lcm-default-table thead td label, 
+.lcm-default-table tfoot th label { color: #777; vertical-align: middle; display: inline-block; *display: inline/*IE7*/; margin-right: 10px; cursor: pointer; *zoom:1;}
+.lcm-default-table tbody th { background-color: #FAFAFA; border: solid #E6E6E6; border-width: 1px 0; padding: 4px 0;}
+.lcm-default-table tbody th span { display: inline-block; vertical-align: middle; margin-right: 30px;}
+.lcm-default-table tbody th span.goods-name { text-overflow: ellipsis; white-space: nowrap; width: 240px; height: 20px; overflow: hidden;}
+.lcm-default-table tbody th a.share-goods { float: right; margin-right: 10px; color: #999;}
+.lcm-default-table tbody th a:hover.share-goods { color: #333; text-decoration: none;}
+.lcm-default-table tbody th a.share-goods i { vertical-align: middle;}
+.lcm-default-table tbody th a.order-trash { float: right; margin-right: 10px; color: #999; padding-right: 10px; border-right: solid 1px #DDD; margin-right: 10px;}
+.lcm-default-table tbody th a:hover.order-trash { color: #F33; text-decoration: none;}
+.lcm-default-table tbody th a.order-trash i { font-size: 14px; vertical-align: middle;}
+
+.lcm-default-table tbody td { color: #999; background-color: #FFF; text-align:left; padding: 10px 0 10px 2px;}
+.lcm-default-table tbody tr.bd-line td { border-bottom: solid 1px #E7E7E7;}
+.lcm-default-table tbody td strong { color: #666;}
+.lcm-default-table tfoot td { background-color: #FFF; text-align: center; padding: 10px 0;}
+.lcm-default-table td .pic-thumb { line-height: 0; background-color: #FFF; text-align: center; vertical-align: middle; display: table-cell; *display: block; width: 32px; height: 32px; padding: 2px; border: solid 1px #F5F5F5; overflow: hidden;}
+.lcm-default-table td .pic-thumb img { max-width: 32px; max-height: 32px; margin-top:expression(32-this.height/2); *margin-top:expression(16-this.height/2)/*IE6,7*/;}
+.lcm-default-table td .goods-name { border: none; overflow: hidden;}
+.lcm-default-table td .goods-name dt { font-size: 12px; line-height: 16px; color: #333; text-overflow: ellipsis; display: block; text-align: left; white-space: nowrap; max-width: 320px!important; height: 16px; padding-bottom: 4px; overflow: hidden;}
+.lcm-default-table td .goods-name dt span { line-height: 16px; color: #FFF; background-color: #DA542E; display: inline-block; *display: inline/*IE7*/; height: 16px; padding: 1px 3px; border-radius: 2px; margin-right: 4px; zoom: 1;}
+.lcm-default-table td .goods-name dd { line-height: 20px; display: block; height: 20px;}
+.lcm-default-table td span.sale-type { line-height: 16px; color:#FFF; background-color: #FD6760; height: 16px; padding: 2px 4px; border-radius: 2px;}
+.lcm-default-table td .goods-price { font-weight: 600; color: #666; padding-left: 10px;}
+/*  登录页面 */
+.header-bar {height: 75px;width:100%;padding-top:5px;border-bottom:1px solid #ddd;}
+.header-bar .wrapper{width:960px;}
+.header-bar .wrapper span{height:100%;line-height:100%;font-family: "微软雅黑",Arial;font-size:18px;}
+.login-cont{height:600px;width:100%;overflow: hidden;background:#3E9FE3;}
+.login-cont .login-catonBg{overflow: hidden;}
+.login-cont .hlLoginH {margin: 120px 680px;width: 360px;height: 394px;position: relative;background: rgba(255,255,255,.6);box-shadow: 0 0 16px -4px grey;}
+.login-cont .hlLoginH h2 {font-family: "微软雅黑",Arial;padding: 20px 30px 0;height: 36px;line-height: 36px;font-size: 24px;color: #333;}
+.login-cont .hlLoginH h2 a {float: right;display: inline;font-size: 14px;}
+.login-cont .hlLoginH form {padding: 10px 30px 0 30px;height: 270px;position: relative;}
+.login-cont .hlLoginH form .input{width:295px;height:33px;background-color:#fff;border:1px solid #ddd;margin-bottom:20px;}
+.login-cont .hlLoginH form .input input{width:285px;height:22px;margin:5px 0 0 0;padding:0;border:none;float:right;border-color: #FFF; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0);}
+.login-cont .hlLoginH form .w160{width:160px;}
+.login-cont .hlLoginH form .w160 input{width:150px;}
+.login-cont .hlLoginH form .input i{width:20px;height:17px;float:left;margin:8px 0 0 10px;}
+.login-cont .hlLoginH .agreeBox {height: 40px;line-height: 40px;color: #C40000;font-size: 12px;}
+.login-cont .hlLoginH .btn{height:30px;line-height:30px;width:280px;font-size:16px;}
+.login-cont .checkIconBox img{width:110px;height:35px;}
+/* 注册页面 */
+.register .wrapper{width:1000px;}
+.register .reg-step{width:960px;height: 30px;margin: 15px 10px;color: #999;background-color: #f3f3f3;}
+.register .reg-step li {text-align: center;width: 302px;float: left;line-height: 30px;font-size: 12px;text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);}
+.register .reg-step li.curr{color: #FFF;background-color: #C40000;font-weight: bold;}
+.register .reg-step li.arrow-1,.register .reg-step li.arrow-2,.register .reg-step li.arrow-3{width: 27px;height: 30px;overflow: hidden;display: block;}
+.register .reg-step li.arrow-1{background-position: -253px -231px;}
+.register .reg-step li.arrow-2{background-position: -253px -200px;}
+.register .reg-step li.arrow-3{background-position: -253px -261px;}
+.reg-form{width:594px;padding:30px 0 0;float:left;}
+.reg-form dl {width: 594px;padding: 16px 0 23px;float: left;}
+.reg-form dl dt {width: 130px;padding-right: 10px;text-align: right;height: 30px;line-height: 30px;float: left;font-size: 14px;font-family: "宋体";}
+.reg-form dl dd {float: left;position: relative;width: 454px;}
+.reg-form .txt, .reg-form .txt1, .reg-form .txt2 {width: 204px;height: 18px;padding: 5px 4px;line-height: 20px;vertical-align: middle;border: solid 1px #BDC7D8;font-size: 14px;color: #000;float: left;font-family: Microsoft Yahei;background: #fcfcfc;}
+.reg-form .txt2 {width: 118px;}
+.reg-form .txt1 {width: 127px;}
+.reg-form dl dd .tishi {position: absolute;top: 34px;left: 0;line-height: 16px;font-size: 12px;color: #aaa;font-family: 宋体;}
+.reg-form .phone_check {height: 32px;overflow: Hidden;padding: 0;color: #464646;margin-top: -10px;}
+.reg-form .dl2 {padding: 0;margin:20px 0 0 0;}
+.reg-form .zc_dl {padding: 20px 0 40px 0;}
+.ag {line-height: 20px;float: left;font-family: 宋体;cursor: pointer;}
+.ag a {color: #C40000;font-family: 宋体;font-size: 14px;}
+.reg-right {width: 278px;padding: 44px 0 0;margin: 0 44px;overflow: Hidden;float: left;}
+.reg-right .p1 {line-height: 26px;height: 26px;font-size: 16px;padding: 0 0 18px;border-bottom: solid 1px #e4e4e4;margin: 0 0 35px;padding-left: 12px;font-family: Microsoft YaHei;}
+.reg-right .blue-btn{height:30px;line-height:30px;font-size:16px;width:200px;}
+.reg-right .p2 {line-height: 26px;font-size: 14px;font-family: 宋体;padding: 20px 0 0;}
+.reg-right .p2 a {color: #04b2e5;font-family: 宋体;}
+.reg-right .tips {padding: 20px 0 0;}
+.reg-right .tips li {height: 26px;line-height: 22px;font-family: 宋体;font-size: 14px;color: #3c3c3c;display:block;padding-left: 22px;}
+.register .wait-list-tips {height:80px;line-height:40px;margin:20px 0;text-align:center;}
+.register .wait-list-tips h2{font-size:20px;font-family:微软雅黑;margin-top:40px;}
+.register .wait-list-tips h2 i{margin-right:10px;}
+.register .wait-list-tips p{font-size:12px;margin:20xp}
+.register .verifyimg{width:110px;height:35px;}
+
+
+.passwordStrength{
+position: absolute;top: 34px;left: 0;line-height: 16px;font-size: 12px;color: #aaa;font-family: 宋体;
+}
+.passwordStrength b{
+	font-weight:normal;
+}
+.passwordStrength b,.passwordStrength span{
+	display:inline-block; 
+	vertical-align:middle;
+	line-height:16px;
+	line-height:18px\9;
+	height:16px;
+}
+.passwordStrength span{
+	width:45px; 
+	text-align:center; 
+	background-color:#d0d0d0; 
+	border-right:1px solid #fff;
+}
+.passwordStrength .last{
+	border-right:none;
+}
+.passwordStrength .bgStrength{
+	color:#fff;
+	background-color:#71b83d;
+}
+.reg-form dl dd .Validform_wrong{color:#c40000;}
+.reg-form dl dd .Validform_right{color:#71b83d;}
+
+/* 用户中心 */
+/* 表单项属性
+------------------------------------------- */
+body{background:#fff;}
+input[type="text"], input[type="password"], input.text, input.password { font: 12px/20px Arial; color: #777; background-color: #FFF; vertical-align: top; display: inline-block; height: 20px; padding: 4px; border: solid 1px #CCC; outline: 0 none;}
+input[type="text"]:focus, input[type="password"]:focus, input.text:focus, input.password:focus, textarea:focus { color: #333; border-color: #75B9F0; box-shadow: 0 0 0 2px rgba(82, 168, 236, 0.15); outline: 0 none;}
+input[type="text"].error, input[type="password"].error, textarea.error { border-color: #ED6C4F; box-shadow: 0 0 0 2px rgba(232, 71, 35, 0.15); outline: 0 none;}
+textarea, .textarea { font: 12px/18px Arial; color: #777; background-color: #FFF; vertical-align: top; display: inline-block; height: 54px; padding: 4px; border: solid 1px #CCC; outline: 0 none;}
+select, .select { color: #777; background-color: #FFF; height: 30px; vertical-align: middle; *display: inline; padding: 4px; border: solid 1px #CCC; *zoom:1;}
+select option, .select option { line-height: 20px; display: block; height: 20px; padding: 4px;}
+.submit-border { display: inline-block; *display: inline/*IE6,7*/; border: solid 1px; border-color: #52A452 #52A452 #448944 #52A452; zoom:1;}
+input[type="submit"], input.submit, a.submit { font-size: 12px; font-weight: bold; color: #FFF; text-shadow: 0 -1px 0 rgba(0,0,0,0.1); background-color: #20A2E2; /*display: block;*/ height: 30px; padding: 0 20px 2px 20px; border: 0; cursor: pointer; }
+.submit-border:hover { borderd-color: #499249 #499249 #3D7A3D #499249;}
+input[type="submit"]:hover, input.submit:hover, a.submit:hover { text-decoration: none; color: #FFF; background-color: #1B95CF;}
+input[type="file"] { line-height:20px; background-color:#FBFBFB; height: 20px; border: solid 1px #D8D8D8; cursor: default;}
+.text-small{width:200px;}
+.text-big{width:300px;}
+.text-max{width:98.2%;}
+
+.tabmenu { background-color: #FFF; width:100%; height: 38px; display: block; position: relative; z-index: 1;}
+.tabmenu .tab { font-size: 0; *word-spacing:-1px/*IE6、7*/; background-color: #FFF; height: 36px; border-bottom: solid 1px #E7E7E7;}
+.tabmenu .tab li { vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display: inline/*IE7*/; *zoom: 1; margin-right: -1px;}
+.tabmenu .tab li a { font-family: "microsoft yahei"; font-size: 12px; line-height: 20px; color: #666; background-color: #F7F7F7; display: block; height: 20px; padding: 7px 19px 8px 19px; border-style: solid; border-color: #E7E7E7; border-width: 1px 1px 0 1px;}
+.tabmenu .tab li a:hover { text-decoration: none; color: #000; background-color: #E7E7E7; }
+.tabmenu .tab .active a,
+.tabmenu .tab .active a:hover { font-size: 14px; font-weight: 600; color: #FD730E; background-color: #FFF; padding: 7px 19px 9px 19px; cursor: default;}
+
+.tabmenu .text-intro { line-height: 20px; color: #999; position: absolute; z-index: 99; top: 5px; right: 5px;}
+.tabmenu a.ncm-btn { padding: 5px 13px; position: absolute; z-index: 1; top: -2px; right: 0px;}
+
+.curr-nav{height:28px;line-height:28px;color:#333;}
+.curr-nav .icon-nav-home{margin: 3px 3px 0 0;width: 14px;height: 10px;line-height: 10px;background-position: -40px -4px;}
+.member-center .left-layout {width: 280px;float: left;}
+.left-layout .lcm-l-top {background-color: #1B95CF;width: 100%;height: 40px;position: relative;z-index: 3;}
+.left-layout .lcm-l-top h2 a {font-size: 14px;font-weight: 600;color: #FFF;height: 20px;float: left;padding: 10px 0 10px 20px;}
+.lcm-user-info {background-color: #eee;padding: 15px 20px;overflow: hidden;}
+.lcm-user-info .avatar {width: 72px;height: 72px;float: left;position: relative;z-index: 1;}
+.lcm-user-info .avatar img {width: 72px;height: 72px;position: absolute;z-index: 1;border-radius: 72px;overflow: hidden;}
+.lcm-user-info .avatar .frame {background-position: -185px -320px;width: 72px;height: 72px;position: absolute;z-index: 2;top: 0;left: 0;}
+.lcm-user-info .handle {width: 80px;float: right;}
+.lcm-user-info .handle a {line-height: 24px;color: #333 !important; display: block;height: 24px;clear: both;}
+.lcm-user-info .handle a:hover {color: #333 !important;}
+.lcm-user-info .name {font: 600 14px/20px "microsoft yahei";color: #333 !important;padding-top: 8px;display: block;clear: both;}
+.lcm-user-info .name a:hover {color: #333 !important;}
+.lcm-sidebar {background-color: #FFF;margin-top: 6px;border: solid 1px #E7E7E7;}
+.lcm-sidebar li.side-menu {width: 100%;margin: 0;border-bottom: dotted 1px #E7E7E7;overflow: hidden;}
+.lcm-sidebar li.side-menu a {display: block;padding: 12px;cursor: pointer;background: #eee;}
+.lcm-sidebar li.side-menu a h3 {font-size: 14px;font-weight: 600;color: #757575;line-height: 20px;height: 20px;padding-left: 7px;display: block;}
+.lcm-sidebar li.side-menu a.shrink h3{color: #333;}
+.lcm-sidebar .side-menu ul {margin-bottom: 10px;}
+.lcm-sidebar .side-menu ul li {width: 100%;}
+.lcm-sidebar .side-menu ul li a {background: none;line-height: 20px;color: #777;width: auto;padding: 6px 0 6px 20px;margin: 0;}
+.lcm-sidebar .side-menu ul li a:hover{background: #FAFAFA;}
+.right-layout{width:910px;background:#fff;}
+.buydetail-goods-pic,.buydetail-goods-pic img{width:100px;height:100px;}
+.buydetail-goods-info{width:730px;height:100px;}
+.buydetail-goods-info li{line-height:30px;}
+.buydetail-goods-code span{margin:0 5px;display: inline-block;}
+/* 个人主页 */

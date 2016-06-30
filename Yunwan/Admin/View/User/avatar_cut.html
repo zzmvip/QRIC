@@ -1,0 +1,74 @@
+<form action="index.php?act=common&op=pic_cut" id="form_cut" method="post">
+  <input type="hidden" name="form_submit" value="ok" />
+  <input type="hidden" id="x" name="x" value="100" />
+  <input type="hidden" id="x1" name="x1" />
+  <input type="hidden" id="y1" name="y1" />
+  <input type="hidden" id="x2" name="x2" />
+  <input type="hidden" id="y2" name="y2" />
+  <input type="hidden" id="w" name="w" />
+  <input type="hidden" id="h" name="h" />
+  <input type="hidden" id="url" name="url" value="http://www.shopnctest.com/b2b2c/test/data/upload/admin/avatar/04835860455222398_small.png" />
+  <input type="hidden" id="filename" name="filename" value="" />
+  <div class="pic-cut-100admin_avatar">
+    <div class="work-title">工作区域</div>
+    <div class="work-layer">
+      <p><img id="nccropbox" src="http://www.shopnctest.com/b2b2c/test/data/upload/admin/avatar/04835860455222398_small.png"/></p>
+    </div>
+    <div class="thumb-title">裁切预览</div>
+    <div class="thumb-layer">
+      <p><img id="preview" src="http://www.shopnctest.com/b2b2c/test/data/upload/admin/avatar/04835860455222398_small.png"/></p>
+    </div>
+    <div class="cut-help">
+      <h4>操作帮助</h4>
+      <p>请在工作区域放大缩小及移动选取框，选择要裁剪的范围，裁切宽高比例固定；裁切后的效果为右侧预览图所显示；保存提交后生效。</p>
+    </div>
+    <div class="cut-btn"> <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="pic_submit"><i class="fa fa-scissors"></i>确认提交</span></a> </div>
+  </div>
+</form>
+<script type="text/javascript">
+function showPreview(coords)
+{
+	if (parseInt(coords.w) > 0){
+		var rx = 100 / coords.w;
+		var ry = 100 / coords.h;
+		$('#preview').css({
+			width: Math.round(rx * 383) + 'px',
+			height: Math.round(ry * 114) + 'px',
+			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+			marginTop: '-' + Math.round(ry * coords.y) + 'px'
+		});
+	}
+	$('#x1').val(coords.x);
+	$('#y1').val(coords.y);
+	$('#x2').val(coords.x2);
+	$('#y2').val(coords.y2);
+	$('#w').val(coords.w);
+	$('#h').val(coords.h);
+}
+function submitCoords(c){
+	$('#pic_submit').click();
+}
+$(function(){
+	$('.dialog_head').css('margin-top','0px');
+	$('.page').css('padding-top','0px');
+	$('.dialog_close_button').remove();
+    $('#nccropbox').Jcrop({
+      aspectRatio: 1,
+      setSelect: [ 0, 0, 100, 100 ],
+      minSize:[50, 50],
+      allowSelect:0,
+      allowResize:1,
+		onChange: showPreview,
+		onSelect: showPreview,
+      onDblClick:submitCoords
+    });
+
+    $('#pic_submit').click(function(){
+		var d=$('#form_cut').serialize();
+		$.post('http://www.shopnctest.com/b2b2c/test/admin_2015/index.php?act=common&op=pic_cut',d,function(data){
+			call_back(data);
+			DialogManager.close('cutpic');
+		});
+	});
+});
+</script>

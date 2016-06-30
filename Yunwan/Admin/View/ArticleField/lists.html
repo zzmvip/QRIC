@@ -1,0 +1,124 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>内容公共字段管理</h3>
+        <h5>此处新增的是内容的公共字段，如需指定栏目添加字段，请至栏目管理，对应栏目，添加扩展字段</h5>
+      </div>
+    </div>
+  </div>
+  <div class="explanation" id="explanation">
+    <div class="title" id="checkZoom"><i class="fa fa-lightbulb-o"></i>
+      <h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+      <span id="explanationZoom" title="收起提示"></span>
+    </div>
+    <ul>
+      <li><a>管理内容公共字段</a></li>
+    </ul>
+  </div>
+  <form method='post'>
+    <table class="flex-table">
+      <thead>
+        <tr>
+          <th width="24" align="center" class="sign"><i class="ico-check"></i></th>
+          <th width="150" class="handle" align="center">操作</th>
+          <th width="60" align="center">排序</th>
+		  <th width="100" align="center">字段名</th>
+          <th width="150" align="left">别名</th>
+		  <th width="80" align="left">字段类型</th>
+          <th width="40" align="left">必填</th>
+          <th width="80" align="center">是否启用</th>
+          <th width="80" align="center">单页支持</th>
+          <th width="80" align="center">投稿</th>
+          <th width="80" align="center">类型</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	  <volist name="list" id="vo">
+         <tr data-id="{$vo.id}">
+          <td class="sign"><i class="ico-check"></i></td>
+          <td class="handle">
+		  <if condition="$vo.type == '1' ">
+		  <a href='{:U("ArticleField/edit/id/$vo[id]")}' class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+		  <else/>
+			  <a onclick="fg_del({$vo.id})" href="javascript:void(0);" class="btn red"><i class="fa fa-trash-o"></i>删除</a>
+			  <a href='{:U("ArticleField/edit/id/$vo[id]")}' class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+		  </if>
+          </td>
+          <td class="sort"><span title="可编辑" column_id="{$vo.id}" fieldname="sort" nc_type="inline_edit" class="editable ">{$vo.sort}</span></td>
+          <td>{$vo.field}</td>
+          <td class="class"><span title="可编辑"  column_id="{$vo.id}" fieldname="name" nc_type="inline_edit" class="editable ">{$vo.name}</span></td>
+          <td class="class">{$vo.formtype_text}</td>
+          <td>
+		    <span <if condition="$vo.must == 1 ">class="yes"<else/>class="no"</if>><i <if condition="$vo.must == 1 ">class="fa fa-check-circle"<else/>class="fa fa-ban"</if>></i>{$vo.must_text}</span>
+		  </td>
+          <td>
+			<span <if condition="$vo.hide == 1 ">class="yes"<else/>class="no"</if>><i <if condition="$vo.hide == 1 ">class="fa fa-check-circle"<else/>class="fa fa-ban"</if>></i>{$vo.hide_text}</span>
+		  </td>
+		  <td><span <if condition="$vo.page == 1 ">class="yes"<else/>class="no"</if>><i <if condition="$vo.page == 1 ">class="fa fa-check-circle"<else/>class="fa fa-ban"</if>></i>{$vo.page_text}</span></td>
+
+          <td><span <if condition="$vo.status == 1 ">class="yes"<else/>class="no"</if>><i <if condition="$vo.status == 1 ">class="fa fa-check-circle"<else/>class="fa fa-ban"</if>></i>{$vo.status_text}</span></td>
+
+          <td><span <if condition="$vo.type == 1 ">class="no"<else/>class="yes"</if>>{$vo.type_text}</span></td>
+          <td></td>
+         </tr>
+	  </volist>
+      </tbody>
+    </table>
+  </form>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(function(){
+    $('.flex-table').flexigrid({
+        height:'auto',// 高度自动
+        usepager: false,// 不翻页
+        striped:false,// 不使用斑马线
+        resizable: false,// 不调节大小
+        title: '内容公共字段',// 表格标题
+        reload: false,// 不使用刷新
+        columnControl: false,// 不使用列控制
+        buttons : [
+                   {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add', onpress : fg_operation }
+               ]
+    });
+
+    $('span[nc_type="inline_edit"]').inline_edit({a: 'ArticleField',c: 'ajax'});
+});
+
+function fg_operation(name, bDiv) {
+    if (name == 'add') {
+        window.location.href = '{:U("ArticleField/add/catid/$catid")}';
+    } else if (name == 'del') {
+        if ($('.trSelected', bDiv).length == 0) {
+            showError('请选择要操作的数据项！');
+        }
+        var itemids = new Array();
+        $('.trSelected', bDiv).each(function(i){
+            itemids[i] = $(this).attr('data-id');
+        });
+        fg_del(itemids);
+    }
+}
+function fg_del(ids) {
+    if (typeof ids == 'number') {
+        var ids = new Array(ids.toString());
+    };
+    id = ids.join(',');
+    if(confirm('删除后将不能恢复，确认删除这项吗？')){
+        $.getJSON('{:U("ArticleField/del")}', {id:id}, function(data){
+            if (data.state) {
+                location.reload();
+            } else {
+                showError(data.msg)
+            }
+        });
+    }
+}
+</script>
+</block>

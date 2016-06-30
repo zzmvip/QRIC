@@ -1,0 +1,75 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" href="__CSS__/style1.css"/>
+<link rel="stylesheet" href="__CSS__/index1.css"/>
+<link rel="stylesheet" href="__CSS__/public.css"/>
+</block>
+<block name="body">
+<body>
+<style type="text/css">
+.in-left{
+	border: 1px solid #f0f0f0;
+    height: 141px;
+    overflow: hidden;
+    width: 250px;
+	float:left;
+	margin-top:10px;
+}
+.in-left img{
+	width:250px;
+	height:141px;
+}
+.in-right{
+    height: 141px;
+    overflow: hidden;
+	float:left;
+	margin-left:20px;
+	margin-top:10px;
+	width:560px;
+}
+.in-right h2{
+    font-size:16px;
+	line-height:30px;
+	color:#333;
+	font-weight:700;
+}
+.in-right p{
+    font-size:14px;
+	line-height:28px;
+	color:#666;
+}
+.in-right span{
+    font-size:12px;
+	line-height:28px;
+	color:#666;
+}
+</style>
+<div class="warp">
+<div class="warp-left">
+<div class="ad67">
+{:Advs('67')}
+
+</div>
+<div class="xuline"></div>
+
+<volist name="info" id="vo">
+<div class="in-left">
+<img src="{:articlepic($vo['thumb'])}"/>
+</div>
+<div class="in-right">
+<h2><a href="{:U("Article/show/id/$vo[id]")}">{:str_replace($text,"<i style='color:red'>$text</i>",$vo[title])}</a></h2>
+<span>发布者：{:article_add_user($vo['uid'],$vo['addtype'])}</span> <span>发布时间：{$vo.updatetime|date="Y-m-d",###}</span>
+<p>{$vo.description}</p>
+</div>
+<div class="xuline"></div>
+</volist>
+<div class="page_navi">{$pages}</div>
+
+</div>
+
+<div class="warp-right">
+<include file="Article/sidebar"/>
+</div>
+<div class="clear"></div>
+</div>
+</block>

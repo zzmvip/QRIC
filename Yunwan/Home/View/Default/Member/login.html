@@ -1,0 +1,76 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" type="text/css" href="__CSS__/member.css" media="all">
+<style>
+.header,.nav,.ad_top{display:none;}
+.logo_sep {
+float: left;
+width: 0;
+height: 28px;
+margin: 35px 22px;
+border-left: 1px solid #dfdfdf;
+}
+.logo_txt {
+float: left;
+font-size: 26px;
+margin: 30px 0;
+line-height: 36px;
+color: #999;
+}
+.login-cont{width:100%;overflow: hidden;}
+.login-catonBg{background:#3E9FE3 url(__IMG__/login.png) left center no-repeat;}
+</style>
+</block>
+<block name="body">
+<div class="wrapper ">
+	<h1 class="fl mt10 mb10"><a href="{:C('WEB_PATH')}" title="广告搜搜"><img src="__IMG__/logo.png" style="height:70px;"></a></h1>
+	<span class="logo_sep"></span>
+	<span class="logo_txt">登录</span>
+	<div class="cb"></div>
+</div>
+<div class="login-cont">
+    <div class="wrapper login-catonBg">
+	    <div class="hlLoginH">
+            <h2 class="mb10">登录<a class="red1" href="{:U('Member/register')}">免费注册</a></h2>
+            <form class="loginform" action="{:U('Member/login')}" method="post">
+                <div class="input">
+				    <!--<i class="iconfont">&#xe7c0;</i>-->
+				    <input name="log" type="text" id="log" value="" placeholder="手机号/邮箱/用户名">
+				</div>
+				<div class="input">
+				    <!--<i class="iconfont">&#xe7e7;</i>-->
+					<input name="pwd" type="password" id="pwd" value="" placeholder="登录密码">
+				</div>
+				<div class="agreeBox">
+				    <div class="fl err-msg"></div>
+					<!--<a href="#" class="fr grey0">忘记密码?</a>-->
+				</div>
+				<a href="javascript:;" title="立即登录" id="loginSubmit" class="btn btn-grapefruit">立即登录</a>
+            </form>
+	    </div>
+	</div>
+</div>
+	<script type="text/javascript" src="__STATIC__/js/jquery.Validform.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".loginform").Validform({
+				btnSubmit:"#loginSubmit",
+				tiptype:function(msg,o,cssctl){
+					if(!o.obj.is("form")){
+						var objtip=o.obj.siblings(".Validform_checktip");
+						cssctl(objtip,o.type);
+						objtip.text(msg);
+					}
+				},
+				ajaxPost:true,
+				callback:function(data){
+					if(data.status=="y"){
+						window.location.href="{:U('Member/index')}"; 
+					}else{
+						$('.err-msg').html(data.info);
+					}
+				}
+			});
+		});
+	</script>
+</block>

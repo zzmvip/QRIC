@@ -1,0 +1,830 @@
+<extend name="Public/base" />
+<block name="header">
+<link rel="stylesheet" href="__CSS__/style1.css"/>
+<link rel="stylesheet" href="__CSS__/index1.css"/>
+<style>
+h1,h2,h3,h4,h5,h6,small{line-height:150%;font-weight:400}h5{font-size:1.17em;margin:.6em 0 .33em}h6{font-size:.75em}
+</style>
+</block>
+<block name="body">
+<!-- 包推荐 -->
+<div class="m-packageRecommond">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">热门广告<span class="f-c9">观看另一种可能性</span></h2>
+		</div>
+		<div class="pcw f-pr" id="j-package-switch-container">
+			<div class="pcon f-pr f-cb">
+				<article catid="1" num='8' subcat='1' order="click desc" where="thumb!=''">
+				<volist name="data" id="vo">
+				<a class="f-fl packageCard rel" href='{:U("/Article/show/id/$vo[id]")}'>
+					<img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}">
+					<div class="mask abs"></div>
+					<div class="info abs">
+						<div class="bin abs">
+							<h4 class="f-fl f-thide">{$vo.title}</h4>
+						</div>
+					</div>
+				</a>
+				</volist>
+				</article>
+			</div>			
+		</div>
+	</div>
+</div>
+<!-- /包推荐 -->
+	<!-- 小编推荐 -->
+	<div class="g-container rarea">
+		<div class="u-mtitle f-f0">
+			<!-- 整屏切换按钮 -->			
+			<!-- /整屏切换按钮 -->
+			<h2 class="f-c3 f-fl">小编推荐</h2>
+		</div>
+		<!-- 切换容器 -->
+		<div class="u-switch" id="j-xbtj-switch-container">
+			<div class="g-row ">
+				<article catid="1" num='20' subcat='1' order="id desc" posid="1" where="thumb!=''">
+				<volist name="data" id="vo">
+				<div class="g-cell1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+						</div>
+					</a>
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}<span class="rec f-f1 hide"></span></h5>
+					</a>
+					<p class="f-c9">{$vo.title}</p>
+				</div>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /专题、小编推荐、猜你喜欢 -->
+
+<!-- TED -->
+<div class="m-cate">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">墙体大牌</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2 f-pr">
+								
+				<div class="m-ted shadow" onclick="javascript:window.open('','_blank');" title="查看全部">
+					<h2>墙体大牌<span class="lk" id="j-ted"></span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">信息</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">幽默</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">美丽</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">鼓舞</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">迷人</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">惊讶</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">说服</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">勇敢</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">创意</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="11" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="abs hide "></div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			<article catid="11" limit='2,1' order="id desc">
+			<volist name="data" id="vo">
+			<div class="g-cell2">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow ohide rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="380px">
+						<div class="mask abs"></div>
+					</div>
+				</a>
+				<a href='{:U("/Article/show/id/$vo[id]")}'>
+					<h5 class="f-c3">{$vo.title}</span></h5>
+				</a>
+			</div>
+			</volist>
+			</article>
+			<div class="g-cell1">
+				<article catid="11" limit='3,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="abs hide NEW">NEW</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="11" limit='5,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="abs hide NEW">NEW</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+				</div>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- /TED -->
+<!-- 演讲 -->
+<div class="m-cate m-cate1">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">三面翻</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2">
+				<div class="m-yanj shadow" onclick="javascript:window.open('http://c.open.163.com/search/search.htm?query=%E6%BC%94%E8%AE%B2&enc=%E2%84%A2#/search/all','_blank');" title="查看全部">
+					<h2>演讲<span class="lk" id="j-yanj">共0门课程</span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">毕业演讲</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">CC讲坛</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">扎克伯格</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">桑德伯格</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">乔布斯</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">奥巴马</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="12" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="abs hide "></div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			<article catid="12" limit='2,1' order="id desc">
+			<volist name="data" id="vo">
+			<div class="g-cell2">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow ohide rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="380px">
+						<div class="mask abs"></div>
+					</div>
+				</a>
+				<a href='{:U("/Article/show/id/$vo[id]")}'>
+					<h5 class="f-c3">{$vo.title}</span></h5>
+				</a>
+			</div>
+			</volist>
+			</article>
+			<div class="g-cell1">
+				<article catid="12" limit='3,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="abs hide NEW">NEW</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="12" limit='5,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="abs hide NEW">NEW</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+				</div>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- /演讲 -->
+<!-- 云课堂/mooc -->
+<div class="m-cate">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">楼宇广告</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2">
+				<div class="shadow m-ted" style="background-color:#10ae58;" onclick="javascript:window.open('http://study.163.com','_blank');" title="查看全部">
+					<h2>云课堂</h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">微专业</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">创业技能</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">产品经理</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">经济通识</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">办公技能</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">移动开发</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">Web开发</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="13" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="abs hide "></div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			<article catid="13" limit='2,1' order="id desc">
+			<volist name="data" id="vo">
+			<div class="g-cell2">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow ohide rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="380px">
+						<div class="mask abs"></div>
+					</div>
+				</a>
+				<a href='{:U("/Article/show/id/$vo[id]")}'>
+					<h5 class="f-c3">{$vo.title}</span></h5>
+				</a>
+			</div>
+			</volist>
+			</article>
+			<div class="g-cell1">
+				<article catid="13" limit='3,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="abs hide NEW">NEW</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="13" limit='5,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="abs hide NEW">NEW</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+				</div>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- /云课堂/mooc -->
+<!-- 赏课 -->
+<div class="m-cate m-cate1">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">高速高炮</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell1">
+				<div class="m-bbc shadow" onclick="javascript:window.open('http://open.163.com/appreciation','_blank');" title="查看全部">
+					<h2>赏课<span class="lk" id="j-bbc">共0门课程</span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">探索未知</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">动植物特写</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">关于吃</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">看到与听到</a></li>
+					</ul>
+				</div>
+			</div>
+			<article catid="14" num='5' order="id desc">
+			<volist name="data" id="vo">
+			<div class="g-cell1">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="180px">
+						<div class="mask abs"></div>
+						<div class="sub abs">{$vo.title}</div>
+						<div class="abs hide "></div>
+					</div>
+					<h5 class="f-c3">{$vo.title}</h5>
+				</a>
+				<p class="f-c9"><span>来源：CNEX</span></p>
+			</div>
+			</volist>
+			</article>
+			
+		</div>
+	</div>	
+</div>
+<!-- /赏课 -->
+
+<!-- COURSERA -->
+<div class="m-cate">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">乡镇墙体</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2">
+				<div class="m-coursera shadow" onclick="javascript:window.open('http://c.open.163.com/coursera/home.htm','_blank');" title="查看全部">
+					<h2>Coursera<span class="lk" id="j-coursera">共121门课程</span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">大数据</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">吉他入门</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">程序设计</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">经济决策</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">大学化学</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">动物行为</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="15" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+								<div class="abs hide new">new</div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+						<p class="f-c9"></p>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			<div class="g-cell2">
+				<div class="g-row">
+					<article catid="15" limit='2,4' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+								<div class="abs hide new">new</div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+						<p class="f-c9"></p>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="15" limit='6,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+							<div class="abs hide new">new</div>
+						</div>
+					</a>	
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+					<p class="f-c9"></p>
+				</div>
+				</volist>
+				</article>
+
+			</div>
+			<div class="g-cell1">
+				<article catid="15" limit='8,1' order="id desc">
+				<volist name="data" id="vo">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="180px">
+						<div class="mask abs"></div>
+						<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+					</div>
+					<h5 class="f-c3 nowrp">{$vo.title}</h5>
+				</a>
+				<p class="f-c9"></p>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- /COURSERA -->
+
+<!-- 国际公开课 -->
+<div class="m-cate m-cate1">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">座套广告</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2">
+				<div class="m-gjgkk shadow" onclick="javascript:window.open('http://open.163.com/ocw/','_blank');" title="查看全部">
+					<h2>国际名校公开课<span class="lk" id="j-world">共500门课程</span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">演讲</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">心理</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">政治</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">经济</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">艺术</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">宗教</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">历史</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">哲学</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">语言</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">文学</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="16" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+								<div class="abs hide "></div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+						<p class="f-c9">{$vo.title}</p>
+					</div>
+					</volist>
+					</article>
+					
+				</div>
+			</div>
+			<div class="g-cell1">
+				<article catid="16" limit='2,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+							<div class="abs hide update">NEW</div>
+						</div>
+					</a>
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+					<p class="f-c9">{$vo.title}</p>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="16" limit='4,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+							<div class="abs hide update">NEW</div>
+						</div>
+					</a>
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+					<p class="f-c9">{$vo.title}</p>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell2">
+				<article catid="16" limit='6,1' order="id desc">
+				<volist name="data" id="vo">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow ohide rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="380px">
+						<div class="mask abs"></div>
+					</div>
+				</a>
+				<a href='{:U("/Article/show/id/$vo[id]")}'>
+					<h5 class="f-c3">{$vo.title}<span class="rec f-f1 hide"></span></h5>
+				</a>
+				<p class="f-c9"><span>{$vo.updatetime|date="Y-m-d",###}</span></p>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- /国际公开课 -->
+<!-- 中国公开课 -->
+<div class="m-cate">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">社区广告</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2">
+				<div class="m-zggkk shadow" onclick="javascript:window.open('http://open.163.com/cuvocw/','_blank');" title="查看全部">
+					<h2>中国大学视频公开课<span class="lk" id="j-china">共500门课程</span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">农林医药</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">工程技术</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">基础科学</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">经管法学</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">哲学历史</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">文学艺术</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="17" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+								<div class="abs hide update">update</div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+						<p class="f-c9">{$vo.title}</p>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			
+			<div class="g-cell1">
+				<article catid="17" limit='2,1' order="id desc">
+				<volist name="data" id="vo">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="180px">
+						<div class="mask abs"></div>
+						<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+					</div>
+					<h5 class="f-c3">{$vo.title}<span class="rec f-f1 hide"></span></h5>
+				</a>
+				<p class="f-c9"><span>{$vo.title}</span></p>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell2">
+				<div class="g-row">
+					<article catid="17" limit='3,4' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+								<div class="abs hide update">NEW</div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+						<p class="f-c9">{$vo.title}</p>
+					</div>
+					</volist>
+					</article>
+				</div>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="17" limit='7,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+							<div class="abs hide "></div>
+						</div>
+					</a>
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+					<p class="f-c9">{$vo.title}</p>
+				</div>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<!-- /中国公开课 -->
+<!-- 可汗学院 -->
+<div class="m-cate m-cate1">
+	<div class="g-container">
+		<div class="u-mtitle f-f0">
+			<a class="f-fr f-cgreen" href="#">	  
+				&#x66F4;&#x591A;&#x7CBE;&#x5F69;
+			</a>
+			<h2 class="f-fl">其他</h2>
+		</div>
+		<div class="g-row">
+			<div class="g-cell2">
+				<div class="m-kahan shadow" onclick="javascript:window.open('http://open.163.com/khan/','_blank');"  title="查看全部">
+					<h2>可汗学院<span class="lk" id="j-khan">共500门课程</span></h2>
+					<ul class="clear">
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">数学</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">科学</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">金融经济</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">考试准备</a></li>
+						<li class="left blok nowrp"><a class="link f-f0 nowrp j-recstop" href="#">人文</a></li>
+					</ul>
+				</div>
+				<div class="g-row">
+					<article catid="18" num='2' order="id desc">
+					<volist name="data" id="vo">
+					<div class="g-cell1 g-card1">
+						<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+							<div class="shadow rel">
+								<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+								<div class="mask abs"></div>
+								<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+								<div class="abs hide "></div>
+							</div>
+						</a>
+						<a href='{:U("/Article/show/id/$vo[id]")}'>
+							<h5 class="f-c3">{$vo.title}</h5>
+						</a>
+						<p class="f-c9">{$vo.title}</p>
+					</div>
+					</volist>
+					</article>
+					
+				</div>
+			</div>
+			<div class="g-cell1">
+				<article catid="18" limit='2,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+							<div class="abs hide update">NEW</div>
+						</div>
+					</a>
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+					<p class="f-c9">{$vo.title}</p>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell1 g-hide">
+				<article catid="18" limit='4,2' order="id desc">
+				<volist name="data" id="vo">
+				<div class="g-card1">
+					<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+						<div class="shadow rel">
+							<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="100px" width="180px">
+							<div class="mask abs"></div>
+							<div class="sub abs">{$vo.updatetime|date="Y-m-d",###}</div>
+							<div class="abs hide update">NEW</div>
+						</div>
+					</a>
+					<a href='{:U("/Article/show/id/$vo[id]")}'>
+						<h5 class="f-c3">{$vo.title}</h5>
+					</a>
+					<p class="f-c9">{$vo.title}</p>
+				</div>
+				</volist>
+				</article>
+			</div>
+			<div class="g-cell2">
+				<article catid="18" limit='6,1' order="id desc">
+				<volist name="data" id="vo">
+				<a href='{:U("/Article/show/id/$vo[id]")}' class="u-cover" target="_blank">
+					<div class="shadow ohide rel">
+						<img src="{:C('ARTICLE_UPLOAD.rootPath')}article.jpg" class="lazy" data-original="{:C('ARTICLE_UPLOAD.rootPath')}{$vo.thumb}" alt="{$vo.title}" height="275px" width="380px">
+						<div class="mask abs"></div>
+					</div>
+				</a>
+				<a href='{:U("/Article/show/id/$vo[id]")}'>
+					<h5 class="f-c3">{$vo.title}<span class="rec f-f1 hide"></span></h5>
+				</a>
+				<p class="f-c9"><span>{$vo.updatetime|date="Y-m-d",###}</span></p>
+				</volist>
+				</article>
+			</div>
+		</div>
+	</div>	
+</div>
+<script src="__JS__/opencourse.min.js?_t=1435303643982" charset="UTF-8"></script>
+<script src="__JS__/index1.js?_t=1435303643982" charset="UTF-8"></script>
+</block>

@@ -1,0 +1,99 @@
+.warp {
+	background: #fff none repeat scroll 0 0;
+    box-shadow: 2px 0 5px rgba(214, 214, 215, 0.9), -2px 0 5px rgba(214, 214, 215, 0.9);
+    clear: both;
+    margin: 10px auto 0;
+    overflow: hidden;
+	width:1200px;
+	min-height:750px;
+	margin-bottom:10px;
+}
+.warp-left{
+	width:850px;
+	float:left;
+	margin:0 30px 50px 20px;
+}
+.warp-right{
+	width:280px;
+	float:left;
+	margin-right:20px;
+}
+.xuline{
+	border-bottom: 1px dotted #D3D3D3;
+	clear:both;
+	margin:5px 0;
+	padding-top:15px;
+}
+.xuline2{
+	border-bottom: 1px solid #D3D3D3;
+	clear:both;
+
+}
+.neirong{
+	width:100%;
+	margin:10px;
+}
+.neirong h2{
+    font-size:16px;
+	line-height:30px;
+	color:#333;
+	font-weight:700;
+	padding-top:15px;
+}
+.neirong p{
+    font-size:14px;
+	line-height:28px;
+	color:#666;
+}
+.neirong span{
+    font-size:12px;
+	line-height:28px;
+	color:#666;
+}
+.dh{
+	font-size:14px;
+	padding-bottom:10px;
+}
+
+
+
+
+
+
+.ad67{
+	width:850px;
+	margin:10px 0;
+	height:300px;
+}
+.ad67 img{
+	width:850px;
+	height:300px;
+}
+
+.side{
+margin-top:10px;
+
+}
+.side-h2{
+background-color: #0066CC;
+    color: #fff;
+    font-size: 13px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 12px;
+    position: relative;
+	margin-top:10px;
+	
+}
+.more {
+    color: #fff;
+    float: right;
+}
+.sideline {
+    border-bottom: 1px dotted #cdcdcd;
+    height: 10px;
+    overflow: hidden;
+}
+.side i{
+	font-size:10px;
+}

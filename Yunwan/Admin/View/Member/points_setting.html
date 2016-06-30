@@ -1,0 +1,63 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <div class="subject">
+        <h3>积分管理</h3>
+        <h5>会员积分管理及获取日志</h5>
+      </div>
+      <ul class="tab-base nc-row">
+        <li><a href="{:U('Member/points')}">积分明细</a></li>
+        <li><a href="{:U('Member/points_setting')}" class="current">规则设置</a></li>
+        <li><a href="{:U('Member/addpoints')}">积分增减</a></li>
+      </ul>
+    </div>
+  </div>
+  <form method="post" name="settingForm" id="settingForm">
+    <div class="ncap-form-default">
+      <div class="title">
+        <h3>会员日常获取积分设定</h3>
+      </div>
+      <dl class="row">
+        <dt class="tit"><label for="points_reg">会员注册</label></dt>
+        <dd class="opt">
+          <input id="points_reg" name="config[POINTS_REG]" value="{:C('POINTS_REG')}" class="input-txt" type="text">
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit"><label for="points_login">会员每天登录</label></dt>
+        <dd class="opt">
+          <input id="points_login" name="config[POINTS_LOGIN]" value="{:C('POINTS_LOGIN')}" class="input-txt" type="text">
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit"><label for="points_add_article">会员发布文章</label></dt>
+        <dd class="opt">
+          <input id="points_add_article" name="config[POINTS_ADD_ARTICLE]" value="{:C('POINTS_ADD_ARTICLE')}" class="input-txt" type="text">
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit"><label for="points_article_comments">文章评论</label></dt>
+        <dd class="opt">
+          <input id="points_article_comments" name="config[POINTS_ARTICLE_COMMENTS]" value="{:C('POINTS_ARTICLE_COMMENTS')}" class="input-txt" type="text">
+        </dd>
+      </dl>
+      <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+    </div>
+  </form>
+</div>
+
+</block>
+<block name="script">
+<script>
+
+$(function(){
+    $("#submitBtn").click(function(){
+        if($("#settingForm").valid()){
+            $("#settingForm").submit();
+        }
+    });
+});
+</script>
+</block>

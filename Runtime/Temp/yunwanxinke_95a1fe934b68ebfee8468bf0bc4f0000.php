@@ -1,0 +1,3 @@
+<?php
+//000000000000a:19:{s:14:"WEB_SITE_TITLE";s:4:"QRIC";s:8:"WEB_PATH";s:20:"http://www.qric.test";s:14:"ADMIN_ALLOW_IP";s:0:"";s:10:"ICP_NUMBER";s:20:"皖ICP备14000000号";s:15:"STATISTICS_CODE";s:0:"";s:11:"SITE_STATUS";s:1:"1";s:13:"CLOSED_REASON";s:0:"";s:10:"EMAIL_HOST";s:12:"smtp.163.com";s:10:"EMAIL_PORT";s:2:"25";s:10:"EMAIL_ADDR";s:25:"zhangzhongmiaovip@163.com";s:8:"EMAIL_ID";s:25:"zhangzhongmiaovip@163.com";s:10:"EMAIL_PASS";s:9:"zzm636067";s:10:"POINTS_REG";s:2:"20";s:12:"POINTS_LOGIN";s:2:"10";s:18:"POINTS_ADD_ARTICLE";s:2:"10";s:23:"POINTS_ARTICLE_COMMENTS";s:1:"5";s:13:"IS_MEMBER_REG";s:1:"1";s:14:"MEMBER_REG_NUM";s:1:"0";s:25:"MEMBER_REG_DEFAULT_MODULE";s:1:"1";}
+?>
